@@ -1,0 +1,263 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A695FD917DFF14C0018489A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A695FD817DFF14C0018489A /* UIKit.framework */; };
+		4A695FDB17DFF14C0018489A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A695FDA17DFF14C0018489A /* Foundation.framework */; };
+		4A695FDD17DFF14C0018489A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A695FDC17DFF14C0018489A /* CoreGraphics.framework */; };
+		4A695FE317DFF14C0018489A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A695FE117DFF14C0018489A /* InfoPlist.strings */; };
+		4A695FE517DFF14C0018489A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A695FE417DFF14C0018489A /* main.m */; };
+		4A695FE917DFF14C0018489A /* Capstone_F13AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A695FE817DFF14C0018489A /* Capstone_F13AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4A695FD417DFF14C0018489A /* Questionaire-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Questionaire-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A695FD817DFF14C0018489A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4A695FDA17DFF14C0018489A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4A695FDC17DFF14C0018489A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4A695FE017DFF14C0018489A /* Questionaire-App-Info.plist */ = {isa = PBXFileReference; path = "Questionaire-App-Info.plist"; sourceTree = "<group>"; };
+		4A695FE217DFF14C0018489A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4A695FE417DFF14C0018489A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A695FE617DFF14C0018489A /* Questionaire-App-Prefix.pch */ = {isa = PBXFileReference; path = "Questionaire-App-Prefix.pch"; sourceTree = "<group>"; };
+		4A695FE717DFF14C0018489A /* Capstone_F13AppDelegate.h */ = {isa = PBXFileReference; path = Capstone_F13AppDelegate.h; sourceTree = "<group>"; };
+		4A695FE817DFF14C0018489A /* Capstone_F13AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Capstone_F13AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A695FD117DFF14B0018489A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A695FD917DFF14C0018489A /* UIKit.framework in Frameworks */,
+				4A695FDB17DFF14C0018489A /* Foundation.framework in Frameworks */,
+				4A695FDD17DFF14C0018489A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A695FC917DFF14B0018489A = {
+			isa = PBXGroup;
+			children = (
+				4A695FDE17DFF14C0018489A /* Questionaire-App */,
+				4A695FD717DFF14C0018489A /* Frameworks */,
+				4A695FD517DFF14C0018489A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A695FD517DFF14C0018489A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A695FD417DFF14C0018489A /* Questionaire-App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A695FD717DFF14C0018489A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A695FD817DFF14C0018489A /* UIKit.framework */,
+				4A695FDA17DFF14C0018489A /* Foundation.framework */,
+				4A695FDC17DFF14C0018489A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4A695FDE17DFF14C0018489A /* Questionaire-App */ = {
+			isa = PBXGroup;
+			children = (
+				4A695FE717DFF14C0018489A /* Capstone_F13AppDelegate.h */,
+				4A695FE817DFF14C0018489A /* Capstone_F13AppDelegate.m */,
+				4A695FDF17DFF14C0018489A /* Supporting Files */,
+			);
+			path = "Questionaire-App";
+			sourceTree = "<group>";
+		};
+		4A695FDF17DFF14C0018489A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A695FE017DFF14C0018489A /* Questionaire-App-Info.plist */,
+				4A695FE117DFF14C0018489A /* InfoPlist.strings */,
+				4A695FE417DFF14C0018489A /* main.m */,
+				4A695FE617DFF14C0018489A /* Questionaire-App-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A695FD317DFF14B0018489A /* Questionaire-App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A695FEC17DFF14C0018489A /* Build configuration list for PBXNativeTarget "Questionaire-App" */;
+			buildPhases = (
+				4A695FD017DFF14B0018489A /* Sources */,
+				4A695FD117DFF14B0018489A /* Frameworks */,
+				4A695FD217DFF14B0018489A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Questionaire-App";
+			productName = "Questionaire-App";
+			productReference = 4A695FD417DFF14C0018489A /* Questionaire-App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A695FCB17DFF14B0018489A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 4A695FCE17DFF14B0018489A /* Build configuration list for PBXProject "Questionaire-App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4A695FC917DFF14B0018489A;
+			productRefGroup = 4A695FD517DFF14C0018489A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A695FD317DFF14B0018489A /* Questionaire-App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A695FD217DFF14B0018489A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A695FE317DFF14C0018489A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A695FD017DFF14B0018489A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A695FE517DFF14C0018489A /* main.m in Sources */,
+				4A695FE917DFF14C0018489A /* Capstone_F13AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4A695FE117DFF14C0018489A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A695FE217DFF14C0018489A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4A695FEA17DFF14C0018489A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4A695FEB17DFF14C0018489A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4A695FED17DFF14C0018489A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Questionaire-App/Questionaire-App-Prefix.pch";
+				INFOPLIST_FILE = "Questionaire-App/Questionaire-App-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4A695FEE17DFF14C0018489A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Questionaire-App/Questionaire-App-Prefix.pch";
+				INFOPLIST_FILE = "Questionaire-App/Questionaire-App-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A695FCE17DFF14B0018489A /* Build configuration list for PBXProject "Questionaire-App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A695FEA17DFF14C0018489A /* Debug */,
+				4A695FEB17DFF14C0018489A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A695FEC17DFF14C0018489A /* Build configuration list for PBXNativeTarget "Questionaire-App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A695FED17DFF14C0018489A /* Debug */,
+				4A695FEE17DFF14C0018489A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4A695FCB17DFF14B0018489A /* Project object */;
+}
