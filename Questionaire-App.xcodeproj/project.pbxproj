@@ -20,11 +20,11 @@
 		4A695FD817DFF14C0018489A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4A695FDA17DFF14C0018489A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4A695FDC17DFF14C0018489A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		4A695FE017DFF14C0018489A /* Questionaire-App-Info.plist */ = {isa = PBXFileReference; path = "Questionaire-App-Info.plist"; sourceTree = "<group>"; };
+		4A695FE017DFF14C0018489A /* Questionaire-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Questionaire-App-Info.plist"; sourceTree = "<group>"; };
 		4A695FE217DFF14C0018489A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4A695FE417DFF14C0018489A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4A695FE617DFF14C0018489A /* Questionaire-App-Prefix.pch */ = {isa = PBXFileReference; path = "Questionaire-App-Prefix.pch"; sourceTree = "<group>"; };
-		4A695FE717DFF14C0018489A /* Capstone_F13AppDelegate.h */ = {isa = PBXFileReference; path = Capstone_F13AppDelegate.h; sourceTree = "<group>"; };
+		4A695FE617DFF14C0018489A /* Questionaire-App-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Questionaire-App-Prefix.pch"; sourceTree = "<group>"; };
+		4A695FE717DFF14C0018489A /* Capstone_F13AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Capstone_F13AppDelegate.h; sourceTree = "<group>"; };
 		4A695FE817DFF14C0018489A /* Capstone_F13AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Capstone_F13AppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
