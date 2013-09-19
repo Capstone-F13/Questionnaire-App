@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface QuestionaireViewController : UIViewController
+{
+    IBOutlet UILabel *currentQuestion;
+    IBOutlet UITextView *answerQuestion;
+}
+-(IBAction)nextQuestion:(id)sender;
+-(IBAction)previousQuestion:(id)sender;
 
 @end
