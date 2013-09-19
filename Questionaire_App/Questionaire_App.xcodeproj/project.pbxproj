@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		66FD915317EA00ED0088C6BD /* Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD915017EA00ED0088C6BD /* Json.m */; };
 		66FD915417EA00ED0088C6BD /* JsonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD915217EA00ED0088C6BD /* JsonResponse.m */; };
+		8D88E1A517EA895E00C4D6A8 /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D88E1A317EA895E00C4D6A8 /* SurveyViewController.m */; };
+		8D88E1A617EA895E00C4D6A8 /* SurveyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D88E1A417EA895E00C4D6A8 /* SurveyViewController.xib */; };
 		AD64F2FA17E9FDF500F2438A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2F917E9FDF500F2438A /* UIKit.framework */; };
 		AD64F2FC17E9FDF500F2438A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2FB17E9FDF500F2438A /* Foundation.framework */; };
 		AD64F2FE17E9FDF500F2438A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2FD17E9FDF500F2438A /* CoreGraphics.framework */; };
@@ -27,6 +29,9 @@
 		66FD915017EA00ED0088C6BD /* Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Json.m; sourceTree = "<group>"; };
 		66FD915117EA00ED0088C6BD /* JsonResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonResponse.h; sourceTree = "<group>"; };
 		66FD915217EA00ED0088C6BD /* JsonResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonResponse.m; sourceTree = "<group>"; };
+		8D88E1A217EA895E00C4D6A8 /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
+		8D88E1A317EA895E00C4D6A8 /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
+		8D88E1A417EA895E00C4D6A8 /* SurveyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyViewController.xib; sourceTree = "<group>"; };
 		AD64F2F617E9FDF500F2438A /* Questionaire_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Questionaire_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD64F2F917E9FDF500F2438A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD64F2FB17E9FDF500F2438A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -107,6 +112,9 @@
 				AD64F31417E9FDF500F2438A /* QuestionaireViewController.h */,
 				AD64F31517E9FDF500F2438A /* QuestionaireViewController.m */,
 				AD64F30017E9FDF500F2438A /* Supporting Files */,
+				8D88E1A217EA895E00C4D6A8 /* SurveyViewController.h */,
+				8D88E1A317EA895E00C4D6A8 /* SurveyViewController.m */,
+				8D88E1A417EA895E00C4D6A8 /* SurveyViewController.xib */,
 			);
 			path = Questionaire_App;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 				AD64F30E17E9FDF500F2438A /* Default@2x.png in Resources */,
 				AD64F31017E9FDF500F2438A /* Default-568h@2x.png in Resources */,
 				AD64F31D17E9FE9500F2438A /* MainStoryboard.storyboard in Resources */,
+				8D88E1A617EA895E00C4D6A8 /* SurveyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +206,7 @@
 				AD64F31617E9FDF500F2438A /* QuestionaireViewController.m in Sources */,
 				66FD915317EA00ED0088C6BD /* Json.m in Sources */,
 				66FD915417EA00ED0088C6BD /* JsonResponse.m in Sources */,
+				8D88E1A517EA895E00C4D6A8 /* SurveyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
