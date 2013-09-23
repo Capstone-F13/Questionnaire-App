@@ -148,4 +148,9 @@
     [self.view endEditing:YES];
 }
 
+-(IBAction)submitSurvey:(id)sender
+{
+    // submit survey
+}
+
 @end

@@ -28,6 +28,7 @@
 -(IBAction)selectChoice2:(id)sender;
 -(IBAction)selectChoice3:(id)sender;
 -(IBAction)selectChoice4:(id)sender;
+-(IBAction)submitSurvey:(id)sender;
 
 @property (nonatomic) int questionCount;
 @property (nonatomic) int selectedAnswerChoice;
