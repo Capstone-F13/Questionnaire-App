@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Login-->
+        <!--View Controller-->
         <scene sceneID="BsO-l1-R9I">
             <objects>
-                <viewController storyboardIdentifier="Login" id="jdY-up-HP6" customClass="Login" sceneMemberID="viewController">
+                <viewController id="jdY-up-HP6" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cES-9K-o3G">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="172" y="330"/>
         </scene>
-        <!--Create Account-->
+        <!--View Controller-->
         <scene sceneID="EUM-bt-duI">
             <objects>
-                <viewController id="WAr-06-8z8" customClass="CreateAccount" sceneMemberID="viewController">
+                <viewController id="WAr-06-8z8" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HKW-Cr-Us2">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -105,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="719" y="-152"/>
         </scene>
-        <!--Survey-->
+        <!--View Controller-->
         <scene sceneID="XxI-b6-Gp8">
             <objects>
-                <viewController storyboardIdentifier="Survey" id="Uuv-g2-1Sv" customClass="Survey" sceneMemberID="viewController">
+                <viewController id="Uuv-g2-1Sv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iiT-aP-4ZM">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="1235" y="569"/>
         </scene>
-        <!--Main Menu-->
+        <!--View Controller-->
         <scene sceneID="Vdt-hB-hXY">
             <objects>
-                <viewController storyboardIdentifier="MainMenu" id="Zuh-ke-cDK" customClass="MainMenu" sceneMemberID="viewController">
+                <viewController id="Zuh-ke-cDK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dmu-OC-aLm">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -213,10 +213,10 @@
             </objects>
             <point key="canvasLocation" x="707" y="861"/>
         </scene>
-        <!--Record Song-->
+        <!--View Controller-->
         <scene sceneID="GG7-W0-0aQ">
             <objects>
-                <viewController storyboardIdentifier="RecordSong" id="Pd0-SP-KwB" customClass="RecordSong" sceneMemberID="viewController">
+                <viewController id="Pd0-SP-KwB" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i9N-e6-due">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -257,7 +257,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="j8h-d5-tdP"/>
         <segue reference="BKN-g1-u2Q"/>
+        <segue reference="j8h-d5-tdP"/>
     </inferredMetricsTieBreakers>
 </document>

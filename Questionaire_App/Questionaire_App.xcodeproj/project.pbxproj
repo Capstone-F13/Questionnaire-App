@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		66FD915317EA00ED0088C6BD /* Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD915017EA00ED0088C6BD /* Json.m */; };
 		66FD915417EA00ED0088C6BD /* JsonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD915217EA00ED0088C6BD /* JsonResponse.m */; };
-		66FD915817EA079C0088C6BD /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD915717EA079C0088C6BD /* Survey.m */; };
-		66FD915B17EA07A70088C6BD /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FD915A17EA07A70088C6BD /* Question.m */; };
 		AD64F2FA17E9FDF500F2438A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2F917E9FDF500F2438A /* UIKit.framework */; };
 		AD64F2FC17E9FDF500F2438A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2FB17E9FDF500F2438A /* Foundation.framework */; };
 		AD64F2FE17E9FDF500F2438A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2FD17E9FDF500F2438A /* CoreGraphics.framework */; };
@@ -22,8 +20,6 @@
 		AD64F31017E9FDF500F2438A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD64F30F17E9FDF500F2438A /* Default-568h@2x.png */; };
 		AD64F31617E9FDF500F2438A /* QuestionaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F31517E9FDF500F2438A /* QuestionaireViewController.m */; };
 		AD64F31D17E9FE9500F2438A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */; };
-		AD64F32317EA0B6A00F2438A /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */; };
-		AD64F32617EA0B8500F2438A /* RecordSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F32517EA0B8500F2438A /* RecordSongViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +27,6 @@
 		66FD915017EA00ED0088C6BD /* Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Json.m; sourceTree = "<group>"; };
 		66FD915117EA00ED0088C6BD /* JsonResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonResponse.h; sourceTree = "<group>"; };
 		66FD915217EA00ED0088C6BD /* JsonResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonResponse.m; sourceTree = "<group>"; };
-		66FD915617EA079C0088C6BD /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
-		66FD915717EA079C0088C6BD /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
-		66FD915917EA07A70088C6BD /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
-		66FD915A17EA07A70088C6BD /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		66FD915C17EA07DE0088C6BD /* SurveyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyConstants.h; sourceTree = "<group>"; };
 		AD64F2F617E9FDF500F2438A /* Questionaire_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Questionaire_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD64F2F917E9FDF500F2438A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD64F2FB17E9FDF500F2438A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,10 +43,6 @@
 		AD64F31417E9FDF500F2438A /* QuestionaireViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionaireViewController.h; sourceTree = "<group>"; };
 		AD64F31517E9FDF500F2438A /* QuestionaireViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionaireViewController.m; sourceTree = "<group>"; };
 		AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		AD64F32117EA0B6A00F2438A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
-		AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
-		AD64F32417EA0B8500F2438A /* RecordSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordSongViewController.h; sourceTree = "<group>"; };
-		AD64F32517EA0B8500F2438A /* RecordSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordSongViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,18 +68,6 @@
 				66FD915217EA00ED0088C6BD /* JsonResponse.m */,
 			);
 			path = Json;
-			sourceTree = "<group>";
-		};
-		66FD915517EA078C0088C6BD /* Survey */ = {
-			isa = PBXGroup;
-			children = (
-				66FD915617EA079C0088C6BD /* Survey.h */,
-				66FD915717EA079C0088C6BD /* Survey.m */,
-				66FD915917EA07A70088C6BD /* Question.h */,
-				66FD915A17EA07A70088C6BD /* Question.m */,
-				66FD915C17EA07DE0088C6BD /* SurveyConstants.h */,
-			);
-			path = Survey;
 			sourceTree = "<group>";
 		};
 		AD64F2ED17E9FDF500F2438A = {
@@ -125,7 +100,6 @@
 		AD64F2FF17E9FDF500F2438A /* Questionaire_App */ = {
 			isa = PBXGroup;
 			children = (
-				66FD915517EA078C0088C6BD /* Survey */,
 				66FD914E17EA00ED0088C6BD /* Json */,
 				AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */,
 				AD64F30817E9FDF500F2438A /* QuestionaireAppDelegate.h */,
@@ -133,10 +107,6 @@
 				AD64F31417E9FDF500F2438A /* QuestionaireViewController.h */,
 				AD64F31517E9FDF500F2438A /* QuestionaireViewController.m */,
 				AD64F30017E9FDF500F2438A /* Supporting Files */,
-				AD64F32117EA0B6A00F2438A /* MainMenuViewController.h */,
-				AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */,
-				AD64F32417EA0B8500F2438A /* RecordSongViewController.h */,
-				AD64F32517EA0B8500F2438A /* RecordSongViewController.m */,
 			);
 			path = Questionaire_App;
 			sourceTree = "<group>";
@@ -227,13 +197,6 @@
 				AD64F31617E9FDF500F2438A /* QuestionaireViewController.m in Sources */,
 				66FD915317EA00ED0088C6BD /* Json.m in Sources */,
 				66FD915417EA00ED0088C6BD /* JsonResponse.m in Sources */,
-<<<<<<< HEAD
-				AD64F32317EA0B6A00F2438A /* MainMenuViewController.m in Sources */,
-				AD64F32617EA0B8500F2438A /* RecordSongViewController.m in Sources */,
-=======
-				66FD915817EA079C0088C6BD /* Survey.m in Sources */,
-				66FD915B17EA07A70088C6BD /* Question.m in Sources */,
->>>>>>> ae589f066fd8e8002c802c4d591fc49a96ff9fb1
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
