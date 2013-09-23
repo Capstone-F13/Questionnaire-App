@@ -20,6 +20,8 @@
 		AD64F31017E9FDF500F2438A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD64F30F17E9FDF500F2438A /* Default-568h@2x.png */; };
 		AD64F31617E9FDF500F2438A /* QuestionaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F31517E9FDF500F2438A /* QuestionaireViewController.m */; };
 		AD64F31D17E9FE9500F2438A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */; };
+		AD64F32317EA0B6A00F2438A /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */; };
+		AD64F32617EA0B8500F2438A /* RecordSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F32517EA0B8500F2438A /* RecordSongViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,10 @@
 		AD64F31417E9FDF500F2438A /* QuestionaireViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionaireViewController.h; sourceTree = "<group>"; };
 		AD64F31517E9FDF500F2438A /* QuestionaireViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionaireViewController.m; sourceTree = "<group>"; };
 		AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		AD64F32117EA0B6A00F2438A /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		AD64F32417EA0B8500F2438A /* RecordSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordSongViewController.h; sourceTree = "<group>"; };
+		AD64F32517EA0B8500F2438A /* RecordSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordSongViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,10 @@
 				AD64F31417E9FDF500F2438A /* QuestionaireViewController.h */,
 				AD64F31517E9FDF500F2438A /* QuestionaireViewController.m */,
 				AD64F30017E9FDF500F2438A /* Supporting Files */,
+				AD64F32117EA0B6A00F2438A /* MainMenuViewController.h */,
+				AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */,
+				AD64F32417EA0B8500F2438A /* RecordSongViewController.h */,
+				AD64F32517EA0B8500F2438A /* RecordSongViewController.m */,
 			);
 			path = Questionaire_App;
 			sourceTree = "<group>";
@@ -197,6 +207,8 @@
 				AD64F31617E9FDF500F2438A /* QuestionaireViewController.m in Sources */,
 				66FD915317EA00ED0088C6BD /* Json.m in Sources */,
 				66FD915417EA00ED0088C6BD /* JsonResponse.m in Sources */,
+				AD64F32317EA0B6A00F2438A /* MainMenuViewController.m in Sources */,
+				AD64F32617EA0B8500F2438A /* RecordSongViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
