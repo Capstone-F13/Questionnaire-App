@@ -19,7 +19,3 @@
 // Types of questions
 #define QUESTION_TYPES_MULTIPLE "multiple";
 #define QUESTION_TYPES_TEXT "text";
-
-
-
-
