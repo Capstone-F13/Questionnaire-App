@@ -14,29 +14,88 @@
 
 @implementation Json
 
--(void) request {
+-(void) debuggingSurvey {
+    
+    //response with JSON string
+    JsonResponse *response = [self createTestResponse];
+    
+    //Parse JSON string into foundation objects
+    NSData *jsonData = [response.data dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:nil];
+    
+    //Parse foundation objects into custom objects
+    Survey *survey = [self getSurveyFromJSON:jsonObject];
+}
+
+-(void) requestSurvey {
     
 }
 
--(void) parse {
+-(void) parseJSONintoFoundationObjects {
     
-    //JsonResponse *response = [[JsonResponse alloc] init];
-    JsonResponse *response = [self createTestResponse];
+}
+
+-(void) parseFoundationObjectsIntoSurvey {
     
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:[response data] options:kNilOptions error:nil];
+}
+
+-(Survey*) getSurveyFromJSON: (NSDictionary*) jsonObject{
+    Survey *survey = [[Survey alloc] init];
+    
+    survey.questions = [self getQuestionsFromJSON:jsonObject];
+    
+    return survey;
+}
+
+-(NSMutableArray*) getQuestionsFromJSON: (NSDictionary*) jsonObject{
+    NSMutableArray *questions = [[NSMutableArray alloc] init];
+
+    NSMutableArray *jsonQuestions = [[jsonObject objectForKey:SURVEY] objectForKey:QUESTIONS];
+    
+    for (NSDictionary *jsonQuestion in jsonQuestions) {
+        Question *question = [[Question alloc] init];
+        question.questionId = [jsonQuestion objectForKey:QUESTION_ID];
+        question.text = [jsonQuestion objectForKey:QUESTION_TEXT];
+        question.type = [jsonQuestion objectForKey:QUESTION_TYPE];
+        question.answers = [jsonQuestion objectForKey:QUESTION_ANSWERS];
+        [questions addObject:question];
+    }
+    
+    return questions;
 }
 
 -(JsonResponse*) createTestResponse {
-    
-    Survey *survey = [self createTestSurvey];
-    
-    //gotta convert survey to give JSON object what it wants...
     
     JsonResponse *response = [[JsonResponse alloc] init];
     response.failureCode = nil;
     response.failureMessage = @"";
     response.promptMessage = @"Please take this survey";
-    response.data = [NSJSONSerialization dataWithJSONObject:survey options:kNilOptions error:nil];
+    response.data = @""
+    "{"
+        "\"survey\" : {"
+            "\"questions\":["
+                "{"
+                    "\"id\" : 66,"
+                    "\"text\" : \"Which best describes you?\","
+                    "\"type\" : \"multiple\","
+                    "\"answers\" : {"
+                        "\"a\" : \"Happy\","
+                        "\"b\" : \"Sad\","
+                        "\"c\" : \"Extremely Depressed\","
+                        "\"d\" : \"Apathetic\""
+                    "}"
+                "},"
+                "{"
+                    "\"id\" : 67,"
+                    "\"text\" : \"How you feeling in one word?\","
+                    "\"type\" : \"text\","
+                    "\"answers\" : {}"
+                "}"
+            "]"
+        "}"
+    "}";
     response.status = 200;
     response.timestamp = [[NSDate date] timeIntervalSince1970];
     
@@ -50,7 +109,7 @@
     
     {
         Question *question = [[Question alloc] init];
-        question.questionId = 13;
+        question.questionId = [NSNumber numberWithInt:13];
         question.text = @"How you feeling, braj?";
         question.type = @"text";
         question.answers = nil;
@@ -58,7 +117,7 @@
     }
     {
         Question *question = [[Question alloc] init];
-        question.questionId = 66;
+        question.questionId = [NSNumber numberWithInt:66];;
         question.text = @"3 + 10 = ?";
         question.type = @"multiple";
         

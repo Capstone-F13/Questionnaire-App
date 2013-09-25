@@ -11,7 +11,7 @@
 
 @interface Question : NSObject
 
-@property int questionId;
+@property (nonatomic, strong) NSNumber *questionId;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSMutableDictionary *answers;
