@@ -37,7 +37,7 @@
     
     // Check question type and hide and show elements on view accordingly
     // Adjust boolean value to test other UI
-    [self showAppropriateFields:false];
+    [self showAppropriateFields:true];
     
     // for testing, this should be set in the controller that opens this one
     questionCount = 1;
