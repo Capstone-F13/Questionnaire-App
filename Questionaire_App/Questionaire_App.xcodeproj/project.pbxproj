@@ -30,8 +30,8 @@
 		66FD915117EA00ED0088C6BD /* JsonResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonResponse.h; sourceTree = "<group>"; };
 		66FD915217EA00ED0088C6BD /* JsonResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonResponse.m; sourceTree = "<group>"; };
 		8D88E1AF17EAAD5A00C4D6A8 /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_mark.png; path = "../../wireframes/base images/check_mark.png"; sourceTree = "<group>"; };
-		8DFF82A917F09BE3009569CB /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
-		8DFF82AA17F09BE3009569CB /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
+		8DFF82A917F09BE3009569CB /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SurveyViewController.h; path = Questionaire_App/SurveyViewController.h; sourceTree = "<group>"; };
+		8DFF82AA17F09BE3009569CB /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SurveyViewController.m; path = Questionaire_App/SurveyViewController.m; sourceTree = "<group>"; };
 		AD64F2F617E9FDF500F2438A /* Questionaire_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Questionaire_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD64F2F917E9FDF500F2438A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD64F2FB17E9FDF500F2438A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -75,6 +75,16 @@
 			path = Json;
 			sourceTree = "<group>";
 		};
+		8D3EA85417F33BED009FB5FB /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				8DFF82A917F09BE3009569CB /* SurveyViewController.h */,
+				8DFF82AA17F09BE3009569CB /* SurveyViewController.m */,
+			);
+			name = Survey;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		AD64F2ED17E9FDF500F2438A = {
 			isa = PBXGroup;
 			children = (
@@ -105,8 +115,7 @@
 		AD64F2FF17E9FDF500F2438A /* Questionaire_App */ = {
 			isa = PBXGroup;
 			children = (
-				8DFF82A917F09BE3009569CB /* SurveyViewController.h */,
-				8DFF82AA17F09BE3009569CB /* SurveyViewController.m */,
+				8D3EA85417F33BED009FB5FB /* Survey */,
 				66FD914E17EA00ED0088C6BD /* Json */,
 				AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */,
 				AD64F30817E9FDF500F2438A /* QuestionaireAppDelegate.h */,
