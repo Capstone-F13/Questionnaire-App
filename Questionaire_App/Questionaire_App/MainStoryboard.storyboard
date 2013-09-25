@@ -306,7 +306,7 @@
                             <constraint firstItem="dMF-JU-Lng" firstAttribute="centerX" secondItem="XD5-Vn-KxJ" secondAttribute="centerX" type="default" id="wzR-JC-AmM"/>
                         </constraints>
                         <connections>
-                            <action selector="backgroundTapped:" destination="Uuv-g2-1Sv" eventType="valueChanged" id="K3t-VS-nJs"/>
+                            <action selector="backgroundTapped:" destination="Uuv-g2-1Sv" eventType="touchUpInside" id="Bfl-cy-oiu"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="3g4-HJ-Ksz"/>
@@ -438,6 +438,34 @@
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SurveyViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SurveyViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTapped:"/>
+                <relationship kind="action" name="nextQuestion:"/>
+                <relationship kind="action" name="previousQuestion:"/>
+                <relationship kind="action" name="selectChoice1:"/>
+                <relationship kind="action" name="selectChoice2:"/>
+                <relationship kind="action" name="selectChoice3:"/>
+                <relationship kind="action" name="selectChoice4:"/>
+                <relationship kind="action" name="submitSurvey:"/>
+                <relationship kind="outlet" name="answerTextField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="buttonChoice1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonChoice2" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonChoice3" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonChoice4" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="currentQuestionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="imageChoice1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imageChoice2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imageChoice3" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imageChoice4" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -445,6 +473,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Q1S-JC-QFx"/>
-        <segue reference="1zv-3W-SW5"/>
+        <segue reference="AX6-qZ-95E"/>
     </inferredMetricsTieBreakers>
 </document>
