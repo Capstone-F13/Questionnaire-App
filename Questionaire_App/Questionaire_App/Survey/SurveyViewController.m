@@ -16,7 +16,8 @@
 
 @implementation SurveyViewController
 
-@synthesize questionCount;
+@synthesize currentQuestionNumber;
+@synthesize totalQuestions;
 @synthesize selectedAnswerChoice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,10 +38,11 @@
     
     // Check question type and hide and show elements on view accordingly
     // Adjust boolean value to test other UI
-    [self showAppropriateFields:true];
+    [self showAppropriateFields:false];
     
-    // for testing, this should be set in the controller that opens this one
-    questionCount = 1;
+    // For testing, should check number of questions
+    totalQuestions = 10;
+    currentQuestionNumber = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,12 +112,24 @@
 
 - (IBAction)nextQuestion:(id)sender
 {
-    ++questionCount;
+    ++currentQuestionNumber;
+    if (currentQuestionNumber > totalQuestions)
+    {
+        currentQuestionNumber = 1;
+    }
+    // For testing, boolean should be checked
+    [self showAppropriateFields:true];
 }
 
 - (IBAction)previousQuestion:(id)sender
 {
-    --questionCount;
+    --currentQuestionNumber;
+    if (currentQuestionNumber < 1)
+    {
+        currentQuestionNumber = totalQuestions;
+    }
+    // For testing, boolean should be checked
+    [self showAppropriateFields:false];
 }
 
 - (IBAction)selectChoice1:(id)sender
