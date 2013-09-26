@@ -10,7 +10,8 @@
 
 @interface SurveyViewController : UIViewController
 {
-    IBOutlet UILabel *currentQuestionLabel;
+
+    IBOutlet UILabel *currentQuestionText;
     IBOutlet UITextView *answerTextField;
     IBOutlet UIImageView *imageChoice1;
     IBOutlet UIImageView *imageChoice2;
@@ -30,6 +31,7 @@
 -(IBAction)selectChoice4:(id)sender;
 -(IBAction)submitSurvey:(id)sender;
 
-@property (nonatomic) int questionCount;
+@property (nonatomic) int currentQuestionNumber;
+@property (nonatomic) int totalQuestions;
 @property (nonatomic) int selectedAnswerChoice;
 @end
