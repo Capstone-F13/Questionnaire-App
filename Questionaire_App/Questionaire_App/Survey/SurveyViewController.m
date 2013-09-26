@@ -42,7 +42,7 @@
     
     // For testing, should check number of questions
     totalQuestions = 10;
-    currentQuestionNumber = 1;
+    currentQuestionNumber = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,9 +133,9 @@
 - (IBAction)nextQuestion:(id)sender
 {
     ++currentQuestionNumber;
-    if (currentQuestionNumber > totalQuestions)
+    if (currentQuestionNumber == totalQuestions)
     {
-        currentQuestionNumber = 1;
+        currentQuestionNumber = 0;
     }
     // For testing, boolean should be checked
     [self getQuestion:currentQuestionNumber];
@@ -144,9 +144,9 @@
 - (IBAction)previousQuestion:(id)sender
 {
     --currentQuestionNumber;
-    if (currentQuestionNumber < 1)
+    if (currentQuestionNumber < 0)
     {
-        currentQuestionNumber = totalQuestions;
+        currentQuestionNumber = totalQuestions - 1;
     }
     // For testing, boolean should be checked
     [self getQuestion:currentQuestionNumber];
