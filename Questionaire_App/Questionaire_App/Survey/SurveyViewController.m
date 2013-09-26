@@ -110,6 +110,26 @@
     return YES;
 }
 
+- (void)getQuestion:(int)questionNumber
+{
+    // For testing, should check question type
+    Boolean isMultipleChoice = true;
+    
+    // Use current question number to set the appropriate fields for the question
+    if (isMultipleChoice)
+    {
+        [[buttonChoice1 titleLabel] setText:@"Choice 1"];
+        [[buttonChoice2 titleLabel] setText:@"Choice 2"];
+        [[buttonChoice3 titleLabel] setText:@"Choice 3"];
+        [[buttonChoice4 titleLabel] setText:@"Choice 4"];
+    }
+    [currentQuestionText setText:@"Question goes here..."];
+    
+    // Display the appropriate fields for the question
+    [self hideAllSelectIndicators];
+    [self showAppropriateFields:isMultipleChoice];
+}
+
 - (IBAction)nextQuestion:(id)sender
 {
     ++currentQuestionNumber;
@@ -118,7 +138,7 @@
         currentQuestionNumber = 1;
     }
     // For testing, boolean should be checked
-    [self showAppropriateFields:true];
+    [self getQuestion:currentQuestionNumber];
 }
 
 - (IBAction)previousQuestion:(id)sender
@@ -129,7 +149,7 @@
         currentQuestionNumber = totalQuestions;
     }
     // For testing, boolean should be checked
-    [self showAppropriateFields:false];
+    [self getQuestion:currentQuestionNumber];
 }
 
 - (IBAction)selectChoice1:(id)sender
