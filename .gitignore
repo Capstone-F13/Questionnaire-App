@@ -16,3 +16,5 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+
+Questionaire_App/Questionaire_App.xcodeproj/project.pbxproj
