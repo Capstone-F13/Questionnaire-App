@@ -11,7 +11,4 @@
 @interface MainMenuViewController : UIViewController
 
 @end
-<<<<<<< HEAD
-=======
-  
->>>>>>> Features----MM&RS
+

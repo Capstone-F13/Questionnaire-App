@@ -27,8 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-<<<<<<< HEAD
-=======
+
     // Disable Stop/Play button when application launches
     [_stopButton setEnabled:NO];
     [_playButton setEnabled:NO];
@@ -56,7 +55,6 @@
     recorder.delegate = self;
     recorder.meteringEnabled = YES;
     [recorder prepareToRecord];
->>>>>>> Features----MM&RS
 }
 
 - (void)didReceiveMemoryWarning

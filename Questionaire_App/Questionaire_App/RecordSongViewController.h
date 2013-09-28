@@ -11,7 +11,4 @@
 @interface RecordSongViewController : UIViewController
 
 @end
-<<<<<<< HEAD
-=======
-  
->>>>>>> Features----MM&RS
+
