@@ -16,8 +16,7 @@
 
 @implementation SurveyViewController
 
-@synthesize currentQuestionNumber;
-@synthesize totalQuestions;
+@synthesize questionCount;
 @synthesize selectedAnswerChoice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,11 +37,10 @@
     
     // Check question type and hide and show elements on view accordingly
     // Adjust boolean value to test other UI
-    [self showAppropriateFields:false];
+    [self showAppropriateFields:true];
     
-    // For testing, should check number of questions
-    totalQuestions = 10;
-    currentQuestionNumber = 0;
+    // for testing, this should be set in the controller that opens this one
+    questionCount = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,46 +108,14 @@
     return YES;
 }
 
-- (void)getQuestion:(int)questionNumber
-{
-    // For testing, should check question type
-    Boolean isMultipleChoice = true;
-    
-    // Use current question number to set the appropriate fields for the question
-    if (isMultipleChoice)
-    {
-        [[buttonChoice1 titleLabel] setText:@"Choice 1"];
-        [[buttonChoice2 titleLabel] setText:@"Choice 2"];
-        [[buttonChoice3 titleLabel] setText:@"Choice 3"];
-        [[buttonChoice4 titleLabel] setText:@"Choice 4"];
-    }
-    [currentQuestionText setText:@"Question goes here..."];
-    
-    // Display the appropriate fields for the question
-    [self hideAllSelectIndicators];
-    [self showAppropriateFields:isMultipleChoice];
-}
-
 - (IBAction)nextQuestion:(id)sender
 {
-    ++currentQuestionNumber;
-    if (currentQuestionNumber == totalQuestions)
-    {
-        currentQuestionNumber = 0;
-    }
-    // For testing, boolean should be checked
-    [self getQuestion:currentQuestionNumber];
+    ++questionCount;
 }
 
 - (IBAction)previousQuestion:(id)sender
 {
-    --currentQuestionNumber;
-    if (currentQuestionNumber < 0)
-    {
-        currentQuestionNumber = totalQuestions - 1;
-    }
-    // For testing, boolean should be checked
-    [self getQuestion:currentQuestionNumber];
+    --questionCount;
 }
 
 - (IBAction)selectChoice1:(id)sender
