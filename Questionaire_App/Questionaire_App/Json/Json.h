@@ -14,8 +14,14 @@
 
 @interface Json : NSObject
 
--(void) request;
--(void) parse;
+-(void) debuggingSurvey;
+
+-(void) requestSurvey;
+-(void) parseJSONintoFoundationObjects;
+
+-(Survey*) getSurveyFromJSON: (NSDictionary*) jsonObject;
+-(NSMutableArray*) getQuestionsFromJSON: (NSDictionary*) jsonObject;
+
 -(JsonResponse*) createTestResponse;
 -(Survey*) createTestSurvey;
 

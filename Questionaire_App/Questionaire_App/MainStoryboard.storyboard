@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login-->
         <scene sceneID="BsO-l1-R9I">
             <objects>
-                <viewController id="jdY-up-HP6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="jdY-up-HP6" customClass="Login" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cES-9K-o3G">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -57,36 +57,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="mFC-Ns-GMf" secondAttribute="centerX" type="default" id="1mS-U6-ChR"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="169" id="3bF-bk-WfU"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="G1e-Lt-0EH"/>
                             <constraint firstAttribute="bottom" secondItem="Pat-Fs-OBe" secondAttribute="bottom" constant="188" id="J2k-D3-JkD"/>
-=======
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="3xA-cu-Gd0"/>
-                            <constraint firstItem="Pat-Fs-OBe" firstAttribute="top" secondItem="mFC-Ns-GMf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DaK-cS-Zjy"/>
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="195" id="GOZ-Aq-R5G"/>
->>>>>>> Features----MM&RS
-=======
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="169" id="3bF-bk-WfU"/>
-                            <constraint firstItem="ckq-gH-O2D" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="G1e-Lt-0EH"/>
-                            <constraint firstAttribute="bottom" secondItem="Pat-Fs-OBe" secondAttribute="bottom" constant="188" id="J2k-D3-JkD"/>
->>>>>>> Features----MM&RS
                             <constraint firstItem="mFC-Ns-GMf" firstAttribute="centerX" secondItem="Pat-Fs-OBe" secondAttribute="centerX" type="default" id="P4K-wS-IGF"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="leading" secondItem="cES-9K-o3G" secondAttribute="leading" type="default" id="Sc1-cx-DDo"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" type="default" id="TD4-en-VUo"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
                             <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="242" id="f3C-E0-EmK"/>
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="ckq-gH-O2D" secondAttribute="centerX" type="default" id="s2t-Wa-Rqz"/>
-=======
-                            <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="252" id="a5r-RL-pjB"/>
-                            <constraint firstItem="ckq-gH-O2D" firstAttribute="trailing" secondItem="cES-9K-o3G" secondAttribute="trailing" type="default" id="oEF-qL-Rk3"/>
->>>>>>> Features----MM&RS
-=======
-                            <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="242" id="f3C-E0-EmK"/>
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="ckq-gH-O2D" secondAttribute="centerX" type="default" id="s2t-Wa-Rqz"/>
->>>>>>> Features----MM&RS
                         </constraints>
                     </view>
                 </viewController>
@@ -94,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="172" y="330"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Account-->
         <scene sceneID="EUM-bt-duI">
             <objects>
-                <viewController id="WAr-06-8z8" sceneMemberID="viewController">
+                <viewController id="WAr-06-8z8" customClass="CreateAccount" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HKW-Cr-Us2">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -127,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="719" y="-152"/>
         </scene>
-        <!--View Controller-->
+        <!--Survey-->
         <scene sceneID="XxI-b6-Gp8">
             <objects>
-                <viewController id="Uuv-g2-1Sv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Survey" id="Uuv-g2-1Sv" customClass="Survey" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iiT-aP-4ZM">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,17 +138,10 @@
             </objects>
             <point key="canvasLocation" x="1235" y="569"/>
         </scene>
-<<<<<<< HEAD
         <!--Main Menu-->
         <scene sceneID="Vdt-hB-hXY">
             <objects>
                 <viewController storyboardIdentifier="MainMenu" id="Zuh-ke-cDK" customClass="MainMenu" sceneMemberID="viewController">
-=======
-        <!--View Controller-->
-        <scene sceneID="Vdt-hB-hXY">
-            <objects>
-                <viewController id="Zuh-ke-cDK" sceneMemberID="viewController">
->>>>>>> Features----MM&RS
                     <view key="view" contentMode="scaleToFill" id="dmu-OC-aLm">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -242,17 +213,10 @@
             </objects>
             <point key="canvasLocation" x="707" y="861"/>
         </scene>
-<<<<<<< HEAD
         <!--Record Song-->
         <scene sceneID="GG7-W0-0aQ">
             <objects>
                 <viewController storyboardIdentifier="RecordSong" id="Pd0-SP-KwB" customClass="RecordSong" sceneMemberID="viewController">
-=======
-        <!--View Controller-->
-        <scene sceneID="GG7-W0-0aQ">
-            <objects>
-                <viewController id="Pd0-SP-KwB" sceneMemberID="viewController">
->>>>>>> Features----MM&RS
                     <view key="view" contentMode="scaleToFill" id="i9N-e6-due">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -282,33 +246,17 @@
             <point key="canvasLocation" x="1235" y="1245"/>
         </scene>
     </scenes>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Features----MM&RS
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
-<<<<<<< HEAD
-=======
-    <resources>
-        <image name="play_button.png" width="59" height="60"/>
-    </resources>
->>>>>>> Features----MM&RS
-=======
->>>>>>> Features----MM&RS
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-=======
-        <segue reference="BKN-g1-u2Q"/>
->>>>>>> Features----MM&RS
         <segue reference="j8h-d5-tdP"/>
         <segue reference="BKN-g1-u2Q"/>
     </inferredMetricsTieBreakers>
