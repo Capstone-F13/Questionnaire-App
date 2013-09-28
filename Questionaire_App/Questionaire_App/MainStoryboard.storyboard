@@ -13,6 +13,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckq-gH-O2D">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="321" id="dEd-QI-K1F"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Login Screen" id="508-MQ-K0l"/>
                                 </items>
@@ -57,20 +60,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="mFC-Ns-GMf" secondAttribute="centerX" type="default" id="1mS-U6-ChR"/>
+                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="3xA-cu-Gd0"/>
                             <constraint firstItem="Pat-Fs-OBe" firstAttribute="top" secondItem="mFC-Ns-GMf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DaK-cS-Zjy"/>
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="E0U-wJ-cHH"/>
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="201" id="J1f-Ug-ceS"/>
+                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="195" id="GOZ-Aq-R5G"/>
                             <constraint firstItem="mFC-Ns-GMf" firstAttribute="centerX" secondItem="Pat-Fs-OBe" secondAttribute="centerX" type="default" id="P4K-wS-IGF"/>
-                            <constraint firstItem="ckq-gH-O2D" firstAttribute="leading" secondItem="cES-9K-o3G" secondAttribute="leading" type="default" id="Sc1-cx-DDo"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" type="default" id="TD4-en-VUo"/>
-                            <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="CKZ-Jn-cb3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rEB-1C-qdQ"/>
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="ckq-gH-O2D" secondAttribute="centerX" type="default" id="s2t-Wa-Rqz"/>
+                            <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="252" id="a5r-RL-pjB"/>
+                            <constraint firstItem="ckq-gH-O2D" firstAttribute="trailing" secondItem="cES-9K-o3G" secondAttribute="trailing" type="default" id="oEF-qL-Rk3"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXr-yl-IdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="330"/>
+            <point key="canvasLocation" x="174" y="318"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="EUM-bt-duI">
@@ -413,37 +415,6 @@
     <resources>
         <image name="play_button.png" width="59" height="60"/>
     </resources>
-    <classes>
-        <class className="MainMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RecordSongViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordSongViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playTapped:"/>
-                <relationship kind="action" name="recordPauseTapped:"/>
-                <relationship kind="action" name="stopTapped:"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="recordPauseButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SongLibraryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SongLibraryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sliderDragged:"/>
-                <relationship kind="action" name="togglePlayPauseTapped:"/>
-                <relationship kind="outlet" name="durationOutlet" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sliderOutlet" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="songName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="togglePlayPause" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
