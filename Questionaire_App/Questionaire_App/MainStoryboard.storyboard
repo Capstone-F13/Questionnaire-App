@@ -13,6 +13,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckq-gH-O2D">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="321" id="dEd-QI-K1F"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Login Screen" id="508-MQ-K0l"/>
                                 </items>
@@ -57,20 +60,30 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="mFC-Ns-GMf" secondAttribute="centerX" type="default" id="1mS-U6-ChR"/>
+<<<<<<< HEAD
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="169" id="3bF-bk-WfU"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="G1e-Lt-0EH"/>
                             <constraint firstAttribute="bottom" secondItem="Pat-Fs-OBe" secondAttribute="bottom" constant="188" id="J2k-D3-JkD"/>
+=======
+                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="3xA-cu-Gd0"/>
+                            <constraint firstItem="Pat-Fs-OBe" firstAttribute="top" secondItem="mFC-Ns-GMf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DaK-cS-Zjy"/>
+                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="195" id="GOZ-Aq-R5G"/>
+>>>>>>> Features----MM&RS
                             <constraint firstItem="mFC-Ns-GMf" firstAttribute="centerX" secondItem="Pat-Fs-OBe" secondAttribute="centerX" type="default" id="P4K-wS-IGF"/>
-                            <constraint firstItem="ckq-gH-O2D" firstAttribute="leading" secondItem="cES-9K-o3G" secondAttribute="leading" type="default" id="Sc1-cx-DDo"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" type="default" id="TD4-en-VUo"/>
+<<<<<<< HEAD
                             <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="242" id="f3C-E0-EmK"/>
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="ckq-gH-O2D" secondAttribute="centerX" type="default" id="s2t-Wa-Rqz"/>
+=======
+                            <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="252" id="a5r-RL-pjB"/>
+                            <constraint firstItem="ckq-gH-O2D" firstAttribute="trailing" secondItem="cES-9K-o3G" secondAttribute="trailing" type="default" id="oEF-qL-Rk3"/>
+>>>>>>> Features----MM&RS
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXr-yl-IdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="330"/>
+            <point key="canvasLocation" x="174" y="318"/>
         </scene>
         <!--Create Account-->
         <scene sceneID="EUM-bt-duI">
@@ -246,11 +259,17 @@
             <point key="canvasLocation" x="1235" y="1245"/>
         </scene>
     </scenes>
+<<<<<<< HEAD
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
+=======
+    <resources>
+        <image name="play_button.png" width="59" height="60"/>
+    </resources>
+>>>>>>> Features----MM&RS
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
