@@ -18,3 +18,19 @@ DerivedData
 .idea/
 
 Questionaire_App/Questionaire_App.xcodeproj/project.pbxproj
+
+*.pbxproj
+
+Questionaire_App/Questionaire_App/Survey/SurveyViewController.h
+
+Questionaire_App/Questionaire_App/Survey/SurveyViewController.m
+
+Questionaire_App/Questionaire_App/MainStoryboard.storyboard
+
+Questionaire_App/Questionaire_App/Survey/SurveyViewController.m
+
+Questionaire_App/Questionaire_App/Survey/SurveyViewController.h
+
+Questionaire_App/Questionaire_App/MainStoryboard.storyboard
+
+Questionaire_App/Questionaire_App.xcodeproj/project.pbxproj
