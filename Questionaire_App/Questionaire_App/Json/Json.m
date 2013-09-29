@@ -14,12 +14,17 @@
 -(void) request {
     
 }
+<<<<<<< HEAD
 
 -(void) parse {
 
     JsonResponse *response = [[JsonResponse alloc] init];
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:[response data] options:kNilOptions error:nil];
 
+=======
+
+-(void) parse {
+>>>>>>> parent of b69bd3c... Merge branch 'json_live' into Development
     
     //JsonResponse *response = [[JsonResponse alloc] init];
     JsonResponse *response = [self createTestResponse];

@@ -12,9 +12,12 @@
 
 -(void) request;
 -(void) parse;
+<<<<<<< HEAD
 
 @end
 
+=======
+>>>>>>> parent of b69bd3c... Merge branch 'json_live' into Development
 -(JsonResponse*) createTestResponse;
 -(Survey*) createTestSurvey;
 
