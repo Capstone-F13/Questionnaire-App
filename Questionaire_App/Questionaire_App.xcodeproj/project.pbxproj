@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AF916F617F798D3005062F2 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF916F517F798D3005062F2 /* CreateAccountViewController.m */; };
 		AD64F2FA17E9FDF500F2438A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2F917E9FDF500F2438A /* UIKit.framework */; };
 		AD64F2FC17E9FDF500F2438A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2FB17E9FDF500F2438A /* Foundation.framework */; };
 		AD64F2FE17E9FDF500F2438A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD64F2FD17E9FDF500F2438A /* CoreGraphics.framework */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AF916F417F798D3005062F2 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		4AF916F517F798D3005062F2 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
 		AD64F2F617E9FDF500F2438A /* Questionaire_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Questionaire_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD64F2F917E9FDF500F2438A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AD64F2FB17E9FDF500F2438A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -83,6 +86,8 @@
 		AD64F2FF17E9FDF500F2438A /* Questionaire_App */ = {
 			isa = PBXGroup;
 			children = (
+				4AF916F417F798D3005062F2 /* CreateAccountViewController.h */,
+				4AF916F517F798D3005062F2 /* CreateAccountViewController.m */,
 				AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */,
 				AD64F30817E9FDF500F2438A /* QuestionaireAppDelegate.h */,
 				AD64F30917E9FDF500F2438A /* QuestionaireAppDelegate.m */,
@@ -174,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF916F617F798D3005062F2 /* CreateAccountViewController.m in Sources */,
 				AD64F30617E9FDF500F2438A /* main.m in Sources */,
 				AD64F30A17E9FDF500F2438A /* QuestionaireAppDelegate.m in Sources */,
 				AD64F31617E9FDF500F2438A /* QuestionaireViewController.m in Sources */,
@@ -291,6 +297,7 @@
 				AD64F31B17E9FDF500F2438A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

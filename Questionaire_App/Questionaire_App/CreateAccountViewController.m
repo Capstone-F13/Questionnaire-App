@@ -13,7 +13,7 @@
 @end
 
 @implementation CreateAccountViewController
-@synthesize userName, password, confirmPassword;
+@synthesize userName, password, confirmPassword, error;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,16 +30,44 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)submit:(id)sender
 {
-    NSLog(@"Clicked: %@. Username: %@, Password: %@", [(UIButton *)sender currentTitle], [(UITextField *)userName text], [(UITextField *)password text]);
-    [self dismissViewControllerAnimated:TRUE completion:nil];
+    if (![[(UITextField *)userName text] isEqualToString:@""]) {
+    
+        if ([self checkPasswordsMatch:[(UITextField *)password text]
+                                     :[(UITextField *)confirmPassword text]]) {
+            if ([self checkPasswordsNotNull:[(UITextField *)password text]
+                                           :[(UITextField *)confirmPassword text]]) {
+                [self setErrorMessage:@"Passwords cannot be empty"];
+            } else{
+                [self dismissViewControllerAnimated:TRUE completion:nil];
+            }
+        } else {
+            [self setErrorMessage:@"Passwords do not match please try again"];
+        }
+    } else {
+        [self setErrorMessage:@"Please enter a username"];
+    }
+}
+
+- (Boolean)checkPasswordsMatch:(NSString *)password1 :(NSString *)password2
+{
+    return [password1 isEqualToString:password2];
+}
+
+- (Boolean)checkPasswordsNotNull:(NSString *)password1 :(NSString *)password2
+{
+    return [password1 isEqualToString: @""] && [password2 isEqualToString: @""];
+}
+
+- (void)setErrorMessage:(NSString *)message
+{
+    [(UITextField *)confirmPassword resignFirstResponder];
+    [(UILabel *)error setText:message];
+    [(UILabel *)error setHidden:false];
+    [(UITextField *)password setText:@""];
+    [(UITextField *)confirmPassword setText:@""];
 }
 
 @end
