@@ -14,3 +14,8 @@
 -(void) parse;
 
 @end
+
+-(JsonResponse*) createTestResponse;
+-(Survey*) createTestSurvey;
+
+@end
