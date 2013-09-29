@@ -57,13 +57,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="mFC-Ns-GMf" secondAttribute="centerX" type="default" id="1mS-U6-ChR"/>
-                            <constraint firstItem="Pat-Fs-OBe" firstAttribute="top" secondItem="mFC-Ns-GMf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DaK-cS-Zjy"/>
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="E0U-wJ-cHH"/>
-                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="201" id="J1f-Ug-ceS"/>
+                            <constraint firstItem="CKZ-Jn-cb3" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="169" id="3bF-bk-WfU"/>
+                            <constraint firstItem="ckq-gH-O2D" firstAttribute="centerX" secondItem="cES-9K-o3G" secondAttribute="centerX" type="default" id="G1e-Lt-0EH"/>
+                            <constraint firstAttribute="bottom" secondItem="Pat-Fs-OBe" secondAttribute="bottom" constant="188" id="J2k-D3-JkD"/>
                             <constraint firstItem="mFC-Ns-GMf" firstAttribute="centerX" secondItem="Pat-Fs-OBe" secondAttribute="centerX" type="default" id="P4K-wS-IGF"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="leading" secondItem="cES-9K-o3G" secondAttribute="leading" type="default" id="Sc1-cx-DDo"/>
                             <constraint firstItem="ckq-gH-O2D" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" type="default" id="TD4-en-VUo"/>
-                            <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="CKZ-Jn-cb3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rEB-1C-qdQ"/>
+                            <constraint firstItem="mFC-Ns-GMf" firstAttribute="top" secondItem="cES-9K-o3G" secondAttribute="top" constant="242" id="f3C-E0-EmK"/>
                             <constraint firstItem="CKZ-Jn-cb3" firstAttribute="centerX" secondItem="ckq-gH-O2D" secondAttribute="centerX" type="default" id="s2t-Wa-Rqz"/>
                         </constraints>
                     </view>
@@ -136,19 +136,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDn-il-8tI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1235" y="253"/>
+            <point key="canvasLocation" x="1235" y="569"/>
         </scene>
-<<<<<<< HEAD
         <!--Main Menu-->
         <scene sceneID="Vdt-hB-hXY">
             <objects>
                 <viewController storyboardIdentifier="MainMenu" id="Zuh-ke-cDK" customClass="MainMenu" sceneMemberID="viewController">
-=======
-        <!--Main Menu View Controller-->
-        <scene sceneID="Vdt-hB-hXY">
-            <objects>
-                <viewController storyboardIdentifier="MainMenu" id="Zuh-ke-cDK" customClass="MainMenuViewController" sceneMemberID="viewController">
->>>>>>> Features----MM&RS
                     <view key="view" contentMode="scaleToFill" id="dmu-OC-aLm">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -199,22 +192,19 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="HeN-4O-U91" kind="modal" id="xuz-nr-MRG"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZfR-h9-Umq" firstAttribute="top" secondItem="nl6-Lk-jWq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Cds-fc-6if"/>
-                            <constraint firstItem="ZfR-h9-Umq" firstAttribute="centerX" secondItem="dmu-OC-aLm" secondAttribute="centerX" type="default" id="HIb-cj-XLy"/>
-                            <constraint firstItem="h4o-Rs-BLt" firstAttribute="centerX" secondItem="nl6-Lk-jWq" secondAttribute="centerX" type="default" id="L1a-XT-E41"/>
-                            <constraint firstItem="nl6-Lk-jWq" firstAttribute="top" secondItem="h4o-Rs-BLt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="OkN-li-dmg"/>
+                            <constraint firstItem="h4o-Rs-BLt" firstAttribute="top" secondItem="dmu-OC-aLm" secondAttribute="top" constant="172" id="7th-2B-YId"/>
                             <constraint firstItem="fsV-lP-m6W" firstAttribute="leading" secondItem="dmu-OC-aLm" secondAttribute="leading" type="default" id="Ppn-NB-nqg"/>
                             <constraint firstItem="fsV-lP-m6W" firstAttribute="top" secondItem="dmu-OC-aLm" secondAttribute="top" type="default" id="SRo-O9-u21"/>
+                            <constraint firstItem="h4o-Rs-BLt" firstAttribute="centerX" secondItem="fsV-lP-m6W" secondAttribute="centerX" type="default" id="ieA-mg-Le3"/>
                             <constraint firstItem="ZfR-h9-Umq" firstAttribute="centerX" secondItem="nl6-Lk-jWq" secondAttribute="centerX" type="default" id="kwl-DS-Uc6"/>
-                            <constraint firstItem="h4o-Rs-BLt" firstAttribute="centerX" secondItem="fsV-lP-m6W" secondAttribute="centerX" type="default" id="vAA-Qp-cSx"/>
-                            <constraint firstItem="h4o-Rs-BLt" firstAttribute="top" secondItem="dmu-OC-aLm" secondAttribute="top" constant="201" id="xD5-tT-cTB"/>
+                            <constraint firstItem="h4o-Rs-BLt" firstAttribute="centerX" secondItem="dmu-OC-aLm" secondAttribute="centerX" type="default" id="oCX-Oo-31f"/>
+                            <constraint firstItem="nl6-Lk-jWq" firstAttribute="top" secondItem="dmu-OC-aLm" secondAttribute="top" constant="262" id="pAi-Mg-QHs"/>
+                            <constraint firstItem="nl6-Lk-jWq" firstAttribute="centerX" secondItem="h4o-Rs-BLt" secondAttribute="centerX" type="default" id="sQI-Ty-Laj"/>
+                            <constraint firstAttribute="bottom" secondItem="ZfR-h9-Umq" secondAttribute="bottom" constant="176" id="uE9-ZC-Omp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9Ih-JJ-Z1f"/>
@@ -223,17 +213,10 @@
             </objects>
             <point key="canvasLocation" x="707" y="861"/>
         </scene>
-<<<<<<< HEAD
         <!--Record Song-->
         <scene sceneID="GG7-W0-0aQ">
             <objects>
                 <viewController storyboardIdentifier="RecordSong" id="Pd0-SP-KwB" customClass="RecordSong" sceneMemberID="viewController">
-=======
-        <!--Record Song View Controller-->
-        <scene sceneID="GG7-W0-0aQ">
-            <objects>
-                <viewController storyboardIdentifier="RecordSong" id="Pd0-SP-KwB" customClass="RecordSongViewController" sceneMemberID="viewController">
->>>>>>> Features----MM&RS
                     <view key="view" contentMode="scaleToFill" id="i9N-e6-due">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -249,213 +232,23 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMc-M6-8yg">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Record">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="recordPauseTapped:" destination="Pd0-SP-KwB" eventType="touchUpInside" id="3dP-KD-EYC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjD-id-z1D">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="stopTapped:" destination="Pd0-SP-KwB" eventType="touchUpInside" id="y6g-oP-OLb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uP-8z-tac">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playTapped:" destination="Pd0-SP-KwB" eventType="touchUpInside" id="D9s-gf-rVC"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FZ1-oj-fsp" firstAttribute="top" secondItem="i9N-e6-due" secondAttribute="top" type="default" id="04g-v5-HcP"/>
-                            <constraint firstItem="PMc-M6-8yg" firstAttribute="top" secondItem="i9N-e6-due" secondAttribute="top" constant="164" id="3lj-VO-qfW"/>
-                            <constraint firstItem="7uP-8z-tac" firstAttribute="centerX" secondItem="JjD-id-z1D" secondAttribute="centerX" type="default" id="6Ti-Zr-6ot"/>
-                            <constraint firstItem="PMc-M6-8yg" firstAttribute="centerX" secondItem="FZ1-oj-fsp" secondAttribute="centerX" type="default" id="FRf-oY-UTf"/>
-                            <constraint firstItem="JjD-id-z1D" firstAttribute="top" secondItem="PMc-M6-8yg" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="PAN-DP-36e"/>
-                            <constraint firstItem="JjD-id-z1D" firstAttribute="centerX" secondItem="PMc-M6-8yg" secondAttribute="centerX" type="default" id="QXB-aK-9wZ"/>
                             <constraint firstItem="FZ1-oj-fsp" firstAttribute="leading" secondItem="i9N-e6-due" secondAttribute="leading" type="default" id="i8D-hx-Cl7"/>
-                            <constraint firstItem="7uP-8z-tac" firstAttribute="top" secondItem="JjD-id-z1D" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uVb-0o-cyk"/>
                             <constraint firstItem="FZ1-oj-fsp" firstAttribute="trailing" secondItem="i9N-e6-due" secondAttribute="trailing" type="default" id="y67-aJ-vaU"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="playButton" destination="7uP-8z-tac" id="hwg-9F-OSn"/>
-                        <outlet property="recordPauseButton" destination="PMc-M6-8yg" id="RUT-zW-Q4I"/>
-                        <outlet property="stopButton" destination="JjD-id-z1D" id="m9b-eR-K4z"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xvg-Sg-Ok4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1235" y="989"/>
-        </scene>
-        <!--Song Library View Controller-->
-        <scene sceneID="Xh6-6m-Uyk">
-            <objects>
-                <viewController id="HeN-4O-U91" customClass="SongLibraryViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z9b-3m-xey">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLa-fa-NcN">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjS-7q-Hf3">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="43" id="lIS-ab-K21"/>
-                                            <constraint firstAttribute="height" constant="44" id="tNx-nw-r75"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Button" image="play_button.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="togglePlayPauseTapped:" destination="HeN-4O-U91" eventType="touchUpInside" id="SRr-ZK-cNt"/>
-                                        </connections>
-                                    </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IB3-Ep-us0">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="197" id="jPI-DC-wrL"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="sliderDragged:" destination="HeN-4O-U91" eventType="valueChanged" id="Sx6-b5-AcB"/>
-                                        </connections>
-                                    </slider>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60d-Vj-Ppm">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZE-tk-UAu">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="60d-Vj-Ppm" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="0jJ-y5-vXI"/>
-                                    <constraint firstAttribute="trailing" secondItem="IB3-Ep-us0" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="A8s-2H-fYM"/>
-                                    <constraint firstAttribute="trailing" secondItem="60d-Vj-Ppm" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Izj-SP-AMx"/>
-                                    <constraint firstItem="TjS-7q-Hf3" firstAttribute="leading" secondItem="gLa-fa-NcN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="R0i-Zv-sx1"/>
-                                    <constraint firstItem="60d-Vj-Ppm" firstAttribute="top" secondItem="IB3-Ep-us0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="VfT-pd-DJB"/>
-                                    <constraint firstItem="5ZE-tk-UAu" firstAttribute="top" secondItem="gLa-fa-NcN" secondAttribute="top" constant="20" symbolic="YES" type="default" id="by6-cW-cgp"/>
-                                    <constraint firstItem="IB3-Ep-us0" firstAttribute="centerY" secondItem="TjS-7q-Hf3" secondAttribute="centerY" type="default" id="cpE-qf-a7V"/>
-                                    <constraint firstItem="5ZE-tk-UAu" firstAttribute="leading" secondItem="IB3-Ep-us0" secondAttribute="leading" type="default" id="xEn-PV-ovZ"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pT7-LU-Dga">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="435" id="kb9-3j-4mg"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="o84-H1-6oX" detailTextLabel="4KD-Vb-Z9I" style="IBUITableViewCellStyleValue1" id="NJO-3W-PGS">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o84-H1-6oX">
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KD-Vb-Z9I">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gLa-fa-NcN" firstAttribute="top" secondItem="z9b-3m-xey" secondAttribute="top" type="default" id="1N9-nm-wlK"/>
-                            <constraint firstItem="gLa-fa-NcN" firstAttribute="trailing" secondItem="z9b-3m-xey" secondAttribute="trailing" type="default" id="3H9-eO-c23"/>
-                            <constraint firstItem="pT7-LU-Dga" firstAttribute="leading" secondItem="z9b-3m-xey" secondAttribute="leading" type="default" id="SqC-ur-czV"/>
-                            <constraint firstItem="pT7-LU-Dga" firstAttribute="trailing" secondItem="z9b-3m-xey" secondAttribute="trailing" type="default" id="XPa-dx-AAC"/>
-                            <constraint firstItem="gLa-fa-NcN" firstAttribute="leading" secondItem="z9b-3m-xey" secondAttribute="leading" type="default" id="ayN-tn-k68"/>
-                            <constraint firstItem="pT7-LU-Dga" firstAttribute="bottom" secondItem="z9b-3m-xey" secondAttribute="bottom" type="default" id="xth-La-wnh"/>
-                            <constraint firstAttribute="bottom" secondItem="gLa-fa-NcN" secondAttribute="bottom" constant="435" id="yfV-gw-mlH"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="durationOutlet" destination="60d-Vj-Ppm" id="oLs-Ro-4jK"/>
-                        <outlet property="sliderOutlet" destination="IB3-Ep-us0" id="7jE-hL-PZV"/>
-                        <outlet property="songName" destination="5ZE-tk-UAu" id="v9T-a9-olg"/>
-                        <outlet property="tableView" destination="pT7-LU-Dga" id="zvq-GH-HFr"/>
-                        <outlet property="togglePlayPause" destination="TjS-7q-Hf3" id="sxI-7c-Vf0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W10-P5-xH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1235" y="1700"/>
+            <point key="canvasLocation" x="1235" y="1245"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="play_button.png" width="59" height="60"/>
-    </resources>
     <classes>
-        <class className="MainMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuViewController.h"/>
-        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RecordSongViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordSongViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playTapped:"/>
-                <relationship kind="action" name="recordPauseTapped:"/>
-                <relationship kind="action" name="stopTapped:"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="recordPauseButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SongLibraryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SongLibraryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sliderDragged:"/>
-                <relationship kind="action" name="togglePlayPauseTapped:"/>
-                <relationship kind="outlet" name="durationOutlet" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sliderOutlet" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="songName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="togglePlayPause" candidateClass="UIButton"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
