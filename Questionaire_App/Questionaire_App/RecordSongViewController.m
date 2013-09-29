@@ -65,7 +65,7 @@
 
 - (IBAction)stopTapped:(id)sender {
     [recorder stop];
-     
+    
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setActive:NO error:nil];
 }
