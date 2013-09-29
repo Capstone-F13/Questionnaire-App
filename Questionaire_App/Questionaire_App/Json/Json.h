@@ -3,21 +3,25 @@
 //  Questionaire-App
 //
 //  Created by Adam Esterle on 9/16/13.
+//  Copyright (c) 2013 Adam Esterle. All rights reserved.
 //
 //
 
 #import <Foundation/Foundation.h>
+#import "SurveyConstants.h"
+#import "Survey.h"
+#import "JsonResponse.h"
 
 @interface Json : NSObject
 
--(void) request;
--(void) parse;
-<<<<<<< HEAD
+-(void) debuggingSurvey;
 
-@end
+-(void) requestSurvey;
+-(void) parseJSONintoFoundationObjects;
 
-=======
->>>>>>> parent of b69bd3c... Merge branch 'json_live' into Development
+-(Survey*) getSurveyFromJSON: (NSDictionary*) jsonObject;
+-(NSMutableArray*) getQuestionsFromJSON: (NSDictionary*) jsonObject;
+
 -(JsonResponse*) createTestResponse;
 -(Survey*) createTestSurvey;
 
