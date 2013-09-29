@@ -257,6 +257,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
+=======
+        <segue reference="1zv-3W-SW5"/>
+>>>>>>> Features----MM&RS
         <segue reference="j8h-d5-tdP"/>
         <segue reference="BKN-g1-u2Q"/>
     </inferredMetricsTieBreakers>
