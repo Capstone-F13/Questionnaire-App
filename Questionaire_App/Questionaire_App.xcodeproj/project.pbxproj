@@ -100,16 +100,6 @@
 			path = Json;
 			sourceTree = "<group>";
 		};
-		8D3EA85417F33BED009FB5FB /* Survey */ = {
-			isa = PBXGroup;
-			children = (
-				8DFA698317F38A10001ACE15 /* SurveyViewController.h */,
-				8DFA698417F38A11001ACE15 /* SurveyViewController.m */,
-			);
-			name = Survey;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		AD64F2ED17E9FDF500F2438A = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +149,6 @@
 		AD64F30017E9FDF500F2438A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8D88E1AF17EAAD5A00C4D6A8 /* check_mark.png */,
 				AD64F30117E9FDF500F2438A /* Questionaire_App-Info.plist */,
 				AD64F30217E9FDF500F2438A /* InfoPlist.strings */,
 				AD64F30517E9FDF500F2438A /* main.m */,
@@ -228,7 +217,6 @@
 				AD64F30E17E9FDF500F2438A /* Default@2x.png in Resources */,
 				AD64F31017E9FDF500F2438A /* Default-568h@2x.png in Resources */,
 				AD64F31D17E9FE9500F2438A /* MainStoryboard.storyboard in Resources */,
-				8D88E1B017EAAD5A00C4D6A8 /* check_mark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +316,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Questionaire_App/Questionaire_App-Prefix.pch";
 				INFOPLIST_FILE = "Questionaire_App/Questionaire_App-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -339,6 +328,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Questionaire_App/Questionaire_App-Prefix.pch";
 				INFOPLIST_FILE = "Questionaire_App/Questionaire_App-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

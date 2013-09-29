@@ -143,9 +143,6 @@
 
 - (IBAction)previousQuestion:(id)sender
 {
-<<<<<<< HEAD
-    --questionCount;
-=======
     --currentQuestionNumber;
     if (currentQuestionNumber < 0)
     {
