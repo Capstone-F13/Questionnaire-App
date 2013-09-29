@@ -257,14 +257,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        <segue reference="1zv-3W-SW5"/>
->>>>>>> Features----MM&RS
-=======
-        <segue reference="BKN-g1-u2Q"/>
->>>>>>> parent of d780866... Revert c727704..ad1601c
         <segue reference="j8h-d5-tdP"/>
         <segue reference="BKN-g1-u2Q"/>
     </inferredMetricsTieBreakers>
