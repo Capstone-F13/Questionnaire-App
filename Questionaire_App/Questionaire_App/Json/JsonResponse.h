@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *failureMessage;
 @property (nonatomic, strong) NSString *promptMessage;
 
-@property (nonatomic, strong) NSString *data;
+@property (nonatomic, strong) NSData *data;
 @property int status;
 @property int timestamp;
 
