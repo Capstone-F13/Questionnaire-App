@@ -24,6 +24,17 @@
 		AD64F31D17E9FE9500F2438A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD64F31C17E9FE9500F2438A /* MainStoryboard.storyboard */; };
 		AD64F32317EA0B6A00F2438A /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */; };
 		AD64F32617EA0B8500F2438A /* RecordSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F32517EA0B8500F2438A /* RecordSongViewController.m */; };
+<<<<<<< HEAD
+=======
+		ADCED85D17F349D400CF08F4 /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = ADCED85917F349D400CF08F4 /* pause_button.png */; };
+		ADCED85E17F349D400CF08F4 /* pause_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADCED85A17F349D400CF08F4 /* pause_button@2x.png */; };
+		ADCED85F17F349D400CF08F4 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = ADCED85B17F349D400CF08F4 /* play_button.png */; };
+		ADCED86017F349D400CF08F4 /* play_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADCED85C17F349D400CF08F4 /* play_button@2x.png */; };
+		ADCED86317F34AA000CF08F4 /* SongLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCED86217F34AA000CF08F4 /* SongLibraryViewController.m */; };
+		ADCED86517F34B0F00CF08F4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCED86417F34B0F00CF08F4 /* CoreMedia.framework */; };
+		ADCED86717F34B1700CF08F4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCED86617F34B1700CF08F4 /* AVFoundation.framework */; };
+		ADCED86917F34B2000CF08F4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCED86817F34B2000CF08F4 /* MediaPlayer.framework */; };
+>>>>>>> Features----MM&RS
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +67,18 @@
 		AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		AD64F32417EA0B8500F2438A /* RecordSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordSongViewController.h; sourceTree = "<group>"; };
 		AD64F32517EA0B8500F2438A /* RecordSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordSongViewController.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		ADCED85917F349D400CF08F4 /* pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_button.png; sourceTree = "<group>"; };
+		ADCED85A17F349D400CF08F4 /* pause_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_button@2x.png"; sourceTree = "<group>"; };
+		ADCED85B17F349D400CF08F4 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
+		ADCED85C17F349D400CF08F4 /* play_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_button@2x.png"; sourceTree = "<group>"; };
+		ADCED86117F34AA000CF08F4 /* SongLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLibraryViewController.h; sourceTree = "<group>"; };
+		ADCED86217F34AA000CF08F4 /* SongLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLibraryViewController.m; sourceTree = "<group>"; };
+		ADCED86417F34B0F00CF08F4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		ADCED86617F34B1700CF08F4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ADCED86817F34B2000CF08F4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+>>>>>>> Features----MM&RS
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCED86717F34B1700CF08F4 /* AVFoundation.framework in Frameworks */,
+				ADCED86917F34B2000CF08F4 /* MediaPlayer.framework in Frameworks */,
+				ADCED86517F34B0F00CF08F4 /* CoreMedia.framework in Frameworks */,
 				AD64F2FA17E9FDF500F2438A /* UIKit.framework in Frameworks */,
 				AD64F2FC17E9FDF500F2438A /* Foundation.framework in Frameworks */,
 				AD64F2FE17E9FDF500F2438A /* CoreGraphics.framework in Frameworks */,
@@ -98,6 +124,9 @@
 		AD64F2ED17E9FDF500F2438A = {
 			isa = PBXGroup;
 			children = (
+				ADCED86817F34B2000CF08F4 /* MediaPlayer.framework */,
+				ADCED86617F34B1700CF08F4 /* AVFoundation.framework */,
+				ADCED86417F34B0F00CF08F4 /* CoreMedia.framework */,
 				AD64F2FF17E9FDF500F2438A /* Questionaire_App */,
 				AD64F2F817E9FDF500F2438A /* Frameworks */,
 				AD64F2F717E9FDF500F2438A /* Products */,
@@ -137,6 +166,11 @@
 				AD64F32217EA0B6A00F2438A /* MainMenuViewController.m */,
 				AD64F32417EA0B8500F2438A /* RecordSongViewController.h */,
 				AD64F32517EA0B8500F2438A /* RecordSongViewController.m */,
+<<<<<<< HEAD
+=======
+				ADCED86117F34AA000CF08F4 /* SongLibraryViewController.h */,
+				ADCED86217F34AA000CF08F4 /* SongLibraryViewController.m */,
+>>>>>>> Features----MM&RS
 			);
 			path = Questionaire_App;
 			sourceTree = "<group>";
@@ -144,6 +178,10 @@
 		AD64F30017E9FDF500F2438A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ADCED85917F349D400CF08F4 /* pause_button.png */,
+				ADCED85A17F349D400CF08F4 /* pause_button@2x.png */,
+				ADCED85B17F349D400CF08F4 /* play_button.png */,
+				ADCED85C17F349D400CF08F4 /* play_button@2x.png */,
 				AD64F30117E9FDF500F2438A /* Questionaire_App-Info.plist */,
 				AD64F30217E9FDF500F2438A /* InfoPlist.strings */,
 				AD64F30517E9FDF500F2438A /* main.m */,
@@ -212,6 +250,10 @@
 				AD64F30E17E9FDF500F2438A /* Default@2x.png in Resources */,
 				AD64F31017E9FDF500F2438A /* Default-568h@2x.png in Resources */,
 				AD64F31D17E9FE9500F2438A /* MainStoryboard.storyboard in Resources */,
+				ADCED85D17F349D400CF08F4 /* pause_button.png in Resources */,
+				ADCED85E17F349D400CF08F4 /* pause_button@2x.png in Resources */,
+				ADCED85F17F349D400CF08F4 /* play_button.png in Resources */,
+				ADCED86017F349D400CF08F4 /* play_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,8 +271,12 @@
 				66FD915417EA00ED0088C6BD /* JsonResponse.m in Sources */,
 				AD64F32317EA0B6A00F2438A /* MainMenuViewController.m in Sources */,
 				AD64F32617EA0B8500F2438A /* RecordSongViewController.m in Sources */,
+<<<<<<< HEAD
 				6688A1DA17F095F80054C001 /* Question.m in Sources */,
 				6688A1DB17F095F80054C001 /* Survey.m in Sources */,
+=======
+				ADCED86317F34AA000CF08F4 /* SongLibraryViewController.m in Sources */,
+>>>>>>> Features----MM&RS
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
