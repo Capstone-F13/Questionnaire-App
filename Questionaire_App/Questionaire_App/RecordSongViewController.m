@@ -33,10 +33,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-<<<<<<< HEAD
+
 } 
-=======
-}
+
 
 - (IBAction)recordPauseTapped:(id)sender {
     // Stop the audio player before recording
