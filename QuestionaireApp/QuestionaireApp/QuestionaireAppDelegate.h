@@ -1,8 +1,8 @@
 //
 //  QuestionaireAppDelegate.h
-//  Questionaire_App
+//  QuestionaireApp
 //
-//  Created by Tucker Cozzens on 9/18/13.
+//  Created by Tucker Cozzens on 10/2/13.
 //  Copyright (c) 2013 Tucker Cozzens. All rights reserved.
 //
 
