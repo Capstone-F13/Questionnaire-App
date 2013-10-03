@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D515A1A17FCE374002DA54C /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D515A1917FCE374002DA54C /* check_mark.png */; };
+		8D515A1E17FCE3F9002DA54C /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */; };
 		AD7B232817FC890200FF0E30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232717FC890200FF0E30 /* Foundation.framework */; };
 		AD7B232A17FC890200FF0E30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232917FC890200FF0E30 /* CoreGraphics.framework */; };
 		AD7B232C17FC890200FF0E30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232B17FC890200FF0E30 /* UIKit.framework */; };
@@ -34,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D515A1917FCE374002DA54C /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_mark.png; path = AppImages/check_mark.png; sourceTree = "<group>"; };
+		8D515A1C17FCE3F9002DA54C /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
+		8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
 		AD7B232417FC890200FF0E30 /* QuestionaireApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestionaireApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD7B232717FC890200FF0E30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AD7B232917FC890200FF0E30 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D515A1B17FCE380002DA54C /* AppImages */ = {
+			isa = PBXGroup;
+			children = (
+				8D515A1917FCE374002DA54C /* check_mark.png */,
+			);
+			name = AppImages;
+			sourceTree = "<group>";
+		};
 		AD7B231B17FC890200FF0E30 = {
 			isa = PBXGroup;
 			children = (
@@ -112,12 +125,15 @@
 		AD7B232D17FC890200FF0E30 /* QuestionaireApp */ = {
 			isa = PBXGroup;
 			children = (
+				8D515A1C17FCE3F9002DA54C /* SurveyViewController.h */,
+				8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */,
 				AD7B233617FC890200FF0E30 /* QuestionaireAppDelegate.h */,
 				AD7B233717FC890200FF0E30 /* QuestionaireAppDelegate.m */,
 				AD7B233917FC890200FF0E30 /* Main.storyboard */,
 				AD7B233C17FC890200FF0E30 /* QuestionaireViewController.h */,
 				AD7B233D17FC890200FF0E30 /* QuestionaireViewController.m */,
 				AD7B233F17FC890200FF0E30 /* Images.xcassets */,
+				8D515A1B17FCE380002DA54C /* AppImages */,
 				AD7B232E17FC890200FF0E30 /* Supporting Files */,
 			);
 			path = QuestionaireApp;
@@ -230,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD7B234017FC890200FF0E30 /* Images.xcassets in Resources */,
+				8D515A1A17FCE374002DA54C /* check_mark.png in Resources */,
 				AD7B233217FC890200FF0E30 /* InfoPlist.strings in Resources */,
 				AD7B233B17FC890200FF0E30 /* Main.storyboard in Resources */,
 			);
@@ -252,6 +269,7 @@
 			files = (
 				AD7B233417FC890200FF0E30 /* main.m in Sources */,
 				AD7B233E17FC890200FF0E30 /* QuestionaireViewController.m in Sources */,
+				8D515A1E17FCE3F9002DA54C /* SurveyViewController.m in Sources */,
 				AD7B233817FC890200FF0E30 /* QuestionaireAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +479,7 @@
 				AD7B235817FC890300FF0E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AD7B235917FC890300FF0E30 /* Build configuration list for PBXNativeTarget "QuestionaireAppTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +488,7 @@
 				AD7B235B17FC890300FF0E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
