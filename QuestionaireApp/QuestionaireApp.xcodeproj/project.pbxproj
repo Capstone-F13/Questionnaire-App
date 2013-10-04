@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A5C133A17FE270500939168 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C133917FE270500939168 /* AdminViewController.m */; };
 		8D515A1A17FCE374002DA54C /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D515A1917FCE374002DA54C /* check_mark.png */; };
 		8D515A1E17FCE3F9002DA54C /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */; };
 		AD7B232817FC890200FF0E30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232717FC890200FF0E30 /* Foundation.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A5C133817FE270500939168 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
+		4A5C133917FE270500939168 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 		8D515A1917FCE374002DA54C /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_mark.png; path = AppImages/check_mark.png; sourceTree = "<group>"; };
 		8D515A1C17FCE3F9002DA54C /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
 		8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				AD7B233F17FC890200FF0E30 /* Images.xcassets */,
 				8D515A1B17FCE380002DA54C /* AppImages */,
 				AD7B232E17FC890200FF0E30 /* Supporting Files */,
+				4A5C133817FE270500939168 /* AdminViewController.h */,
+				4A5C133917FE270500939168 /* AdminViewController.m */,
 			);
 			path = QuestionaireApp;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			files = (
 				AD7B233417FC890200FF0E30 /* main.m in Sources */,
 				AD7B233E17FC890200FF0E30 /* QuestionaireViewController.m in Sources */,
+				4A5C133A17FE270500939168 /* AdminViewController.m in Sources */,
 				8D515A1E17FCE3F9002DA54C /* SurveyViewController.m in Sources */,
 				AD7B233817FC890200FF0E30 /* QuestionaireAppDelegate.m in Sources */,
 			);
