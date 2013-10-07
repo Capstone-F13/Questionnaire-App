@@ -7,6 +7,7 @@
 //
 
 #import "AdminViewController.h"
+#import "User.h"
 
 @interface AdminViewController ()
 
@@ -43,6 +44,9 @@
     } else {
         [self setErrorMessage:@"Please enter a username"];
     }
+    
+    //need to do an error check before do the login
+    [self authenticateUser];
 }
 
 - (Boolean)checkPasswordsNotNull:(NSString *)password1
@@ -56,6 +60,13 @@
     [(UILabel *)error setText:message];
     [(UILabel *)error setHidden:false];
     [(UITextField *)password setText:@""];
+}
+
+- (void) authenticateUser{
+    User *user = [[User alloc] init];
+    [user authenticateWithPatientId:[patientId text]
+                           Username:[adminUsername text]
+                           Password:[password text]];
 }
 
 @end
