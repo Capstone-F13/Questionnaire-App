@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="-1077" y="12"/>
         </scene>
-        <!--Survey View Controller-->
+        <!--Survey View Controller - Survey-->
         <scene sceneID="4WP-Lg-JGO">
             <objects>
-                <viewController id="ve0-S0-JIK" customClass="SurveyViewController" sceneMemberID="viewController">
+                <viewController title="Survey" id="ve0-S0-JIK" customClass="SurveyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KjN-cx-QJP"/>
                         <viewControllerLayoutGuide type="bottom" id="1Mu-ib-dPo"/>
@@ -77,8 +77,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="Usl-3W-DTZ">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="Aad-4G-AiO"/>
+                                    <navigationItem title="Survey" id="Usl-3W-DTZ">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="Aad-4G-AiO">
+                                            <connections>
+                                                <segue destination="vXZ-lx-hvc" kind="modal" id="m1u-k0-UdK"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -266,7 +270,6 @@
         <!--Admin View Controller-->
         <scene sceneID="gDM-RN-fFh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F7r-tE-pQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="vef-UZ-eeF" customClass="AdminViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D9m-j3-Emu"/>
@@ -284,7 +287,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Admin Login" id="Gmw-X0-TLz">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Rph-xB-mPb"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Rph-xB-mPb">
+                                            <connections>
+                                                <segue destination="vXZ-lx-hvc" kind="modal" id="2x1-UG-1iB"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -352,6 +359,7 @@
                         <outlet property="patientId" destination="8sN-eV-QSh" id="seY-US-Mep"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F7r-tE-pQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-656" y="-664"/>
         </scene>
@@ -367,4 +375,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="m1u-k0-UdK"/>
+    </inferredMetricsTieBreakers>
 </document>
