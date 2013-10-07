@@ -14,10 +14,13 @@
 @property (nonatomic, strong) IBOutlet UITextField *adminUsername;
 @property (nonatomic, strong) IBOutlet UITextField *password;
 @property (nonatomic, weak) IBOutlet UILabel *error;
+@property BOOL hasError;
 
 - (IBAction)submit:(id)sender;
 - (IBAction)cancel:(id)sender;
 - (Boolean)checkPasswordsNotNull:(NSString *)password1;
 - (void)setErrorMessage:(NSString *)message;
+
+- (void) authenticateUser;
 
 @end
