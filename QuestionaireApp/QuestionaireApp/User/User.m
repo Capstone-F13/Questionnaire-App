@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "JsonResponse.h"
 
 @implementation User
 @synthesize patientId, username, password;
@@ -17,6 +18,23 @@
                           Password:(NSString *)password{
     
     NSLog(@"here");
+    
+    JsonResponse *response = [[JsonResponse alloc] init];
+    response.failureCode = nil;
+    response.failureMessage = @"";
+    response.promptMessage = @"Please take this survey";
+    response.data = @""
+    "{"
+        "\"user\" : {"
+            "\"patientId\" : 66,"
+            "\"username\" : \"psych\","
+            "\"password\" : \"rambo\""
+        "}"
+    "}";
+    response.status = 200;
+    response.timestamp = [[NSDate date] timeIntervalSince1970];
+    
+    //return response;
     
 }
 
