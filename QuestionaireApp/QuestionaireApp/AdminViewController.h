@@ -17,7 +17,7 @@
 @property BOOL hasError;
 
 - (IBAction)submit:(id)sender;
-- (IBAction)cancel:(id)sender;
+- (IBAction)backgroundTapped:(id)sender;
 - (Boolean)checkPasswordsNotNull:(NSString *)password1;
 - (void)setErrorMessage:(NSString *)message;
 

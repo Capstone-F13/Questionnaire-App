@@ -69,4 +69,10 @@
                            Password:[password text]];
 }
 
+-(IBAction)backgroundTapped:(id)sender
+{
+    // Dismisses keyboard
+    [self.view endEditing:YES];
+}
+
 @end
