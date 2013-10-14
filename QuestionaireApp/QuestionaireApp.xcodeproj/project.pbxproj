@@ -15,9 +15,9 @@
 		669E631D1800B7710038A7E6 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63181800B7710038A7E6 /* Survey.m */; };
 		8D515A1A17FCE374002DA54C /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D515A1917FCE374002DA54C /* check_mark.png */; };
 		8D515A1E17FCE3F9002DA54C /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */; };
-		AD723FC8180C353D00FB5F34 /* logo29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = AD723FC5180C353D00FB5F34 /* logo29pt.png */; };
-		AD723FC9180C353D00FB5F34 /* logo40pt.png in Resources */ = {isa = PBXBuildFile; fileRef = AD723FC6180C353D00FB5F34 /* logo40pt.png */; };
-		AD723FCA180C353D00FB5F34 /* logo60pt.png in Resources */ = {isa = PBXBuildFile; fileRef = AD723FC7180C353D00FB5F34 /* logo60pt.png */; };
+		AD723FCE180C498F00FB5F34 /* logo2_29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = AD723FCB180C498F00FB5F34 /* logo2_29pt.png */; };
+		AD723FCF180C498F00FB5F34 /* logo2_40pt.png in Resources */ = {isa = PBXBuildFile; fileRef = AD723FCC180C498F00FB5F34 /* logo2_40pt.png */; };
+		AD723FD0180C498F00FB5F34 /* logo2_60pt.png in Resources */ = {isa = PBXBuildFile; fileRef = AD723FCD180C498F00FB5F34 /* logo2_60pt.png */; };
 		AD7B232817FC890200FF0E30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232717FC890200FF0E30 /* Foundation.framework */; };
 		AD7B232A17FC890200FF0E30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232917FC890200FF0E30 /* CoreGraphics.framework */; };
 		AD7B232C17FC890200FF0E30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232B17FC890200FF0E30 /* UIKit.framework */; };
@@ -61,9 +61,9 @@
 		8D515A1917FCE374002DA54C /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_mark.png; path = AppImages/check_mark.png; sourceTree = "<group>"; };
 		8D515A1C17FCE3F9002DA54C /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
 		8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
-		AD723FC5180C353D00FB5F34 /* logo29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo29pt.png; path = ../../../logo29pt.png; sourceTree = "<group>"; };
-		AD723FC6180C353D00FB5F34 /* logo40pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo40pt.png; path = ../../../logo40pt.png; sourceTree = "<group>"; };
-		AD723FC7180C353D00FB5F34 /* logo60pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo60pt.png; path = ../../../logo60pt.png; sourceTree = "<group>"; };
+		AD723FCB180C498F00FB5F34 /* logo2_29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo2_29pt.png; path = ../../../logo2_29pt.png; sourceTree = "<group>"; };
+		AD723FCC180C498F00FB5F34 /* logo2_40pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo2_40pt.png; path = ../../../logo2_40pt.png; sourceTree = "<group>"; };
+		AD723FCD180C498F00FB5F34 /* logo2_60pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo2_60pt.png; path = ../../../logo2_60pt.png; sourceTree = "<group>"; };
 		AD7B232417FC890200FF0E30 /* QuestionaireApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestionaireApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD7B232717FC890200FF0E30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AD7B232917FC890200FF0E30 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,9 +144,9 @@
 		8D515A1B17FCE380002DA54C /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
-				AD723FC5180C353D00FB5F34 /* logo29pt.png */,
-				AD723FC6180C353D00FB5F34 /* logo40pt.png */,
-				AD723FC7180C353D00FB5F34 /* logo60pt.png */,
+				AD723FCB180C498F00FB5F34 /* logo2_29pt.png */,
+				AD723FCC180C498F00FB5F34 /* logo2_40pt.png */,
+				AD723FCD180C498F00FB5F34 /* logo2_60pt.png */,
 				8D515A1917FCE374002DA54C /* check_mark.png */,
 			);
 			name = AppImages;
@@ -310,12 +310,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD723FC8180C353D00FB5F34 /* logo29pt.png in Resources */,
 				AD7B234017FC890200FF0E30 /* Images.xcassets in Resources */,
+				AD723FCF180C498F00FB5F34 /* logo2_40pt.png in Resources */,
+				AD723FD0180C498F00FB5F34 /* logo2_60pt.png in Resources */,
+				AD723FCE180C498F00FB5F34 /* logo2_29pt.png in Resources */,
 				8D515A1A17FCE374002DA54C /* check_mark.png in Resources */,
-				AD723FCA180C353D00FB5F34 /* logo60pt.png in Resources */,
 				AD7B233217FC890200FF0E30 /* InfoPlist.strings in Resources */,
-				AD723FC9180C353D00FB5F34 /* logo40pt.png in Resources */,
 				AD7B233B17FC890200FF0E30 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
