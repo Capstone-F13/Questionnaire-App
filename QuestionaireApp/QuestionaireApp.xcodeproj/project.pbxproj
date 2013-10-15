@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4A5C133A17FE270500939168 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C133917FE270500939168 /* AdminViewController.m */; };
+		4AE93CF5180CAC3B003AB143 /* MusicLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE93CF2180CAC3B003AB143 /* MusicLibraryViewController.m */; };
+		4AE93CF6180CAC3B003AB143 /* RecordSongViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE93CF4180CAC3B003AB143 /* RecordSongViewController.m */; };
+		4AE93CF8180CAECA003AB143 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AE93CF7180CAECA003AB143 /* playButton.png */; };
 		66385D5C18030F91002AE3D0 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 66385D5B18030F91002AE3D0 /* User.m */; };
 		669E631A1800B7710038A7E6 /* Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63111800B7710038A7E6 /* Json.m */; };
 		669E631B1800B7710038A7E6 /* JsonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63131800B7710038A7E6 /* JsonResponse.m */; };
@@ -44,6 +47,11 @@
 /* Begin PBXFileReference section */
 		4A5C133817FE270500939168 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
 		4A5C133917FE270500939168 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
+		4AE93CF1180CAC3B003AB143 /* MusicLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicLibraryViewController.h; path = ../../../MusicLibraryViewController.h; sourceTree = "<group>"; };
+		4AE93CF2180CAC3B003AB143 /* MusicLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicLibraryViewController.m; path = ../../../MusicLibraryViewController.m; sourceTree = "<group>"; };
+		4AE93CF3180CAC3B003AB143 /* RecordSongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordSongViewController.h; path = ../../../RecordSongViewController.h; sourceTree = "<group>"; };
+		4AE93CF4180CAC3B003AB143 /* RecordSongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordSongViewController.m; path = ../../../RecordSongViewController.m; sourceTree = "<group>"; };
+		4AE93CF7180CAECA003AB143 /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playButton.png; path = ../../../../Downloads/MySongv5/Images/playButton.png; sourceTree = "<group>"; };
 		66385D5A18030F91002AE3D0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		66385D5B18030F91002AE3D0 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		669E63101800B7710038A7E6 /* Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Json.h; sourceTree = "<group>"; };
@@ -138,6 +146,7 @@
 		8D515A1B17FCE380002DA54C /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				4AE93CF7180CAECA003AB143 /* playButton.png */,
 				8D515A1917FCE374002DA54C /* check_mark.png */,
 			);
 			name = AppImages;
@@ -176,6 +185,10 @@
 		AD7B232D17FC890200FF0E30 /* QuestionaireApp */ = {
 			isa = PBXGroup;
 			children = (
+				4AE93CF1180CAC3B003AB143 /* MusicLibraryViewController.h */,
+				4AE93CF2180CAC3B003AB143 /* MusicLibraryViewController.m */,
+				4AE93CF3180CAC3B003AB143 /* RecordSongViewController.h */,
+				4AE93CF4180CAC3B003AB143 /* RecordSongViewController.m */,
 				66385D5918030F81002AE3D0 /* User */,
 				669E630F1800B7710038A7E6 /* Json */,
 				669E63141800B7710038A7E6 /* Survey */,
@@ -304,6 +317,7 @@
 				AD7B234017FC890200FF0E30 /* Images.xcassets in Resources */,
 				8D515A1A17FCE374002DA54C /* check_mark.png in Resources */,
 				AD7B233217FC890200FF0E30 /* InfoPlist.strings in Resources */,
+				4AE93CF8180CAECA003AB143 /* playButton.png in Resources */,
 				AD7B233B17FC890200FF0E30 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,9 +343,11 @@
 				AD7B233E17FC890200FF0E30 /* QuestionaireViewController.m in Sources */,
 				4A5C133A17FE270500939168 /* AdminViewController.m in Sources */,
 				8D515A1E17FCE3F9002DA54C /* SurveyViewController.m in Sources */,
+				4AE93CF6180CAC3B003AB143 /* RecordSongViewController.m in Sources */,
 				AD7B233817FC890200FF0E30 /* QuestionaireAppDelegate.m in Sources */,
 				669E631C1800B7710038A7E6 /* Question.m in Sources */,
 				669E631B1800B7710038A7E6 /* JsonResponse.m in Sources */,
+				4AE93CF5180CAC3B003AB143 /* MusicLibraryViewController.m in Sources */,
 				669E631A1800B7710038A7E6 /* Json.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
