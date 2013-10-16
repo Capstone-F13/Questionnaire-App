@@ -46,8 +46,6 @@
 
 // Holds current question number (starts at 0)
 @property (nonatomic) int currentQuestionNumber;
-// Holds the total number of questions contained in a survey
-@property (nonatomic) int totalQuestions;
 // Holds multiple choice answer choice for multiple choice questions
 @property (nonatomic) int selectedAnswerChoice;
 

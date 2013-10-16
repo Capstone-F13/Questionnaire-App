@@ -7,17 +7,25 @@
 //
 
 #import "SurveyViewController.h"
+#import "AFHTTPRequestOperationManager.h"
+
+#import "Answer.h"
+#import "Question.h"
+#import "Survey.h"
 
 @interface SurveyViewController ()
-    -(void)showAppropriateFields:(Boolean)isMultipleChoice;
-    -(void)showSelectIndicator:(int)choice;
-    -(void)hideAllSelectIndicators;
+
+@property (strong) Survey *survey;
+
+-(void)showAppropriateFields:(Boolean)isMultipleChoice;
+-(void)showSelectIndicator:(int)choice;
+-(void)hideAllSelectIndicators;
+
 @end
 
 @implementation SurveyViewController
 
 @synthesize currentQuestionNumber;
-@synthesize totalQuestions;
 @synthesize selectedAnswerChoice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,16 +37,32 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    
+    if (self = [super initWithCoder:aDecoder]) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:@"http://capstone-f13.herokuapp.com/api/v1/Questions/?format=json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"%@",responseObject);
+            
+            self.survey = [Survey surveyWithJSON:responseObject];
+            
+            // Initializes variable and gets the first question
+            currentQuestionNumber = 0;
+            [self getQuestion:currentQuestionNumber];
+
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            NSLog(@"Error: %@", error);
+            
+        }];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // FOR TESTING, SHOULD CHECK NUMBER OF QUESTIONS
-    totalQuestions = 10;
-    
-    // Initializes variable and gets the first question
-    currentQuestionNumber = 0;
-    [self getQuestion:currentQuestionNumber];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,24 +125,35 @@
 
 - (void)getQuestion:(int)questionNumber
 {
-    // FOR TESTING, SHOULD CHECK QUESTION TYPE HERE
-    Boolean isMultipleChoice = true;
+    Question *question = self.survey.questions[questionNumber];
     
     // Use current question number to set the appropriate fields for the question
-    if (isMultipleChoice)
+    if (question.isMultipleChoice)
     {
-        // SHOULD USE DATA FROM SURVEY TO SET ANSWER CHOICES
-        [[buttonChoice1 titleLabel] setText:@"Choice 1"];
-        [[buttonChoice2 titleLabel] setText:@"Choice 2"];
-        [[buttonChoice3 titleLabel] setText:@"Choice 3"];
-        [[buttonChoice4 titleLabel] setText:@"Choice 4"];
+     
+        
+        // TODO: This could be generalized
+        // loop through the answers and add a button for each one programmatically
+        
+        
+//        
+//        for (Answer *a in question.answers) {
+//            
+//        }
+        
+        
+        
+        [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+        [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
+        [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
+        [[buttonChoice4 titleLabel] setText:[question.answers[3] text]];
     }
-    // SHOULD USE DATA FROM SURVEY TO SET QUESTION TEXT
-    [currentQuestionText setText:@"Question goes here..."];
+
+    [currentQuestionText setText:question.text];
     
     // Display the appropriate fields for the question
     [self hideAllSelectIndicators];
-    [self showAppropriateFields:isMultipleChoice];
+    [self showAppropriateFields:question.isMultipleChoice];
 }
 
 - (IBAction)nextQuestion:(id)sender
@@ -127,7 +162,7 @@
     
     // Goes forward one question, loops to first question if at the end
     ++currentQuestionNumber;
-    if (currentQuestionNumber == totalQuestions)
+    if (currentQuestionNumber == [self.survey.questions count])
     {
         currentQuestionNumber = 0;
     }
@@ -143,7 +178,7 @@
     --currentQuestionNumber;
     if (currentQuestionNumber < 0)
     {
-        currentQuestionNumber = totalQuestions - 1;
+        currentQuestionNumber = [self.survey.questions count] - 1;
     }
     selectedAnswerChoice = 0;
     [self getQuestion:currentQuestionNumber];

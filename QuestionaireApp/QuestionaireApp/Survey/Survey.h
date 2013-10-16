@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) NSMutableArray *questions;
 
++ (id)surveyWithJSON:(NSDictionary *)JSON;
+
 @end

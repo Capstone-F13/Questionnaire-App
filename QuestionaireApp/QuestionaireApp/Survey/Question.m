@@ -11,4 +11,18 @@
 
 @implementation Question
 
++ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice {
+    return [[Question alloc] initWithID:questionID text:text isMultipleChoice:isMultipleChoice];
+}
+
+- (id)initWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice {
+    if (self = [super init]) {
+        self.questionID = questionID;
+        self.text = text;
+        self.isMultipleChoice = isMultipleChoice;
+        self.answers = [NSMutableArray new];
+    }
+    return self;
+}
+
 @end

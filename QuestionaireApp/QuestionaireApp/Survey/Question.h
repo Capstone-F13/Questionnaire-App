@@ -11,9 +11,11 @@
 
 @interface Question : NSObject
 
-@property (nonatomic, strong) NSNumber *questionId;
+@property (nonatomic, assign) NSUInteger questionID;
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSMutableDictionary *answers;
+@property (nonatomic, assign) BOOL isMultipleChoice;
+@property (nonatomic, strong) NSMutableArray *answers;
+
++ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice;
 
 @end

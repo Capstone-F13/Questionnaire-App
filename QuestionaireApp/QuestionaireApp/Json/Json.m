@@ -17,16 +17,16 @@
 -(void) debuggingSurvey {
     
     //response with JSON string
-    JsonResponse *response = [self createTestResponse];
+//    JsonResponse *response = [self createTestResponse];
     
     //Parse JSON string into foundation objects
-    NSData *jsonData = [response.data dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                               options:NSJSONReadingMutableContainers
-                                                                 error:nil];
-    
+//    NSData *jsonData = [response.data dataUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                               options:NSJSONReadingMutableContainers
+//                                                                 error:nil];
+//    
     //Parse foundation objects into custom objects
-    Survey *survey = [self getSurveyFromJSON:jsonObject];
+//    Survey *survey = [self getSurveyFromJSON:jsonObject];
 }
 
 -(void) requestSurvey {
@@ -56,10 +56,10 @@
     
     for (NSDictionary *jsonQuestion in jsonQuestions) {
         Question *question = [[Question alloc] init];
-        question.questionId = [jsonQuestion objectForKey:QUESTION_ID];
+//        question.questionId = [jsonQuestion objectForKey:QUESTION_ID];
         question.text = [jsonQuestion objectForKey:QUESTION_TEXT];
-        question.type = [jsonQuestion objectForKey:QUESTION_TYPE];
-        question.answers = [jsonQuestion objectForKey:QUESTION_ANSWERS];
+//        question.type = [jsonQuestion objectForKey:QUESTION_TYPE];
+//        question.answers = [jsonQuestion objectForKey:QUESTION_ANSWERS];
         [questions addObject:question];
     }
     
@@ -109,24 +109,24 @@
     
     {
         Question *question = [[Question alloc] init];
-        question.questionId = [NSNumber numberWithInt:13];
+//        question.questionId = [NSNumber numberWithInt:13];
         question.text = @"How you feeling, braj?";
-        question.type = @"text";
+//        question.type = @"text";
         question.answers = nil;
         [survey.questions addObject:question];
     }
     {
         Question *question = [[Question alloc] init];
-        question.questionId = [NSNumber numberWithInt:66];;
+//        question.questionId = [NSNumber numberWithInt:66];;
         question.text = @"3 + 10 = ?";
-        question.type = @"multiple";
+//        question.type = @"multiple";
         
         NSMutableDictionary *answers = [[NSMutableDictionary alloc] init];
         [answers setObject:@"7" forKey:@"a"];
         [answers setObject:@"13" forKey:@"b"];
         [answers setObject:@"30" forKey:@"c"];
         [answers setObject:@"310" forKey:@"d"];
-        question.answers = answers;
+//        question.answers = answers;
         
         [survey.questions addObject:question];
     }
