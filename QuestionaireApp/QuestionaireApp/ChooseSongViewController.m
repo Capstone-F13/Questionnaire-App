@@ -7,12 +7,15 @@
 //
 
 #import "ChooseSongViewController.h"
+#import "Constants.h"
 
 @interface ChooseSongViewController ()
 
 @end
 
 @implementation ChooseSongViewController
+
+bool chooseMenuIsPlaying = false;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +42,36 @@
 {
     // Dismiss the view and return the Sing-a-long menu
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(IBAction)playPausePlayback:(id)sender
+{
+    UIImage *icon;
+    if (chooseMenuIsPlaying)
+    {
+        // Set button image to play icon
+        icon = [UIImage imageNamed:PLAY_ICON];
+        chooseMenuIsPlaying = false;
+        
+        // SHOULD PLAY CHOSEN SONG HERE
+        //
+    }
+    else
+    {
+        // Set button image to pause icon
+        icon = [UIImage imageNamed:PAUSE_ICON];
+        chooseMenuIsPlaying = true;
+        
+        // SHOULD PAUSE SONG HERE
+        //
+    }
+    [playPause setImage:icon forState:UIControlStateNormal];
+}
+
+-(IBAction)stopPlayback:(id)sender
+{
+    // SHOULD STOP PLAYBACK HERE
+    //
 }
 
 @end

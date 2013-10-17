@@ -18,7 +18,6 @@
 -(IBAction)playPausePlayback:(id)sender;
 -(IBAction)stopPlayback:(id)sender;
 -(IBAction)startStopRecording:(id)sender;
--(IBAction)cancelRecordNew:(id)sender;
 -(IBAction)finishRecordNew:(id)sender;
 
 @end

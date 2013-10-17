@@ -10,9 +10,12 @@
 
 @interface ChooseSongViewController : UIViewController
 {
-    IBOutlet UITableView *songTableView;
+    IBOutlet UIButton *playPause;
+    IBOutlet UIButton *record;
 }
 
 -(IBAction)cancelRecordNew:(id)sender;
+-(IBAction)playPausePlayback:(id)sender;
+-(IBAction)stopPlayback:(id)sender;
 
 @end

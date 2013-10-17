@@ -92,12 +92,6 @@ bool RecordMenuIsRecording = false;
     //
 }
 
--(IBAction)cancelRecordNew:(id)sender
-{
-    // Dismiss the view and return the Sing-a-long menu
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
 -(IBAction)finishRecordNew:(id)sender
 {
     // SHOULD SAVE RECORDING HERE
