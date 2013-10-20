@@ -32,6 +32,8 @@
 		AD7B234917FC890200FF0E30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7B232B17FC890200FF0E30 /* UIKit.framework */; };
 		AD7B235117FC890300FF0E30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AD7B234F17FC890300FF0E30 /* InfoPlist.strings */; };
 		AD7B235317FC890300FF0E30 /* QuestionaireAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7B235217FC890300FF0E30 /* QuestionaireAppTests.m */; };
+		ADF7E4311814A29C00273E07 /* MyLaunchImage2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADF7E42F1814A29C00273E07 /* MyLaunchImage2x.png */; };
+		ADF7E4321814A29C00273E07 /* MyLaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = ADF7E4301814A29C00273E07 /* MyLaunchImageR4.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		AD7B234E17FC890300FF0E30 /* QuestionaireAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuestionaireAppTests-Info.plist"; sourceTree = "<group>"; };
 		AD7B235017FC890300FF0E30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AD7B235217FC890300FF0E30 /* QuestionaireAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionaireAppTests.m; sourceTree = "<group>"; };
+		ADF7E42F1814A29C00273E07 /* MyLaunchImage2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MyLaunchImage2x.png; path = ../MyLaunchImage2x.png; sourceTree = "<group>"; };
+		ADF7E4301814A29C00273E07 /* MyLaunchImageR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MyLaunchImageR4.png; path = ../MyLaunchImageR4.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,8 @@
 		8D515A1B17FCE380002DA54C /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				ADF7E42F1814A29C00273E07 /* MyLaunchImage2x.png */,
+				ADF7E4301814A29C00273E07 /* MyLaunchImageR4.png */,
 				AD6D4DDE180C506600A44D4F /* logo2_29pt.png */,
 				AD6D4DDF180C506600A44D4F /* logo2_40pt.png */,
 				AD6D4DE0180C506600A44D4F /* logo2_60pt.png */,
@@ -192,10 +198,10 @@
 				8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */,
 				AD7B233617FC890200FF0E30 /* QuestionaireAppDelegate.h */,
 				AD7B233717FC890200FF0E30 /* QuestionaireAppDelegate.m */,
-				AD7B233917FC890200FF0E30 /* Main.storyboard */,
 				AD7B233C17FC890200FF0E30 /* QuestionaireViewController.h */,
 				AD7B233D17FC890200FF0E30 /* QuestionaireViewController.m */,
 				AD7B233F17FC890200FF0E30 /* Images.xcassets */,
+				AD7B233917FC890200FF0E30 /* Main.storyboard */,
 				8D515A1B17FCE380002DA54C /* AppImages */,
 				AD7B232E17FC890200FF0E30 /* Supporting Files */,
 				4A5C133817FE270500939168 /* AdminViewController.h */,
@@ -313,7 +319,9 @@
 				AD7B234017FC890200FF0E30 /* Images.xcassets in Resources */,
 				AD6D4DE2180C506600A44D4F /* logo2_40pt.png in Resources */,
 				AD6D4DE3180C506600A44D4F /* logo2_60pt.png in Resources */,
+				ADF7E4321814A29C00273E07 /* MyLaunchImageR4.png in Resources */,
 				AD6D4DE1180C506600A44D4F /* logo2_29pt.png in Resources */,
+				ADF7E4311814A29C00273E07 /* MyLaunchImage2x.png in Resources */,
 				8D515A1A17FCE374002DA54C /* check_mark.png in Resources */,
 				AD7B233217FC890200FF0E30 /* InfoPlist.strings in Resources */,
 				AD7B233B17FC890200FF0E30 /* Main.storyboard in Resources */,
