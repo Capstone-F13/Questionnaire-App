@@ -21,6 +21,7 @@
         self.text = text;
         self.isMultipleChoice = isMultipleChoice;
         self.answers = [NSMutableArray new];
+        self.answerText = nil;
     }
     return self;
 }

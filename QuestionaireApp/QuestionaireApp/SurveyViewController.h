@@ -46,7 +46,5 @@
 
 // Holds current question number (starts at 0)
 @property (nonatomic) int currentQuestionNumber;
-// Holds multiple choice answer choice for multiple choice questions
-@property (nonatomic) int selectedAnswerChoice;
 
 @end

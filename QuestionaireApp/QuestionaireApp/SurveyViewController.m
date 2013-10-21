@@ -16,17 +16,11 @@
 @interface SurveyViewController ()
 
 @property (strong) Survey *survey;
-
--(void)showAppropriateFields:(Boolean)isMultipleChoice;
--(void)showSelectIndicator:(int)choice;
--(void)hideAllSelectIndicators;
+@property (strong) AFHTTPRequestOperationManager *manager;
 
 @end
 
 @implementation SurveyViewController
-
-@synthesize currentQuestionNumber;
-@synthesize selectedAnswerChoice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,16 +34,19 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     
     if (self = [super initWithCoder:aDecoder]) {
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"http://capstone-f13.herokuapp.com/api/v1/Questions/?format=json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            NSLog(@"%@",responseObject);
+        self.manager = [AFHTTPRequestOperationManager manager];
+        [self.manager GET:@"http://capstone-f13.herokuapp.com/api/v1/Questions/?format=json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             self.survey = [Survey surveyWithJSON:responseObject];
             
-            // Initializes variable and gets the first question
-            currentQuestionNumber = 0;
-            [self getQuestion:currentQuestionNumber];
+            if (self.survey.questions.count == 0) {
+                NSLog(@"Error : no questions in survey");
+            }
+            else {
+                // Initializes variable and gets the first question
+                self.currentQuestionNumber = 0;
+                [self getQuestion:self.currentQuestionNumber];
+            }
 
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
@@ -71,17 +68,39 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)showAppropriateFields:(Boolean)isMultipleChoice
+- (void)showAppropriateFieldsForQuestion:(NSUInteger)num
 {
+    Question *question = self.survey.questions[num];
+    
     // Question type is multiple choice
-    if (isMultipleChoice)
+    if (question.isMultipleChoice)
     {
         answerTextField.hidden = true;
-        buttonChoice1.hidden = false;
-        buttonChoice2.hidden = false;
-        buttonChoice3.hidden = false;
-        buttonChoice4.hidden = false;
         
+        switch (question.answers.count) {
+            case 1: {
+                buttonChoice1.hidden = false;
+                break;
+            }
+            case 2: {
+                buttonChoice1.hidden = false;
+                buttonChoice2.hidden = false;
+                break;
+            }
+            case 3: {
+                buttonChoice1.hidden = false;
+                buttonChoice2.hidden = false;
+                buttonChoice3.hidden = false;
+                break;
+            }
+            case 4: {
+                buttonChoice1.hidden = false;
+                buttonChoice2.hidden = false;
+                buttonChoice3.hidden = false;
+                buttonChoice4.hidden = false;
+                break;
+            }
+        }
     }
     // Question type is short response
     else
@@ -130,30 +149,42 @@
     // Use current question number to set the appropriate fields for the question
     if (question.isMultipleChoice)
     {
-     
-        
-        // TODO: This could be generalized
-        // loop through the answers and add a button for each one programmatically
-        
-        
-//        
+
 //        for (Answer *a in question.answers) {
 //            
 //        }
         
-        
-        
-        [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-        [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
-        [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
-        [[buttonChoice4 titleLabel] setText:[question.answers[3] text]];
+        switch (question.answers.count) {
+            case 1: {
+                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+                break;
+            }
+            case 2: {
+                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
+                break;
+            }
+            case 3: {
+                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
+                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
+                break;
+            }
+            case 4: {
+                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
+                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
+                [[buttonChoice4 titleLabel] setText:[question.answers[3] text]];
+                break;
+            }
+        }
     }
 
     [currentQuestionText setText:question.text];
     
     // Display the appropriate fields for the question
     [self hideAllSelectIndicators];
-    [self showAppropriateFields:question.isMultipleChoice];
+    [self showAppropriateFieldsForQuestion:questionNumber];
 }
 
 - (IBAction)nextQuestion:(id)sender
@@ -161,13 +192,13 @@
     // SHOULD SAVE ANSWER HERE
     
     // Goes forward one question, loops to first question if at the end
-    ++currentQuestionNumber;
-    if (currentQuestionNumber == [self.survey.questions count])
+    ++self.currentQuestionNumber;
+    if (self.currentQuestionNumber == [self.survey.questions count])
     {
-        currentQuestionNumber = 0;
+        self.currentQuestionNumber = 0;
     }
-    selectedAnswerChoice = 0;
-    [self getQuestion:currentQuestionNumber];
+
+    [self getQuestion:self.currentQuestionNumber];
 }
 
 - (IBAction)previousQuestion:(id)sender
@@ -175,41 +206,53 @@
     // SHOULD SAVE ANSWER HERE
     
     // Goes back one question, loops to last question if at the beginning
-    --currentQuestionNumber;
-    if (currentQuestionNumber < 0)
+    --self.currentQuestionNumber;
+    if (self.currentQuestionNumber < 0)
     {
-        currentQuestionNumber = [self.survey.questions count] - 1;
+        self.currentQuestionNumber = (int)[self.survey.questions count] - 1;
     }
-    selectedAnswerChoice = 0;
-    [self getQuestion:currentQuestionNumber];
+
+    [self getQuestion:self.currentQuestionNumber];
 }
 
 - (IBAction)selectChoice1:(id)sender
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:1];
-    selectedAnswerChoice = 1;
+    
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    Answer *answer = question.answers[0];
+    question.answerText = answer.text;
 }
 
 - (IBAction)selectChoice2:(id)sender
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:2];
-    selectedAnswerChoice = 2;
+
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    Answer *answer = question.answers[1];
+    question.answerText = answer.text;
 }
 
 - (IBAction)selectChoice3:(id)sender
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:3];
-    selectedAnswerChoice = 3;
+
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    Answer *answer = question.answers[2];
+    question.answerText = answer.text;
 }
 
 - (IBAction)selectChoice4:(id)sender
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:4];
-    selectedAnswerChoice = 4;
+
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    Answer *answer = question.answers[3];
+    question.answerText = answer.text;
 }
 
 -(IBAction)backgroundTapped:(id)sender
@@ -220,7 +263,47 @@
 
 -(IBAction)submitSurvey:(id)sender
 {
-    // SHOULD SEND SURVEY TO DATABASE HERE
+    
+    NSMutableArray *mutableOperations = [NSMutableArray array];
+    
+    for (Question *question in self.survey.questions) {
+        
+        if (!question.answerText) {
+            question.answerText = @"this question's answer text was nil";
+        }
+        
+        NSString *URLString = @"http://capstone-f13.herokuapp.com/answer/";
+        
+        NSDictionary *parameters = @{@"question_id" : [NSString stringWithFormat:@"%lu",question.questionID],
+                                     @"patient_id" : @"patient_001",
+                                     @"answer" : question.answerText
+                                     };
+        
+        NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters];
+        AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"JSON: %@", responseObject);
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            NSLog(@"Error: %@", error);
+            
+        }];
+        
+        [mutableOperations addObject:operation];
+    }
+    
+    NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:mutableOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
+        
+        NSLog(@"%lu of %lu complete", numberOfFinishedOperations, totalNumberOfOperations);
+
+    } completionBlock:^(NSArray *operations) {
+    
+        NSLog(@"All operations in batch complete");
+
+    }];
+    
+    [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
 }
 
 @end
