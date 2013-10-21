@@ -26,7 +26,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -187,9 +186,16 @@
     [self showAppropriateFieldsForQuestion:questionNumber];
 }
 
+- (void)getCurrentAnswerText {
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    if (!question.isMultipleChoice) {
+        question.answerText = answerTextField.text;
+    }
+}
+
 - (IBAction)nextQuestion:(id)sender
 {
-    // SHOULD SAVE ANSWER HERE
+    [self getCurrentAnswerText];
     
     // Goes forward one question, loops to first question if at the end
     ++self.currentQuestionNumber;
@@ -203,7 +209,7 @@
 
 - (IBAction)previousQuestion:(id)sender
 {
-    // SHOULD SAVE ANSWER HERE
+    [self getCurrentAnswerText];
     
     // Goes back one question, loops to last question if at the beginning
     --self.currentQuestionNumber;
@@ -269,7 +275,11 @@
     for (Question *question in self.survey.questions) {
         
         if (!question.answerText) {
-            question.answerText = @"this question's answer text was nil";
+            NSLog(@"error: this question's answer text was nil");
+            
+            // should stop and show a warning in the future
+            
+            continue;
         }
         
         NSString *URLString = @"http://capstone-f13.herokuapp.com/answer/";
@@ -299,6 +309,8 @@
 
     } completionBlock:^(NSArray *operations) {
     
+        [self.navigationController popViewControllerAnimated:YES];
+        
         NSLog(@"All operations in batch complete");
 
     }];

@@ -7,9 +7,11 @@
 //
 
 #import "AdminViewController.h"
-#import "User.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface AdminViewController ()
+
+@property (strong) AFHTTPRequestOperationManager *manager;
 
 @end
 
@@ -21,7 +23,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.manager = [AFHTTPRequestOperationManager manager];
     }
     return self;
 }
@@ -35,18 +43,15 @@
 
 - (IBAction)submit:(id)sender
 {
-    if ([[(UITextField *)adminUsername text] isEqualToString:@""]) {
+    if (![[(UITextField *)adminUsername text] isEqualToString:@""]) {
         if ([self checkPasswordsNotNull:[(UITextField *)password text]]) {
             [self setErrorMessage:@"Please enter a password"];
         } else {
-            [self dismissViewControllerAnimated:TRUE completion:nil];
+            [self authenticateUser];
         }
     } else {
         [self setErrorMessage:@"Please enter a username"];
     }
-    
-    //need to do an error check before do the login
-    [self authenticateUser];
 }
 
 - (Boolean)checkPasswordsNotNull:(NSString *)password1
@@ -63,10 +68,50 @@
 }
 
 - (void) authenticateUser{
-    User *user = [[User alloc] init];
-    [user authenticateWithPatientId:[patientId text]
-                           Username:[adminUsername text]
-                           Password:[password text]];
+    
+    NSString *URLString = @"http://capstone-f13.herokuapp.com/oauth2/access_token";
+    
+    NSString *usernameString = [adminUsername text];
+    NSString *passwordString = [password text];
+    
+    NSDictionary *parameters = @{@"client_id" : @"b2ad60956a2ef2ff6eb8",
+                                 @"client_secret" : @"d228f55610c14fe620e1e0bea9708e22988d0f1d",
+                                 @"grant_type" : @"password",
+                                 @"username" : usernameString,
+                                 @"password" : passwordString,
+                                 @"scope" : @"write"
+                                 };
+    
+    AFHTTPRequestOperation *operation = [self.manager POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
+        
+        [self.manager GET:[NSString stringWithFormat:@"http://capstone-f13.herokuapp.com/patients/%@",token] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+            NSLog(@"JSON : %@",responseObject);
+            
+            NSString *patientID = [(NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"] objectAtIndex:1];
+
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:token forKey:@"autoToken"];
+            [defaults setObject:patientID forKey:@"patientID"];
+            [defaults synchronize];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+
+            NSLog(@"Error: %@", localError);
+
+        }];
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+        
+        NSLog(@"Error: %@", localError);
+
+    }];
+    
+    [operation start];
 }
 
 -(IBAction)backgroundTapped:(id)sender
