@@ -11,7 +11,6 @@
 @interface ChooseSongViewController : UIViewController
 {
     IBOutlet UIButton *playPause;
-    IBOutlet UIButton *record;
 }
 
 -(IBAction)cancelRecordNew:(id)sender;
