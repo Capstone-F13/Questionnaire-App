@@ -341,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14S-ir-yWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="271" y="807"/>
+            <point key="canvasLocation" x="973" y="807"/>
         </scene>
         <!--Record Song View Controller - Record-->
         <scene sceneID="FIA-vZ-aXr">
@@ -382,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIW-c9-SLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844" y="807"/>
+            <point key="canvasLocation" x="1546" y="807"/>
         </scene>
         <!--Record Song View Controller - Sing-a-long-->
         <scene sceneID="XFI-ck-vhr">
@@ -403,7 +403,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wg0-iS-QNE" kind="push" id="f1F-iO-wyo"/>
+                                    <segue destination="5P1-e9-LAw" kind="modal" id="794-H6-p9R"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5N-pc-t3X">
@@ -431,6 +431,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVA-3W-oPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-326" y="807"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wMw-Gb-zgL">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="5P1-e9-LAw" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sKi-S8-ryQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wg0-iS-QNE" kind="relationship" relationship="rootViewController" id="PDl-Ew-5HK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwB-me-zco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="807"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Q0-E0-swI">

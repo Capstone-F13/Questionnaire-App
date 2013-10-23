@@ -35,4 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// USE THIS LINE OF CODE TO DISMISS THE VIEW AND RETURN TO THE MAIN MENU
+//[self dismissViewControllerAnimated:YES completion:NULL];
+
 @end
