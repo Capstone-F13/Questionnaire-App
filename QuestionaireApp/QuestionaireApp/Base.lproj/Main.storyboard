@@ -447,7 +447,7 @@
             </objects>
             <point key="canvasLocation" x="-326" y="-754"/>
         </scene>
-        <!--Admin View Controller-->
+        <!--Admin View Controller - Administrator-->
         <scene sceneID="gDM-RN-fFh">
             <objects>
                 <viewController id="vef-UZ-eeF" customClass="AdminViewController" sceneMemberID="viewController">
@@ -519,7 +519,7 @@
                             <action selector="backgroundTapped:" destination="vef-UZ-eeF" eventType="touchUpInside" id="MfC-QK-pPU"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="niL-PV-8ZB"/>
+                    <navigationItem key="navigationItem" title="Administrator" id="niL-PV-8ZB"/>
                     <connections>
                         <outlet property="adminUsername" destination="TQt-iZ-3Mr" id="9vX-8N-ECh"/>
                         <outlet property="error" destination="391-uW-9xr" id="Bpq-rt-giB"/>
