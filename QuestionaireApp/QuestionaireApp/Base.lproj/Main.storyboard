@@ -445,10 +445,10 @@
             </objects>
             <point key="canvasLocation" x="1546" y="807"/>
         </scene>
-        <!--Record View Controller - Sing-a-long-->
+        <!--SingA Long Menu View Controller - Sing-a-long-->
         <scene sceneID="XFI-ck-vhr">
             <objects>
-                <viewController id="weV-0J-tcF" customClass="RecordViewController" sceneMemberID="viewController">
+                <viewController id="weV-0J-tcF" customClass="SingALongMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qZl-y6-R4s"/>
                         <viewControllerLayoutGuide type="bottom" id="g2u-d9-cVy"/>
@@ -480,6 +480,9 @@
                                 <state key="normal" image="play_button.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playPausePlayback:" destination="weV-0J-tcF" eventType="touchUpInside" id="uhE-w8-rgg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd4-Cw-YzX">
                                 <rect key="frame" x="167" y="302" width="65" height="59"/>
@@ -487,11 +490,17 @@
                                 <state key="normal" image="stop_button.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopPlayback:" destination="weV-0J-tcF" eventType="touchUpInside" id="VeY-NA-U36"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sing-a-long" id="5xt-Hy-Fuw"/>
+                    <connections>
+                        <outlet property="playPause" destination="DJw-M0-zox" id="fSl-Bo-o6D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVA-3W-oPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -639,11 +648,8 @@
     </scenes>
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
         <image name="play_button.png" width="299" height="285"/>
-        <image name="record_button.png" width="300" height="278"/>
+        <image name="record_button.png" width="256" height="256"/>
         <image name="stop_button.png" width="300" height="300"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
