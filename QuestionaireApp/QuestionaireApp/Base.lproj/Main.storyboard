@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -341,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14S-ir-yWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="221" y="377"/>
+            <point key="canvasLocation" x="271" y="807"/>
         </scene>
         <!--Record Song View Controller - Record-->
         <scene sceneID="FIA-vZ-aXr">
@@ -382,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIW-c9-SLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="355"/>
+            <point key="canvasLocation" x="844" y="807"/>
         </scene>
         <!--Record Song View Controller - Sing-a-long-->
         <scene sceneID="XFI-ck-vhr">
@@ -512,10 +512,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7r-tE-pQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-656" y="-664"/>
+            <point key="canvasLocation" x="-326" y="-730"/>
         </scene>
     </scenes>
     <resources>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
         <image name="check_mark.png" width="300" height="278"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
