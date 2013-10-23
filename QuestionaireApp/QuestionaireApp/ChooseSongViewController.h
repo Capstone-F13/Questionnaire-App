@@ -13,6 +13,9 @@
 {
     IBOutlet UIButton *playPause;
     IBOutlet UISlider *volumeSlider;
+    IBOutlet UILabel *songTitle;
+    IBOutlet UILabel *songArtist;
+    IBOutlet UILabel *songAlbum;
 }
 
 @property MPMusicPlayerController *musicPlayer;

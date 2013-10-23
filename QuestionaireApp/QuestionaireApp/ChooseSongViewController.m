@@ -72,7 +72,8 @@
     [musicPlayer stop];
 }
 
--(IBAction)volumeChanged:(id)sender {
+-(IBAction)volumeChanged:(id)sender
+{
     
 }
 
