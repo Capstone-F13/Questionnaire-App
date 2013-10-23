@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Answer" syncable="YES"/>
+    <entity name="Question" syncable="YES">
+        <relationship name="answer" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Answer" syncable="YES"/>
+    </entity>
+    <entity name="Survey" syncable="YES">
+        <relationship name="question" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Survey" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Question" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Answer" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

@@ -17,7 +17,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
+        [self performSegueWithIdentifier:@"MainMenuToAdminSegue" sender:self];
+    }
+	
+    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
+//        [self performSegueWithIdentifier:@"MainMenuToAdminSegue" sender:self];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
