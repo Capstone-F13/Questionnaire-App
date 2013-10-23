@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Constants.h"
+
+AVAudioPlayer *audioPlayer;
+AVAudioRecorder *audioRecorder;
+int recordEncoding;
 
 @interface RecordViewController : UIViewController
 {
@@ -19,5 +24,6 @@
 -(IBAction)stopPlayback:(id)sender;
 -(IBAction)startStopRecording:(id)sender;
 -(IBAction)finishRecordNew:(id)sender;
+-(void)startRecording;
 
 @end

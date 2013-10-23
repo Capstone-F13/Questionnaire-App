@@ -15,7 +15,7 @@
 
 @implementation ChooseSongViewController
 
-bool chooseMenuIsPlaying = false;
+@synthesize musicPlayer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +29,10 @@ bool chooseMenuIsPlaying = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    //[volumeSlider setValue:[musicPlayer volume]];
+    [self registerMediaPlayerNotifications];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,31 +50,46 @@ bool chooseMenuIsPlaying = false;
 -(IBAction)playPausePlayback:(id)sender
 {
     UIImage *icon;
-    if (chooseMenuIsPlaying)
+    if ([musicPlayer playbackState] == MPMusicPlaybackStatePaused)
     {
         // Set button image to play icon
         icon = [UIImage imageNamed:PLAY_ICON];
-        chooseMenuIsPlaying = false;
         
-        // SHOULD PLAY CHOSEN SONG HERE
-        //
+        [musicPlayer play];
     }
     else
     {
         // Set button image to pause icon
         icon = [UIImage imageNamed:PAUSE_ICON];
-        chooseMenuIsPlaying = true;
         
-        // SHOULD PAUSE SONG HERE
-        //
+        [musicPlayer pause];
     }
     [playPause setImage:icon forState:UIControlStateNormal];
 }
 
 -(IBAction)stopPlayback:(id)sender
 {
-    // SHOULD STOP PLAYBACK HERE
-    //
+    [musicPlayer stop];
+}
+
+-(IBAction)volumeChanged:(id)sender
+{
+    
+}
+
+-(IBAction)showMediaPicker:(id)sender
+{
+    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeMusic];
+    mediaPicker.delegate = self;
+    mediaPicker.allowsPickingMultipleItems = NO;
+    mediaPicker.prompt = NSLocalizedString(@"Select Your Favorite Song!", nil);
+    [mediaPicker loadView];
+    [[self navigationController] presentViewController:mediaPicker animated:YES completion:nil];
+}
+
+-(void)registerMediaPlayerNotifications
+{
+    
 }
 
 @end

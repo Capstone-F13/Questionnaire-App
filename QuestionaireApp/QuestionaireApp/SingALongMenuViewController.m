@@ -7,6 +7,7 @@
 //
 
 #import "SingALongMenuViewController.h"
+#import "Constants.h"
 
 @interface SingALongMenuViewController ()
 

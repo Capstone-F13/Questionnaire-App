@@ -7,15 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface ChooseSongViewController : UIViewController
+@interface ChooseSongViewController : UIViewController <MPMediaPickerControllerDelegate>
 {
     IBOutlet UIButton *playPause;
-    IBOutlet UIButton *record;
+    IBOutlet UISlider *volumeSlider;
+    IBOutlet UILabel *songTitle;
+    IBOutlet UILabel *songArtist;
+    IBOutlet UILabel *songAlbum;
 }
+
+@property MPMusicPlayerController *musicPlayer;
 
 -(IBAction)cancelRecordNew:(id)sender;
 -(IBAction)playPausePlayback:(id)sender;
 -(IBAction)stopPlayback:(id)sender;
+-(void)registerMediaPlayerNotifications;
+-(IBAction)showMediaPicker:(id)sender;
+-(IBAction)volumeChanged:(id)sender;
 
 @end
