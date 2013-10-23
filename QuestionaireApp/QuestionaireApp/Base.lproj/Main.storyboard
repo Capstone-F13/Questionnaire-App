@@ -384,10 +384,10 @@
             </objects>
             <point key="canvasLocation" x="1546" y="807"/>
         </scene>
-        <!--Record Song View Controller - Sing-a-long-->
+        <!--Record View Controller - Sing-a-long-->
         <scene sceneID="XFI-ck-vhr">
             <objects>
-                <viewController id="weV-0J-tcF" customClass="RecordSongViewController" sceneMemberID="viewController">
+                <viewController id="weV-0J-tcF" customClass="RecordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qZl-y6-R4s"/>
                         <viewControllerLayoutGuide type="bottom" id="g2u-d9-cVy"/>
@@ -406,23 +406,27 @@
                                     <segue destination="5P1-e9-LAw" kind="modal" id="794-H6-p9R"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5N-pc-t3X">
-                                <rect key="frame" x="122" y="295" width="77" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play Recorded Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgl-ns-j1E">
+                                <rect key="frame" x="89" y="273" width="143" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playRecording" destination="weV-0J-tcF" eventType="touchUpInside" id="Bwk-FN-DpQ"/>
-                                    <action selector="startStopPlaying:" destination="weV-0J-tcF" eventType="touchUpInside" id="GhH-Ot-U5s"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last recording" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGf-2k-Oux">
-                                <rect key="frame" x="113" y="333" width="110" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-M0-zox">
+                                <rect key="frame" x="89" y="302" width="65" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="play_button.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd4-Cw-YzX">
+                                <rect key="frame" x="167" y="302" width="65" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="stop_button.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -574,6 +578,11 @@
     </scenes>
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="play_button.png" width="300" height="278"/>
+        <image name="stop_button.png" width="300" height="278"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
