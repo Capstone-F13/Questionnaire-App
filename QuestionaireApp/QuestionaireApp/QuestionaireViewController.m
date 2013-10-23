@@ -17,11 +17,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
-        [self performSegueWithIdentifier:@"MainMenuToAdminSegue" sender:self];
-    }
+
+    // THIS BREAKS THE APP WHEN RUN
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
+//        [self performSegueWithIdentifier:@"MainMenuToAdminSegue" sender:self];
+//    }
 	
     // Do any additional setup after loading the view, typically from a nib.
 }
