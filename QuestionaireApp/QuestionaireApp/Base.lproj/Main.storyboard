@@ -506,6 +506,8 @@
                     <navigationItem key="navigationItem" title="Sing-a-long" id="5xt-Hy-Fuw"/>
                     <connections>
                         <outlet property="playPause" destination="DJw-M0-zox" id="fSl-Bo-o6D"/>
+                        <outlet property="playRecordingLabel" destination="rgl-ns-j1E" id="NB0-Li-kOh"/>
+                        <outlet property="stopButton" destination="fd4-Cw-YzX" id="pKT-Qn-Xm2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVA-3W-oPF" userLabel="First Responder" sceneMemberID="firstResponder"/>
