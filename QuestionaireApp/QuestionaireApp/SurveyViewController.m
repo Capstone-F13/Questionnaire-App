@@ -313,12 +313,11 @@
         [self.navigationController popViewControllerAnimated:YES];
         
         NSLog(@"All operations in batch complete");
-
+        
+        SURVEY_TAKEN = true;
     }];
     
     [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
-    
-    SURVEY_TAKEN = true;
 }
 
 @end
