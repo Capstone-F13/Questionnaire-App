@@ -12,6 +12,7 @@
 #import "Answer.h"
 #import "Question.h"
 #import "Survey.h"
+#import "Constants.h"
 
 @interface SurveyViewController ()
 
@@ -316,6 +317,8 @@
     }];
     
     [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
+    
+    SURVEY_TAKEN = true;
 }
 
 @end
