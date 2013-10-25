@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -31,26 +31,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwT-9k-rt4">
-                                <rect key="frame" x="137" y="231" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwT-9k-rt4">
+                                <rect key="frame" x="80" y="84" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Survey">
+                                <state key="normal" title="Survey" image="survey.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="ve0-S0-JIK" kind="push" id="Byx-Tz-iXR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8V1-yb-3ER">
-                                <rect key="frame" x="120" y="307" width="81" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8V1-yb-3ER">
+                                <rect key="frame" x="80" y="304" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sing-a-long">
+                                <state key="normal" image="ipod.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="weV-0J-tcF" kind="push" id="zvo-vI-Bxi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take Survey" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvO-aw-qp2">
+                                <rect key="frame" x="114" y="252" width="93" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Record Your Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvH-CH-XQz">
+                                <rect key="frame" x="90" y="472" width="140" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -94,42 +107,6 @@
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8A-E9-XGA">
-                                <rect key="frame" x="247" y="412" width="73" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="YjI-qM-Gfd"/>
-                                </constraints>
-                                <state key="normal" title=">">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextQuestion:" destination="ve0-S0-JIK" eventType="touchUpInside" id="Y3j-Lj-Ksd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyp-Mt-mzZ">
-                                <rect key="frame" x="0.0" y="412" width="73" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="NCz-pM-USY"/>
-                                </constraints>
-                                <state key="normal" title="&lt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="previousQuestion:" destination="ve0-S0-JIK" eventType="touchUpInside" id="qyP-RD-ezZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmm-aQ-Dai">
-                                <rect key="frame" x="76" y="450" width="169" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="169" id="y2c-43-xY4"/>
-                                </constraints>
-                                <state key="normal" title="Submit Survey">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submitSurvey:" destination="ve0-S0-JIK" eventType="touchUpInside" id="yU9-Oc-x2r"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hJ-eI-1Bg">
                                 <rect key="frame" x="130" y="245" width="62" height="30"/>
                                 <constraints>
@@ -210,26 +187,41 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMT-0o-OhT">
+                                <rect key="frame" x="185" y="432" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextQuestion:" destination="ve0-S0-JIK" eventType="touchUpInside" id="KPQ-6r-9al"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfZ-71-d0O">
+                                <rect key="frame" x="79" y="432" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Previous">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="previousQuestion:" destination="ve0-S0-JIK" eventType="touchUpInside" id="Wzg-mB-lkM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Zwg-Ax-Z7t" secondAttribute="centerY" constant="71" id="7qQ-Xx-c1C"/>
-                            <constraint firstAttribute="centerX" secondItem="mmm-aQ-Dai" secondAttribute="centerX" id="8Yp-xv-fqq"/>
                             <constraint firstAttribute="centerX" secondItem="kiK-E7-Pox" secondAttribute="centerX" constant="-1" id="EA6-EB-bnN"/>
                             <constraint firstAttribute="centerX" secondItem="Zwg-Ax-Z7t" secondAttribute="centerX" id="Emv-71-1Ff"/>
                             <constraint firstAttribute="centerY" secondItem="q6u-GZ-11J" secondAttribute="centerY" constant="-25" id="FxR-yP-TMB"/>
-                            <constraint firstAttribute="centerX" secondItem="A8A-E9-XGA" secondAttribute="centerX" constant="-123.5" id="GoQ-77-C1h"/>
                             <constraint firstAttribute="centerX" secondItem="3hJ-eI-1Bg" secondAttribute="centerX" constant="-1" id="HFC-lM-yNy"/>
                             <constraint firstAttribute="centerX" secondItem="cxR-ZX-6mm" secondAttribute="centerX" id="IUV-8T-Ggh"/>
                             <constraint firstAttribute="centerX" secondItem="WX8-Ey-baP" secondAttribute="centerX" constant="-82.5" id="Ifl-DP-4a6"/>
-                            <constraint firstAttribute="centerX" secondItem="Nyp-Mt-mzZ" secondAttribute="centerX" constant="123.5" id="M7j-Pr-YPI"/>
-                            <constraint firstAttribute="centerY" secondItem="A8A-E9-XGA" secondAttribute="centerY" constant="-143" id="Mik-BR-dn7"/>
                             <constraint firstAttribute="centerY" secondItem="3hJ-eI-1Bg" secondAttribute="centerY" constant="24" id="NmZ-Ko-oLq"/>
                             <constraint firstAttribute="centerX" secondItem="ws2-Jo-O9L" secondAttribute="centerX" constant="-1" id="QYp-0C-kcP"/>
                             <constraint firstItem="cxR-ZX-6mm" firstAttribute="leading" secondItem="LDs-eY-PNR" secondAttribute="leading" id="Qey-ud-FDl"/>
                             <constraint firstAttribute="centerY" secondItem="bDB-ob-BSb" secondAttribute="centerY" constant="26" id="R75-e2-vyb"/>
                             <constraint firstAttribute="centerX" secondItem="q6u-GZ-11J" secondAttribute="centerX" constant="-82.5" id="YMg-E3-rs0"/>
-                            <constraint firstAttribute="centerY" secondItem="mmm-aQ-Dai" secondAttribute="centerY" constant="-181" id="Yjt-xw-8El"/>
                             <constraint firstAttribute="centerX" secondItem="goG-GV-cDT" secondAttribute="centerX" constant="-82.5" id="asO-JE-ste"/>
                             <constraint firstAttribute="centerY" secondItem="WX8-Ey-baP" secondAttribute="centerY" constant="-76" id="eek-hY-vmb"/>
                             <constraint firstAttribute="centerX" secondItem="LDs-eY-PNR" secondAttribute="centerX" id="gmE-yd-Bt9"/>
@@ -239,13 +231,18 @@
                             <constraint firstAttribute="centerY" secondItem="kiK-E7-Pox" secondAttribute="centerY" constant="-27" id="qOw-HW-Ly4"/>
                             <constraint firstAttribute="centerY" secondItem="cxR-ZX-6mm" secondAttribute="centerY" constant="26.5" id="wcl-tc-vKd"/>
                             <constraint firstAttribute="centerY" secondItem="LDs-eY-PNR" secondAttribute="centerY" constant="145" id="x5g-YW-GfC"/>
-                            <constraint firstAttribute="centerY" secondItem="Nyp-Mt-mzZ" secondAttribute="centerY" constant="-143" id="xhW-ni-uFU"/>
                         </constraints>
                         <connections>
                             <action selector="backgroundTapped:" destination="ve0-S0-JIK" eventType="touchUpInside" id="YaQ-uQ-aAA"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="PP8-uH-haH"/>
+                    <navigationItem key="navigationItem" id="PP8-uH-haH">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Na4-gC-vk3">
+                            <connections>
+                                <action selector="submitSurvey:" destination="ve0-S0-JIK" id="hBF-YE-8mV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="answerTextField" destination="cxR-ZX-6mm" id="6b4-of-XrR"/>
                         <outlet property="buttonChoice1" destination="Zwg-Ax-Z7t" id="CKe-Ep-kNU"/>
@@ -445,6 +442,7 @@
                     <connections>
                         <outlet property="playPause" destination="vh3-9p-sA0" id="P55-98-d9t"/>
                         <outlet property="record" destination="ExR-Z8-qoX" id="suA-ad-UgB"/>
+                        <outlet property="stop" destination="vbj-Fc-2tI" id="Ei0-OU-8pY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIW-c9-SLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,10 +654,13 @@
     </scenes>
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
+        <image name="ipod.png" width="256" height="256"/>
         <image name="play_button.png" width="299" height="285"/>
         <image name="record_button.png" width="256" height="256"/>
         <image name="stop_button.png" width="300" height="300"/>
+        <image name="survey.png" width="256" height="256"/>
     </resources>
+    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
