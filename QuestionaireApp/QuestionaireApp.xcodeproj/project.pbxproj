@@ -22,6 +22,8 @@
 		11AC099B180E73570095403B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 66385D5B18030F91002AE3D0 /* User.m */; };
 		11AC099C180E73570095403B /* Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63111800B7710038A7E6 /* Json.m */; };
 		11AC099D180E73570095403B /* JsonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63131800B7710038A7E6 /* JsonResponse.m */; };
+		4A5009231819DFA3006C2847 /* ipod.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5009211819DFA3006C2847 /* ipod.png */; };
+		4A5009241819DFA3006C2847 /* survey.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5009221819DFA3006C2847 /* survey.png */; };
 		4A5C133A17FE270500939168 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C133917FE270500939168 /* AdminViewController.m */; };
 		669E631C1800B7710038A7E6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63161800B7710038A7E6 /* Question.m */; };
 		669E631D1800B7710038A7E6 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63181800B7710038A7E6 /* Survey.m */; };
@@ -93,6 +95,8 @@
 		1190E6551814F7AB00461AD7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		11AC0998180E345E0095403B /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		11AC0999180E345E0095403B /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
+		4A5009211819DFA3006C2847 /* ipod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipod.png; sourceTree = "<group>"; };
+		4A5009221819DFA3006C2847 /* survey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = survey.png; sourceTree = "<group>"; };
 		4A5C133817FE270500939168 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
 		4A5C133917FE270500939168 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 		66385D5A18030F91002AE3D0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 		8D515A1B17FCE380002DA54C /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				4A5009211819DFA3006C2847 /* ipod.png */,
+				4A5009221819DFA3006C2847 /* survey.png */,
 				8D6162BD181889880036233C /* currently_recording_button.png */,
 				8D6162BE181889880036233C /* pause_button.png */,
 				8D6162BF181889880036233C /* play_button.png */,
@@ -433,7 +439,9 @@
 				8D6162C5181889880036233C /* record_button.png in Resources */,
 				8D6162C6181889880036233C /* stop_button.png in Resources */,
 				AD7B234017FC890200FF0E30 /* Images.xcassets in Resources */,
+				4A5009231819DFA3006C2847 /* ipod.png in Resources */,
 				8D515A1A17FCE374002DA54C /* check_mark.png in Resources */,
+				4A5009241819DFA3006C2847 /* survey.png in Resources */,
 				AD68EE2C181576B100203359 /* MyLaunchImageR4.png in Resources */,
 				AD68EE2B181576B100203359 /* MyLaunchImage2x.png in Resources */,
 				AD7B233217FC890200FF0E30 /* InfoPlist.strings in Resources */,

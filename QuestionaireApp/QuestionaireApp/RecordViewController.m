@@ -13,9 +13,27 @@
 @end
 
 @implementation RecordViewController
+@synthesize audioPlayer;
 
 bool RecordMenuIsPlaying = false;
 bool RecordMenuIsRecording = false;
+
+
+- (void)checkIfFileExists
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/recordTest.caf", [[NSBundle mainBundle] resourcePath]]]) {
+        playPause.hidden = true;
+        stop.hidden = true;
+    }
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    NSLog(@"Here");
+    UIImage *icon;
+    icon = [UIImage imageNamed:PLAY_ICON];
+    [playPause setImage:icon forState:UIControlStateNormal];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +48,10 @@ bool RecordMenuIsRecording = false;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self checkIfFileExists];
+    self.audioPlayer.delegate = self;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -49,6 +70,7 @@ bool RecordMenuIsRecording = false;
         
         // SHOULD PLAY PRE-RECORDED SONG HERE
         //
+        
     }
     else
     {
@@ -56,10 +78,25 @@ bool RecordMenuIsRecording = false;
         icon = [UIImage imageNamed:PAUSE_ICON];
         RecordMenuIsPlaying = true;
         
+        [self playRecording];
         // SHOULD PAUSE SONG HERE
         //
     }
     [playPause setImage:icon forState:UIControlStateNormal];
+}
+
+-(void)playRecording{
+    NSLog(@"playRecording");
+    // Init audio with playback capability
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordTest.caf", [[NSBundle mainBundle] resourcePath]]];
+    NSError *error;
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    audioPlayer.numberOfLoops = 0;
+    [audioPlayer play];
+    NSLog(@"playing");
 }
 
 -(IBAction)startStopRecording:(id)sender
@@ -71,8 +108,8 @@ bool RecordMenuIsRecording = false;
         icon = [UIImage imageNamed:RECORD_ICON];
         RecordMenuIsRecording = false;
         
-        // SHOULD STOP RECORDING HERE
-        //
+        [self stopRecording];
+        [self checkIfFileExists];
     }
     else
     {
@@ -85,19 +122,30 @@ bool RecordMenuIsRecording = false;
     [record setImage:icon forState:UIControlStateNormal];
 }
 
+-(void)stopRecording
+{
+    NSLog(@"stopRecording");
+    [audioRecorder stop];
+    NSLog(@"stopped");
+}
+
 -(void)startRecording
 {
+    NSLog(@"startRecording");
+    audioRecorder = nil;
+    
+    // Init audio with record capability
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
     
     NSMutableDictionary *recordSettings = [[NSMutableDictionary alloc] initWithCapacity:10];
-    
     [recordSettings setObject:[NSNumber numberWithInt: kAudioFormatLinearPCM] forKey: AVFormatIDKey];
     [recordSettings setObject:[NSNumber numberWithFloat:44100.0] forKey: AVSampleRateKey];
     [recordSettings setObject:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
     [recordSettings setObject:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
     [recordSettings setObject:[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
     [recordSettings setObject:[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
+
     
     NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordTest.caf", [[NSBundle mainBundle] resourcePath]]];
     
@@ -108,8 +156,9 @@ bool RecordMenuIsRecording = false;
     if ([audioRecorder prepareToRecord] == YES){
         [audioRecorder record];
     }else {
-        int errorCode = CFSwapInt32HostToBig ([error code]);
-        NSLog(@"Error: %@ [%4.4s])" , [error localizedDescription], (char*)&errorCode);
+        int errorCode = CFSwapInt32HostToBig ([error code]); 
+        NSLog(@"Error: %@ [%4.4s])" , [error localizedDescription], (char*)&errorCode); 
+        
     }
     NSLog(@"recording");
 }
@@ -118,6 +167,9 @@ bool RecordMenuIsRecording = false;
 {
     // SHOULD STOP PLAYBACK HERE
     //
+    NSLog(@"stopPlaying");
+    [audioPlayer stop];
+    NSLog(@"stopped");
 }
 
 -(IBAction)finishRecordNew:(id)sender

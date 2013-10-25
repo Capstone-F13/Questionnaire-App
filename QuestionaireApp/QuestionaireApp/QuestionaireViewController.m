@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.0/255.0 green:51.0/255.0 blue:152.0/255.0 alpha:1.0]];
     // THIS BREAKS THE APP WHEN RUN
 //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {

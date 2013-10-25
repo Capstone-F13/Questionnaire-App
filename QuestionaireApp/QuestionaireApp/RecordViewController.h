@@ -10,16 +10,16 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Constants.h"
 
-AVAudioPlayer *audioPlayer;
 AVAudioRecorder *audioRecorder;
 int recordEncoding;
 
-@interface RecordViewController : UIViewController
+@interface RecordViewController : UIViewController <AVAudioPlayerDelegate>
 {
     IBOutlet UIButton *playPause;
     IBOutlet UIButton *record;
+    IBOutlet UIButton *stop;
 }
-
+@property(nonatomic, retain) AVAudioPlayer *audioPlayer;
 -(IBAction)playPausePlayback:(id)sender;
 -(IBAction)stopPlayback:(id)sender;
 -(IBAction)startStopRecording:(id)sender;
