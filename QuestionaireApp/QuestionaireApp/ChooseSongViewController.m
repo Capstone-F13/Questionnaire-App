@@ -50,19 +50,19 @@
 -(IBAction)playPausePlayback:(id)sender
 {
     UIImage *icon;
-    if ([musicPlayer playbackState] == MPMusicPlaybackStatePaused)
-    {
-        // Set button image to play icon
-        icon = [UIImage imageNamed:PLAY_ICON];
-        
-        [musicPlayer play];
-    }
-    else
+    if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying)
     {
         // Set button image to pause icon
         icon = [UIImage imageNamed:PAUSE_ICON];
         
         [musicPlayer pause];
+    }
+    else
+    {
+        // Set button image to play icon
+        icon = [UIImage imageNamed:PLAY_ICON];
+        
+        [musicPlayer play];
     }
     [playPause setImage:icon forState:UIControlStateNormal];
 }

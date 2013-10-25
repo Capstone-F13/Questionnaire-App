@@ -71,7 +71,8 @@ bool RecordMenuIsRecording = false;
         icon = [UIImage imageNamed:RECORD_ICON];
         RecordMenuIsRecording = false;
         
-        [self startRecording];
+        // SHOULD STOP RECORDING HERE
+        //
     }
     else
     {
@@ -79,8 +80,7 @@ bool RecordMenuIsRecording = false;
         icon = [UIImage imageNamed:CURRENTLY_RECORDING_ICON];
         RecordMenuIsRecording = true;
         
-        // SHOULD STOP RECORDING SONG HERE
-        //
+        [self startRecording];
     }
     [record setImage:icon forState:UIControlStateNormal];
 }
