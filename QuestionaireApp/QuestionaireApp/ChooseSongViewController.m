@@ -87,9 +87,89 @@
     [[self navigationController] presentViewController:mediaPicker animated:YES completion:nil];
 }
 
--(void)registerMediaPlayerNotifications
+- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker
 {
+	[self dismissViewControllerAnimated:true completion:nil];
+}
+
+- (void) registerMediaPlayerNotifications
+{
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
+	[notificationCenter addObserver: self
+						   selector: @selector (handle_NowPlayingItemChanged:)
+							   name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+							 object: musicPlayer];
+	
+	[notificationCenter addObserver: self
+						   selector: @selector (handle_PlaybackStateChanged:)
+							   name: MPMusicPlayerControllerPlaybackStateDidChangeNotification
+							 object: musicPlayer];
+    
+    [notificationCenter addObserver: self
+						   selector: @selector (handle_VolumeChanged:)
+							   name: MPMusicPlayerControllerVolumeDidChangeNotification
+							 object: musicPlayer];
+    
+	[musicPlayer beginGeneratingPlaybackNotifications];
+}
+
+- (void) handle_NowPlayingItemChanged: (id) notification
+{
+   	MPMediaItem *currentItem = [musicPlayer nowPlayingItem];
+	UIImage *artworkImage = [UIImage imageNamed:@"noArtworkImage.png"];
+	MPMediaItemArtwork *artwork = [currentItem valueForProperty: MPMediaItemPropertyArtwork];
+	
+	if (artwork) {
+		artworkImage = [artwork imageWithSize: CGSizeMake (200, 200)];
+	}
+	
+    //[artworkImageView setImage:artworkImage];
+    
+    NSString *titleString = [currentItem valueForProperty:MPMediaItemPropertyTitle];
+    if (titleString) {
+        songTitle.text = [NSString stringWithFormat:@"Title: %@",titleString];
+    } else {
+        songTitle.text = @"Title: Unknown title";
+    }
+    
+    NSString *artistString = [currentItem valueForProperty:MPMediaItemPropertyArtist];
+    if (artistString) {
+        songArtist.text = [NSString stringWithFormat:@"Artist: %@",artistString];
+    } else {
+        songArtist.text = @"Artist: Unknown artist";
+    }
+    
+    NSString *albumString = [currentItem valueForProperty:MPMediaItemPropertyAlbumTitle];
+    if (albumString) {
+        songAlbum.text = [NSString stringWithFormat:@"Album: %@",albumString];
+    } else {
+        songAlbum.text = @"Album: Unknown album";
+    }
+    
     
 }
+
+
+- (void) handle_PlaybackStateChanged: (id) notification
+{
+    MPMusicPlaybackState playbackState = [musicPlayer playbackState];
+	
+	if (playbackState == MPMusicPlaybackStatePaused) {
+        [playPause setImage:[UIImage imageNamed:@"play_button.png"] forState:UIControlStateNormal];
+        
+        
+	} else if (playbackState == MPMusicPlaybackStatePlaying) {
+        [playPause setImage:[UIImage imageNamed:@"pause_button.png"] forState:UIControlStateNormal];
+        
+	} else if (playbackState == MPMusicPlaybackStateStopped) {
+        
+        [playPause setImage:[UIImage imageNamed:@"play_button.png"] forState:UIControlStateNormal];
+		[musicPlayer stop];
+        
+	}
+    
+}
+
 
 @end
