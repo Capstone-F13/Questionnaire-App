@@ -35,7 +35,13 @@
     
     if (self = [super initWithCoder:aDecoder]) {
         self.manager = [AFHTTPRequestOperationManager manager];
-        [self.manager GET:@"http://capstone-f13.herokuapp.com/api/v1/Questions/?format=json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *autoToken = [defaults stringForKey:@"autoToken"];
+        NSString *patientID = [defaults stringForKey:@"patientID"];
+        NSString *questionsURL = [NSString stringWithFormat:@"http://capstone-f13.herokuapp.com/api/v1/questions/%@/%@", autoToken, patientID];
+        
+        [self.manager GET:questionsURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             self.survey = [Survey surveyWithJSON:responseObject];
             

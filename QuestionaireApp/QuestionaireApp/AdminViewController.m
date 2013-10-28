@@ -74,8 +74,8 @@
     NSString *usernameString = [adminUsername text];
     NSString *passwordString = [password text];
     
-    NSDictionary *parameters = @{@"client_id" : @"b2ad60956a2ef2ff6eb8",
-                                 @"client_secret" : @"d228f55610c14fe620e1e0bea9708e22988d0f1d",
+    NSDictionary *parameters = @{@"client_id" : @"36bd6a8abbd73b3f8eff",
+                                 @"client_secret" : @"743cd36ff8b23b189d28f9a028e410cad62bd05f",
                                  @"grant_type" : @"password",
                                  @"username" : usernameString,
                                  @"password" : passwordString,
@@ -96,15 +96,11 @@
                           NSLog(@"JSON : %@",responseObject);
             
                           NSArray *patients = (NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"];
-                          //NSString *patientID = [(NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"] objectAtIndex:1];
 
                           NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                           [defaults setObject:token forKey:@"autoToken"];
-                          //[defaults setObject:patientID forKey:@"patientID"];
                           [defaults setObject:patients forKey:@"patients"];
                           [defaults synchronize];
-                          
-                          //[self.navigationController popViewControllerAnimated:YES];
             
                       } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
 

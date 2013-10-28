@@ -57,7 +57,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"patientCell"];
-    NSLog(@"Here");
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"patientCell"];
     }
@@ -70,15 +70,16 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *URLString = @"http://capstone-f13.herokuapp.com/oauth2/access_token";
+    NSString *patientIDURL = @"http://capstone-f13.herokuapp.com/patient/login";
     NSString *token = [defaults stringForKey:@"autoToken"];
     NSString *patientId = [self.patients objectAtIndex:indexPath.row];
-    
-    NSDictionary *parameters = @{@"token" : token,
+ 
+    NSDictionary *parameters = @{@"access_token" : token,
                                  @"patient_id" : patientId
                                  };
     
-    AFHTTPRequestOperation *operation = [self.manager POST:URLString
+    
+    AFHTTPRequestOperation *operation = [self.manager POST:patientIDURL
                                                 parameters:parameters
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                        
@@ -88,7 +89,8 @@
 
         } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
            
-           NSLog(@"Error: %@", localError);
+            NSLog(@"Error: %@", localError);
+            NSLog(@"%@", operation);
            
         }];
     
