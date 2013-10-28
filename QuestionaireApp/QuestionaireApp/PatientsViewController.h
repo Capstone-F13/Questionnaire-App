@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PatientsViewController : UIViewController
+@interface PatientsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) IBOutlet UITableView *patientTable;
 
 @end
