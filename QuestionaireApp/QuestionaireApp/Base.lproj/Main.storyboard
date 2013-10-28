@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -614,7 +614,13 @@
                             <action selector="backgroundTapped:" destination="vef-UZ-eeF" eventType="touchUpInside" id="MfC-QK-pPU"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Administrator" id="niL-PV-8ZB"/>
+                    <navigationItem key="navigationItem" title="Administrator" id="niL-PV-8ZB">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="QFJ-Rs-tQd">
+                            <connections>
+                                <action selector="adminCancel:" destination="vef-UZ-eeF" id="7B5-d6-Dbh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="adminUsername" destination="TQt-iZ-3Mr" id="9vX-8N-ECh"/>
                         <outlet property="error" destination="391-uW-9xr" id="Bpq-rt-giB"/>
@@ -654,9 +660,16 @@
     </scenes>
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
         <image name="ipod.png" width="256" height="256"/>
         <image name="play_button.png" width="299" height="285"/>
+        <image name="play_button.png" width="299" height="285"/>
+        <image name="play_button.png" width="299" height="285"/>
         <image name="record_button.png" width="256" height="256"/>
+        <image name="stop_button.png" width="300" height="300"/>
+        <image name="stop_button.png" width="300" height="300"/>
         <image name="stop_button.png" width="300" height="300"/>
         <image name="survey.png" width="256" height="256"/>
     </resources>

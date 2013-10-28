@@ -17,6 +17,7 @@
 
 - (IBAction)submit:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
+- (IBAction)adminCancel:(id)sender;
 - (Boolean)checkPasswordsNotNull:(NSString *)password1;
 - (void)setErrorMessage:(NSString *)message;
 

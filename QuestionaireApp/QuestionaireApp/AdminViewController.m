@@ -127,4 +127,9 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)adminCancel:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
