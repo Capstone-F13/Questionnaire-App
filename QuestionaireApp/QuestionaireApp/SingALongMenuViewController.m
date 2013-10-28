@@ -7,6 +7,7 @@
 //
 
 #import "SingALongMenuViewController.h"
+#import "Constants.h"
 
 @interface SingALongMenuViewController ()
 
@@ -29,7 +30,19 @@ bool SingALongMenuIsPlaying = false;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    if (SURVEY_TAKEN)
+    {
+        playPause.hidden = false;
+        stopButton.hidden = false;
+        playRecordingLabel.hidden = false;
+    }
+    else
+    {
+        playPause.hidden = true;
+        stopButton.hidden = true;
+        playRecordingLabel.hidden = true;
+    }
 }
 
 - (void)didReceiveMemoryWarning

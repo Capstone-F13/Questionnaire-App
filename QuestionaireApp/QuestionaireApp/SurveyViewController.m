@@ -12,6 +12,7 @@
 #import "Answer.h"
 #import "Question.h"
 #import "Survey.h"
+#import "Constants.h"
 
 @interface SurveyViewController ()
 
@@ -312,10 +313,12 @@
         [self.navigationController popViewControllerAnimated:YES];
         
         NSLog(@"All operations in batch complete");
-
+        
+        SURVEY_TAKEN = true;
     }];
     
     [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
 }
+
 
 @end

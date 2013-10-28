@@ -15,5 +15,6 @@ extern NSString *const PLAY_ICON;
 extern NSString *const PAUSE_ICON;
 extern NSString *const RECORD_ICON;
 extern NSString *const CURRENTLY_RECORDING_ICON;
+extern bool *SURVEY_TAKEN;
 
 @end

@@ -12,6 +12,8 @@
 @interface SingALongMenuViewController : UIViewController
 {
     IBOutlet UIButton *playPause;
+    IBOutlet UIButton *stopButton;
+    IBOutlet UILabel *playRecordingLabel;
 }
 
 -(IBAction)playPausePlayback:(id)sender;

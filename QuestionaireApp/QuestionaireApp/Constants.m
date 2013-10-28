@@ -15,5 +15,6 @@ NSString *const PLAY_ICON = @"play_button.png";
 NSString *const PAUSE_ICON = @"pause_button.png";
 NSString *const RECORD_ICON = @"record_button.png";
 NSString *const CURRENTLY_RECORDING_ICON = @"currently_recording_button.png";
+bool *SURVEY_TAKEN = false;
 
 @end
