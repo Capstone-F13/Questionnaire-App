@@ -10,7 +10,6 @@
 
 @interface AdminViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UITextField *patientId;
 @property (nonatomic, strong) IBOutlet UITextField *adminUsername;
 @property (nonatomic, strong) IBOutlet UITextField *password;
 @property (nonatomic, weak) IBOutlet UILabel *error;

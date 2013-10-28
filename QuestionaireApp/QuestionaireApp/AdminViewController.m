@@ -17,7 +17,7 @@
 
 @implementation AdminViewController
 
-@synthesize adminUsername, password, patientId, error;
+@synthesize adminUsername, password, error;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -82,34 +82,41 @@
                                  @"scope" : @"write"
                                  };
     
-    AFHTTPRequestOperation *operation = [self.manager POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    AFHTTPRequestOperation *operation = [self.manager POST:URLString
+                                                parameters:parameters
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-        NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
+            NSLog(@"%@", responseObject);
+            NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
         
-        [self.manager GET:[NSString stringWithFormat:@"http://capstone-f13.herokuapp.com/patients/%@",token] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self.manager GET:[NSString stringWithFormat:@"http://capstone-f13.herokuapp.com/patients/%@", token]
+                   parameters:nil
+                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-            NSLog(@"JSON : %@",responseObject);
+                          NSLog(@"JSON : %@",responseObject);
             
-            NSString *patientID = [(NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"] objectAtIndex:1];
+                          NSArray *patients = (NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"];
+                          //NSString *patientID = [(NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"] objectAtIndex:1];
 
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:token forKey:@"autoToken"];
-            [defaults setObject:patientID forKey:@"patientID"];
-            [defaults synchronize];
+                          NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                          [defaults setObject:token forKey:@"autoToken"];
+                          //[defaults setObject:patientID forKey:@"patientID"];
+                          [defaults setObject:patients forKey:@"patients"];
+                          [defaults synchronize];
+                          
+                          //[self.navigationController popViewControllerAnimated:YES];
             
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+                      } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
 
-            NSLog(@"Error: %@", localError);
+                          NSLog(@"Error: %@", localError);
 
-        }];
+                      }];
 
-    } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+            } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
         
-        NSLog(@"Error: %@", localError);
+                NSLog(@"Error: %@", localError);
 
-    }];
+            }];
     
     [operation start];
 }
