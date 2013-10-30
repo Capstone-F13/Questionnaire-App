@@ -35,8 +35,7 @@ bool SingALongMenuIsPlaying = false;
 {
     [super viewDidLoad];
 	
-    // REPLACE
-    if (/*SURVEY_TAKEN*/true)
+    if (SURVEY_TAKEN)
     {
         playPause.hidden = false;
         stopButton.hidden = false;
