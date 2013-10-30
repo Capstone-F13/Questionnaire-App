@@ -23,6 +23,13 @@
 
 @implementation SurveyViewController
 
+bool hasRegistered = false;
+bool isRepositioned = false;
+CGRect button1OriginalPosition;
+CGRect image1OriginalPosition;
+CGRect button3OriginalPosition;
+CGRect image3OriginalPosition;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -60,6 +67,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Register for device rotation notifications
+    if (!hasRegistered)
+    {
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(orientationChanged:)
+         name:UIDeviceOrientationDidChangeNotification
+         object:[UIDevice currentDevice]];
+        hasRegistered = true;
+    }
+    
+    // Save original positions of objects
+    button1OriginalPosition = buttonChoice1.frame;
+    image1OriginalPosition = imageChoice1.frame;
+    button3OriginalPosition = buttonChoice3.frame;
+    image3OriginalPosition = imageChoice3.frame;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,16 +92,57 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    // Adjusts buttons 1 & 3 and their respective images as necessary
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationPortrait:
+            buttonChoice1.frame = button1OriginalPosition;
+            imageChoice1.frame = image1OriginalPosition;
+            buttonChoice3.frame = button3OriginalPosition;
+            imageChoice3.frame = image3OriginalPosition;
+            isRepositioned = false;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            if (!isRepositioned)
+            {
+                buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
+                imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
+                buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
+                imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
+                isRepositioned = true;
+            }
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            if (!isRepositioned)
+            {
+                buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
+                imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
+                buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
+                imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
+                isRepositioned = true;
+            }
+            break;
+            
+        default:
+            break;
+    };
+}
+
 - (void)showAppropriateFieldsForQuestion:(NSUInteger)num
 {
     Question *question = self.survey.questions[num];
     
     // Question type is multiple choice
-    if (question.isMultipleChoice)
+    // REPLACE
+    //if (question.isMultipleChoice)
+    if (true)
     {
         answerTextField.hidden = true;
-        
-        switch (question.answers.count) {
+        // REPLACE
+        switch (/*question.answers.count*/4) {
             case 1: {
                 buttonChoice1.hidden = false;
                 break;
@@ -156,31 +221,33 @@
         
         switch (question.answers.count) {
             case 1: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
                 break;
             }
             case 2: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
                 break;
             }
             case 3: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
-                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
+                [buttonChoice3 setTitle:[question.answers[2] text] forState:UIControlStateNormal];
                 break;
             }
             case 4: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
-                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
-                [[buttonChoice4 titleLabel] setText:[question.answers[3] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
+                [buttonChoice3 setTitle:[question.answers[2] text] forState:UIControlStateNormal];
+                [buttonChoice4 setTitle:[question.answers[3] text] forState:UIControlStateNormal];
                 break;
             }
         }
     }
 
-    [currentQuestionText setText:question.text];
+    //[currentQuestionText setText:question.text];
+    // REPLACE
+    [currentQuestionText setText:@"THIS IS THE BEST TEXT EVER OF ALL TIME"];
     
     // Display the appropriate fields for the question
     [self hideAllSelectIndicators];
