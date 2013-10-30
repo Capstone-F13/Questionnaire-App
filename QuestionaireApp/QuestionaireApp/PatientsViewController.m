@@ -36,11 +36,6 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         self.patients = [defaults arrayForKey:@"patients"];
         
-        NSLog(@"%@ %@", [self.patients objectAtIndex:0], [self.patients objectAtIndex:1]);
-        
-        //[[self patientTable] initWithFrame:CGRectMake(100, 100, 200, 200) style:UITableViewStyleGrouped];
-        //[[self patientTable] reloadData];
-        
     }
     return self;
 }
@@ -72,26 +67,37 @@
     
     NSString *patientIDURL = @"http://capstone-f13.herokuapp.com/patient/login";
     NSString *token = [defaults stringForKey:@"autoToken"];
-    NSString *patientId = [self.patients objectAtIndex:indexPath.row];
+    NSString *patientId = [NSString stringWithFormat:@"%@", [self.patients objectAtIndex:indexPath.row] ];
  
     NSDictionary *parameters = @{@"access_token" : token,
                                  @"patient_id" : patientId
                                  };
     
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST"
+                                                                                 URLString:patientIDURL
+                                                                                parameters:parameters];
     
-    AFHTTPRequestOperation *operation = [self.manager POST:patientIDURL
-                                                parameters:parameters
+    AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                                       
-            NSLog(@"%@", responseObject);
-            [defaults setObject:patientId forKey:@"patientID"];
-            [defaults synchronize];
-
+            
+            // Success
+            if([responseObject valueForKey:@"success"] != nil){
+                
+                NSLog(@"%@", responseObject);
+                [defaults setObject:patientId forKey:@"patientID"];
+                [defaults synchronize];
+                
+            }
+            
+            // Error
+            else {
+                NSLog(@"Error: %@", [responseObject valueForKey:@"error"]);
+            }
+        
         } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
-           
+            
             NSLog(@"Error: %@", localError);
-            NSLog(@"%@", operation);
-           
+            
         }];
     
     [operation start];
