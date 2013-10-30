@@ -136,13 +136,10 @@ CGRect image3OriginalPosition;
     Question *question = self.survey.questions[num];
     
     // Question type is multiple choice
-    // REPLACE
-    //if (question.isMultipleChoice)
-    if (true)
+    if (question.isMultipleChoice)
     {
         answerTextField.hidden = true;
-        // REPLACE
-        switch (/*question.answers.count*/4) {
+        switch (question.answers.count) {
             case 1: {
                 buttonChoice1.hidden = false;
                 break;
@@ -245,9 +242,7 @@ CGRect image3OriginalPosition;
         }
     }
 
-    //[currentQuestionText setText:question.text];
-    // REPLACE
-    [currentQuestionText setText:@"THIS IS THE BEST TEXT EVER OF ALL TIME"];
+    [currentQuestionText setText:question.text];
     
     // Display the appropriate fields for the question
     [self hideAllSelectIndicators];
