@@ -27,6 +27,13 @@
 		4A5C133A17FE270500939168 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C133917FE270500939168 /* AdminViewController.m */; };
 		669E631C1800B7710038A7E6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63161800B7710038A7E6 /* Question.m */; };
 		669E631D1800B7710038A7E6 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63181800B7710038A7E6 /* Survey.m */; };
+		83CBBF48182166710066B3B0 /* SUNLogo29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF45182166710066B3B0 /* SUNLogo29pt.png */; };
+		83CBBF49182166710066B3B0 /* SUNLogo40pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF46182166710066B3B0 /* SUNLogo40pt.png */; };
+		83CBBF4A182166710066B3B0 /* SUNLogo60pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF47182166710066B3B0 /* SUNLogo60pt.png */; };
+		83CBBF4D182183960066B3B0 /* SplashScreen2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF4B182183960066B3B0 /* SplashScreen2x.png */; };
+		83CBBF4E182183960066B3B0 /* SplashScreenR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF4C182183960066B3B0 /* SplashScreenR4.png */; };
+		83CBBF511821842B0066B3B0 /* MyLaunchImage2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF4F1821842B0066B3B0 /* MyLaunchImage2x.png */; };
+		83CBBF521821842B0066B3B0 /* MyLaunchImageR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF501821842B0066B3B0 /* MyLaunchImageR4.png */; };
 		8D515A1A17FCE374002DA54C /* check_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D515A1917FCE374002DA54C /* check_mark.png */; };
 		8D515A1E17FCE3F9002DA54C /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */; };
 		8D6162C2181889880036233C /* currently_recording_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D6162BD181889880036233C /* currently_recording_button.png */; };
@@ -110,6 +117,13 @@
 		669E63171800B7710038A7E6 /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		669E63181800B7710038A7E6 /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		669E63191800B7710038A7E6 /* SurveyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyConstants.h; sourceTree = "<group>"; };
+		83CBBF45182166710066B3B0 /* SUNLogo29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SUNLogo29pt.png; path = ../SUNLogo29pt.png; sourceTree = "<group>"; };
+		83CBBF46182166710066B3B0 /* SUNLogo40pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SUNLogo40pt.png; path = ../SUNLogo40pt.png; sourceTree = "<group>"; };
+		83CBBF47182166710066B3B0 /* SUNLogo60pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SUNLogo60pt.png; path = ../SUNLogo60pt.png; sourceTree = "<group>"; };
+		83CBBF4B182183960066B3B0 /* SplashScreen2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreen2x.png; path = ../SplashScreen2x.png; sourceTree = "<group>"; };
+		83CBBF4C182183960066B3B0 /* SplashScreenR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SplashScreenR4.png; path = ../SplashScreenR4.png; sourceTree = "<group>"; };
+		83CBBF4F1821842B0066B3B0 /* MyLaunchImage2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MyLaunchImage2x.png; path = ../MyLaunchImage2x.png; sourceTree = "<group>"; };
+		83CBBF501821842B0066B3B0 /* MyLaunchImageR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MyLaunchImageR4.png; path = ../MyLaunchImageR4.png; sourceTree = "<group>"; };
 		8D515A1917FCE374002DA54C /* check_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check_mark.png; path = AppImages/check_mark.png; sourceTree = "<group>"; };
 		8D515A1C17FCE3F9002DA54C /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
 		8D515A1D17FCE3F9002DA54C /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
@@ -243,15 +257,22 @@
 		8D515A1B17FCE380002DA54C /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				83CBBF4F1821842B0066B3B0 /* MyLaunchImage2x.png */,
+				83CBBF501821842B0066B3B0 /* MyLaunchImageR4.png */,
+				83CBBF4B182183960066B3B0 /* SplashScreen2x.png */,
+				83CBBF4C182183960066B3B0 /* SplashScreenR4.png */,
+				83CBBF45182166710066B3B0 /* SUNLogo29pt.png */,
+				83CBBF46182166710066B3B0 /* SUNLogo40pt.png */,
+				83CBBF47182166710066B3B0 /* SUNLogo60pt.png */,
 				4A5009211819DFA3006C2847 /* ipod.png */,
 				4A5009221819DFA3006C2847 /* survey.png */,
 				8D6162BD181889880036233C /* currently_recording_button.png */,
 				8D6162BE181889880036233C /* pause_button.png */,
 				8D6162BF181889880036233C /* play_button.png */,
 				8D6162C0181889880036233C /* record_button.png */,
+				AD68EE23181576B100203359 /* logo2_29pt.png */,
 				8D6162C1181889880036233C /* stop_button.png */,
 				AD68EE2D1815777600203359 /* playbutton.png */,
-				AD68EE23181576B100203359 /* logo2_29pt.png */,
 				AD68EE24181576B100203359 /* logo2_40pt.png */,
 				AD68EE25181576B100203359 /* logo2_60pt.png */,
 				AD68EE26181576B100203359 /* MyLaunchImage2x.png */,
@@ -432,18 +453,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83CBBF521821842B0066B3B0 /* MyLaunchImageR4.png in Resources */,
 				8D6162C4181889880036233C /* play_button.png in Resources */,
 				AD68EE29181576B100203359 /* logo2_40pt.png in Resources */,
+				83CBBF4E182183960066B3B0 /* SplashScreenR4.png in Resources */,
 				AD68EE2E1815777600203359 /* playbutton.png in Resources */,
+				83CBBF49182166710066B3B0 /* SUNLogo40pt.png in Resources */,
 				AD68EE28181576B100203359 /* logo2_29pt.png in Resources */,
 				8D6162C5181889880036233C /* record_button.png in Resources */,
 				8D6162C6181889880036233C /* stop_button.png in Resources */,
 				AD7B234017FC890200FF0E30 /* Images.xcassets in Resources */,
 				4A5009231819DFA3006C2847 /* ipod.png in Resources */,
+				83CBBF48182166710066B3B0 /* SUNLogo29pt.png in Resources */,
 				8D515A1A17FCE374002DA54C /* check_mark.png in Resources */,
+				83CBBF4A182166710066B3B0 /* SUNLogo60pt.png in Resources */,
 				4A5009241819DFA3006C2847 /* survey.png in Resources */,
+				83CBBF511821842B0066B3B0 /* MyLaunchImage2x.png in Resources */,
 				AD68EE2C181576B100203359 /* MyLaunchImageR4.png in Resources */,
 				AD68EE2B181576B100203359 /* MyLaunchImage2x.png in Resources */,
+				83CBBF4D182183960066B3B0 /* SplashScreen2x.png in Resources */,
 				AD7B233217FC890200FF0E30 /* InfoPlist.strings in Resources */,
 				8D6162C3181889880036233C /* pause_button.png in Resources */,
 				AD68EE2A181576B100203359 /* logo2_60pt.png in Resources */,
@@ -622,7 +650,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuestionaireApp/QuestionaireApp-Prefix.pch";
 				INFOPLIST_FILE = "QuestionaireApp/QuestionaireApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -635,7 +665,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuestionaireApp/QuestionaireApp-Prefix.pch";
 				INFOPLIST_FILE = "QuestionaireApp/QuestionaireApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

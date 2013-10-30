@@ -16,6 +16,13 @@
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"
+    },
+    {
+      "orientation" : "portrait",
+      "idiom" : "iphone",
+      "extent" : "full-screen",
+      "filename" : "MyLaunchImageR4-1.png",
+      "scale" : "2x"
     }
   ],
   "info" : {
