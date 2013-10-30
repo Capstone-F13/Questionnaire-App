@@ -15,6 +15,10 @@
 
 @implementation SingALongMenuViewController
 
+bool singMenuRegistered = false;
+bool singMenuRepositioned = false;
+CGRect containerViewOriginalPosition;
+
 // Boolean to toggle play/pause
 bool SingALongMenuIsPlaying = false;
 
@@ -31,7 +35,8 @@ bool SingALongMenuIsPlaying = false;
 {
     [super viewDidLoad];
 	
-    if (SURVEY_TAKEN)
+    // REPLACE
+    if (/*SURVEY_TAKEN*/true)
     {
         playPause.hidden = false;
         stopButton.hidden = false;
@@ -43,6 +48,20 @@ bool SingALongMenuIsPlaying = false;
         stopButton.hidden = true;
         playRecordingLabel.hidden = true;
     }
+    
+    // Register for device rotation notifications
+    if (!singMenuRegistered)
+    {
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self selector:@selector(orientationChanged:)
+         name:UIDeviceOrientationDidChangeNotification
+         object:[UIDevice currentDevice]];
+        singMenuRegistered = true;
+    }
+    
+    // Save original positions of objects
+    containerViewOriginalPosition = containerView.frame;
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,6 +98,36 @@ bool SingALongMenuIsPlaying = false;
 {
     // SHOULD STOP PLAYBACK HERE
     //
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    // Adjusts play and stop buttons as necessary
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationPortrait:
+            containerView.frame = containerViewOriginalPosition;
+            singMenuRepositioned = false;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            if (!singMenuRepositioned)
+            {
+                containerView.frame = CGRectOffset(containerView.frame, 0, 50);
+                singMenuRepositioned = true;
+            }
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            if (!singMenuRepositioned)
+            {
+                containerView.frame = CGRectOffset(containerView.frame, 0, 50);
+                singMenuRepositioned = true;
+            }
+            break;
+            
+        default:
+            break;
+    };
 }
 
 @end

@@ -24,7 +24,7 @@
 @implementation SurveyViewController
 
 bool hasRegistered = false;
-bool isRepositioned = false;
+bool surveyRepositioned = false;
 CGRect button1OriginalPosition;
 CGRect image1OriginalPosition;
 CGRect button3OriginalPosition;
@@ -103,26 +103,26 @@ CGRect image3OriginalPosition;
             imageChoice1.frame = image1OriginalPosition;
             buttonChoice3.frame = button3OriginalPosition;
             imageChoice3.frame = image3OriginalPosition;
-            isRepositioned = false;
+            surveyRepositioned = false;
             break;
         case UIDeviceOrientationLandscapeLeft:
-            if (!isRepositioned)
+            if (!surveyRepositioned)
             {
                 buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
                 imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
                 buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
                 imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
-                isRepositioned = true;
+                surveyRepositioned = true;
             }
             break;
         case UIDeviceOrientationLandscapeRight:
-            if (!isRepositioned)
+            if (!surveyRepositioned)
             {
                 buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
                 imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
                 buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
                 imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
-                isRepositioned = true;
+                surveyRepositioned = true;
             }
             break;
             
