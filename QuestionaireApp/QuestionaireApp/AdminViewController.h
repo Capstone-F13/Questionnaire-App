@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AdminViewController : UIViewController
+{
+    IBOutlet UIView *containerView;
+}
 
 @property (nonatomic, strong) IBOutlet UITextField *adminUsername;
 @property (nonatomic, strong) IBOutlet UITextField *password;

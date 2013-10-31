@@ -14,7 +14,7 @@
     IBOutlet UIButton *playPause;
     IBOutlet UIButton *stopButton;
     IBOutlet UILabel *playRecordingLabel;
-    IBOutlet UIView *containerView;
+    IBOutlet UIView *playStopButtonsContainer;
 }
 
 -(IBAction)playPausePlayback:(id)sender;
