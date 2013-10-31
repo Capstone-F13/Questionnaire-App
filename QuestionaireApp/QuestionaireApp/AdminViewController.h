@@ -10,7 +10,8 @@
 
 @interface AdminViewController : UIViewController
 {
-    IBOutlet UIView *containerView;
+    IBOutlet UIView *usernameContainer;
+    IBOutlet UIView *passwordContainer;
 }
 
 @property (nonatomic, strong) IBOutlet UITextField *adminUsername;

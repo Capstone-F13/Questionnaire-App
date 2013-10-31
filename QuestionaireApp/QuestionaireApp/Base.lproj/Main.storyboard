@@ -527,17 +527,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="wSo-fs-5z1">
-                                <rect key="frame" x="60" y="103" width="201" height="74"/>
+                                <rect key="frame" x="60" y="103" width="201" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bI3-7U-N0T">
-                                        <rect key="frame" x="34" y="7" width="133" height="21"/>
+                                        <rect key="frame" x="34" y="5" width="133" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="TQt-iZ-3Mr">
-                                        <rect key="frame" x="11" y="36" width="178" height="30"/>
+                                        <rect key="frame" x="11" y="34" width="178" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -581,6 +581,8 @@
                         <outlet property="adminUsername" destination="TQt-iZ-3Mr" id="9vX-8N-ECh"/>
                         <outlet property="error" destination="391-uW-9xr" id="Bpq-rt-giB"/>
                         <outlet property="password" destination="iPj-Va-QDP" id="Nei-x4-puG"/>
+                        <outlet property="passwordContainer" destination="1HO-qw-Jm8" id="EUx-If-nHC"/>
+                        <outlet property="usernameContainer" destination="wSo-fs-5z1" id="myr-EH-WHG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7r-tE-pQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -612,16 +614,9 @@
     </scenes>
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
         <image name="ipod.png" width="256" height="256"/>
         <image name="play_button.png" width="299" height="285"/>
-        <image name="play_button.png" width="299" height="285"/>
-        <image name="play_button.png" width="299" height="285"/>
         <image name="record_button.png" width="256" height="256"/>
-        <image name="stop_button.png" width="300" height="300"/>
-        <image name="stop_button.png" width="300" height="300"/>
         <image name="stop_button.png" width="300" height="300"/>
         <image name="survey.png" width="256" height="256"/>
     </resources>

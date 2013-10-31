@@ -17,7 +17,6 @@
 
 bool singMenuRepositioned = false;
 CGRect playStopButtonsContainerPortraitPosition;
-CGRect playStopButtonsContainerLandscapePosition;
 
 // Boolean to toggle play/pause
 bool SingALongMenuIsPlaying = false;
@@ -55,7 +54,7 @@ bool SingALongMenuIsPlaying = false;
     name:UIDeviceOrientationDidChangeNotification
     object:[UIDevice currentDevice]];
     
-    playStopButtonsContainerPortraitPosition = CGRectMake(80, 270, 160, 92);
+    [self savePortraitViewPositions];
     
     // Adjust play and stop buttons as necessary
     UIDevice *device = [UIDevice currentDevice];
@@ -65,7 +64,48 @@ bool SingALongMenuIsPlaying = false;
     }
     else if (device.orientation == UIDeviceOrientationPortrait)
     {
-        playStopButtonsContainer.frame = playStopButtonsContainerPortraitPosition;
+        [self setPortraitViewPositions];
+    }
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    // Adjusts play and stop buttons as necessary
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationPortrait:
+            [self setPortraitViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self setLandscapeViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self setLandscapeViewPositions];
+            break;
+            
+        default:
+            break;
+    };
+}
+
+- (void)savePortraitViewPositions
+{
+    playStopButtonsContainerPortraitPosition = CGRectMake(80, 270, 160, 92);
+}
+
+- (void)setPortraitViewPositions
+{
+    playStopButtonsContainer.frame = playStopButtonsContainerPortraitPosition;
+    singMenuRepositioned = false;
+}
+
+- (void)setLandscapeViewPositions
+{
+    if (!singMenuRepositioned)
+    {
+        playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 40);
+        singMenuRepositioned = true;
     }
 }
 
@@ -103,36 +143,6 @@ bool SingALongMenuIsPlaying = false;
 {
     // SHOULD STOP PLAYBACK HERE
     //
-}
-
-- (void) orientationChanged:(NSNotification *)note
-{
-    UIDevice * device = note.object;
-    // Adjusts play and stop buttons as necessary
-    switch(device.orientation)
-    {
-        case UIDeviceOrientationPortrait:
-            playStopButtonsContainer.frame = playStopButtonsContainerPortraitPosition;
-            singMenuRepositioned = false;
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            if (!singMenuRepositioned)
-            {
-                playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 40);
-                singMenuRepositioned = true;
-            }
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            if (!singMenuRepositioned)
-            {
-                playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 40);
-                singMenuRepositioned = true;
-            }
-            break;
-            
-        default:
-            break;
-    };
 }
 
 @end

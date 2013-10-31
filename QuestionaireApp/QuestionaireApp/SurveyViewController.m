@@ -24,10 +24,10 @@
 @implementation SurveyViewController
 
 bool surveyRepositioned = false;
-CGRect button1OriginalPosition;
-CGRect image1OriginalPosition;
-CGRect button3OriginalPosition;
-CGRect image3OriginalPosition;
+CGRect button1PortraitPosition;
+CGRect image1PortraitPosition;
+CGRect button3PortraitPosition;
+CGRect image3PortraitPosition;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,11 +74,7 @@ CGRect image3OriginalPosition;
     name:UIDeviceOrientationDidChangeNotification
     object:[UIDevice currentDevice]];
     
-    // Save original positions of objects
-    button1OriginalPosition = CGRectMake(128, 202, 62, 30);
-    image1OriginalPosition = CGRectMake(226, 202, 31, 26);
-    button3OriginalPosition = CGRectMake(128, 300, 62, 30);
-    image3OriginalPosition = CGRectMake(226, 300, 31, 26);
+    [self savePortraitViewPositions];
     
     // Adjust play and stop buttons as necessary
     UIDevice *device = [UIDevice currentDevice];
@@ -91,17 +87,8 @@ CGRect image3OriginalPosition;
     }
     else if (device.orientation == UIDeviceOrientationPortrait)
     {
-        buttonChoice1.frame = button1OriginalPosition;
-        imageChoice1.frame = image1OriginalPosition;
-        buttonChoice3.frame = button3OriginalPosition;
-        imageChoice3.frame = image3OriginalPosition;
+        [self setPortraitViewPositions];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) orientationChanged:(NSNotification *)note
@@ -111,36 +98,54 @@ CGRect image3OriginalPosition;
     switch(device.orientation)
     {
         case UIDeviceOrientationPortrait:
-            buttonChoice1.frame = button1OriginalPosition;
-            imageChoice1.frame = image1OriginalPosition;
-            buttonChoice3.frame = button3OriginalPosition;
-            imageChoice3.frame = image3OriginalPosition;
-            surveyRepositioned = false;
+            [self setPortraitViewPositions];
             break;
         case UIDeviceOrientationLandscapeLeft:
-            if (!surveyRepositioned)
-            {
-                buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
-                imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
-                buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
-                imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
-                surveyRepositioned = true;
-            }
+            [self setLandscapeViewPositions];
             break;
         case UIDeviceOrientationLandscapeRight:
-            if (!surveyRepositioned)
-            {
-                buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
-                imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
-                buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
-                imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
-                surveyRepositioned = true;
-            }
+            [self setLandscapeViewPositions];
             break;
             
         default:
             break;
     };
+}
+
+- (void)savePortraitViewPositions
+{
+    // Save original positions of objects
+    button1PortraitPosition = CGRectMake(128, 202, 62, 30);
+    image1PortraitPosition = CGRectMake(226, 202, 31, 26);
+    button3PortraitPosition = CGRectMake(128, 300, 62, 30);
+    image3PortraitPosition = CGRectMake(226, 300, 31, 26);
+}
+
+- (void)setPortraitViewPositions
+{
+    buttonChoice1.frame = button1PortraitPosition;
+    imageChoice1.frame = image1PortraitPosition;
+    buttonChoice3.frame = button3PortraitPosition;
+    imageChoice3.frame = image3PortraitPosition;
+    surveyRepositioned = false;
+}
+
+- (void)setLandscapeViewPositions
+{
+    if (!surveyRepositioned)
+    {
+        buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
+        imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
+        buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
+        imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
+        surveyRepositioned = true;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)showAppropriateFieldsForQuestion:(NSUInteger)num
