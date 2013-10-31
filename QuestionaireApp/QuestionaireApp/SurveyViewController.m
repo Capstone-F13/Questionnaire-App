@@ -23,7 +23,6 @@
 
 @implementation SurveyViewController
 
-bool hasRegistered = false;
 bool surveyRepositioned = false;
 CGRect button1OriginalPosition;
 CGRect image1OriginalPosition;
@@ -69,21 +68,34 @@ CGRect image3OriginalPosition;
     [super viewDidLoad];
     
     // Register for device rotation notifications
-    if (!hasRegistered)
-    {
-        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self selector:@selector(orientationChanged:)
-         name:UIDeviceOrientationDidChangeNotification
-         object:[UIDevice currentDevice]];
-        hasRegistered = true;
-    }
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+    addObserver:self selector:@selector(orientationChanged:)
+    name:UIDeviceOrientationDidChangeNotification
+    object:[UIDevice currentDevice]];
     
     // Save original positions of objects
-    button1OriginalPosition = buttonChoice1.frame;
-    image1OriginalPosition = imageChoice1.frame;
-    button3OriginalPosition = buttonChoice3.frame;
-    image3OriginalPosition = imageChoice3.frame;
+    button1OriginalPosition = CGRectMake(128, 202, 62, 30);
+    image1OriginalPosition = CGRectMake(226, 202, 31, 26);
+    button3OriginalPosition = CGRectMake(128, 300, 62, 30);
+    image3OriginalPosition = CGRectMake(226, 300, 31, 26);
+    
+    // Adjust play and stop buttons as necessary
+    UIDevice *device = [UIDevice currentDevice];
+    if (device.orientation == UIDeviceOrientationLandscapeLeft || device.orientation == UIDeviceOrientationLandscapeRight)
+    {
+        buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 50);
+        imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 50);
+        buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 50);
+        imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 50);
+    }
+    else if (device.orientation == UIDeviceOrientationPortrait)
+    {
+        buttonChoice1.frame = button1OriginalPosition;
+        imageChoice1.frame = image1OriginalPosition;
+        buttonChoice3.frame = button3OriginalPosition;
+        imageChoice3.frame = image3OriginalPosition;
+    }
 }
 
 - (void)didReceiveMemoryWarning

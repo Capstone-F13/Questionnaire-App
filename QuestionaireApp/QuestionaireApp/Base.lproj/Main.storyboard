@@ -98,7 +98,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3hJ-eI-1Bg">
-                                <rect key="frame" x="129" y="249" width="62" height="30"/>
+                                <rect key="frame" x="128" y="249" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choice 2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,7 +118,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kiK-E7-Pox">
-                                <rect key="frame" x="130" y="300" width="61" height="30"/>
+                                <rect key="frame" x="128" y="300" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choice 3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,7 +128,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ws2-Jo-O9L">
-                                <rect key="frame" x="130" y="351" width="61" height="30"/>
+                                <rect key="frame" x="128" y="351" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choice 4">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,7 +153,7 @@
                                 <rect key="frame" x="226" y="351" width="31" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="This is the best text ever of all time. Can you digg it? This is the best text ever of all time. Can you digg it?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="8" id="LDs-eY-PNR">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Question text goes here..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="8" id="LDs-eY-PNR">
                                 <rect key="frame" x="40" y="92" width="240" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -612,9 +612,16 @@
     </scenes>
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
+        <image name="check_mark.png" width="300" height="278"/>
         <image name="ipod.png" width="256" height="256"/>
         <image name="play_button.png" width="299" height="285"/>
+        <image name="play_button.png" width="299" height="285"/>
+        <image name="play_button.png" width="299" height="285"/>
         <image name="record_button.png" width="256" height="256"/>
+        <image name="stop_button.png" width="300" height="300"/>
+        <image name="stop_button.png" width="300" height="300"/>
         <image name="stop_button.png" width="300" height="300"/>
         <image name="survey.png" width="256" height="256"/>
     </resources>
