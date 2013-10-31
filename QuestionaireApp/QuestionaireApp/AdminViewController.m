@@ -41,8 +41,6 @@ CGRect passwordContainerPortraitPosition;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [(UILabel *)error setHidden:false];
     
     // Register for device rotation notifications
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
