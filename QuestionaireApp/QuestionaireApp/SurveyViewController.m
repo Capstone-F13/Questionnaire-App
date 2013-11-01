@@ -84,6 +84,7 @@ CGRect image3PortraitPosition;
         imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 50);
         buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 50);
         imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 50);
+        surveyRepositioned = true;
     }
     else if (device.orientation == UIDeviceOrientationPortrait)
     {

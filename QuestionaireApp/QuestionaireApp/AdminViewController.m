@@ -57,6 +57,7 @@ CGRect passwordContainerPortraitPosition;
     {
         usernameContainer.frame = CGRectOffset(usernameContainer.frame, 0, -5);
         passwordContainer.frame = CGRectOffset(passwordContainer.frame, 0, -85);
+        adminLoginRepositioned = true;
     }
     else if (device.orientation == UIDeviceOrientationPortrait)
     {

@@ -18,6 +18,7 @@ int recordEncoding;
     IBOutlet UIButton *playPause;
     IBOutlet UIButton *record;
     IBOutlet UIButton *stop;
+    IBOutlet UIView *playStopButtonsContainer;
 }
 @property(nonatomic, retain) AVAudioPlayer *audioPlayer;
 -(IBAction)playPausePlayback:(id)sender;

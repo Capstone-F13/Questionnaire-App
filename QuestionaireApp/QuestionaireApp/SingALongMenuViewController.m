@@ -61,6 +61,7 @@ bool SingALongMenuIsPlaying = false;
     if (device.orientation == UIDeviceOrientationLandscapeLeft || device.orientation == UIDeviceOrientationLandscapeRight)
     {
         playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 75);
+        singMenuRepositioned = true;
     }
     else if (device.orientation == UIDeviceOrientationPortrait)
     {
