@@ -23,6 +23,12 @@
 
 @implementation SurveyViewController
 
+bool surveyRepositioned = false;
+CGRect button1PortraitPosition;
+CGRect image1PortraitPosition;
+CGRect button3PortraitPosition;
+CGRect image3PortraitPosition;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -66,6 +72,81 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Register for device rotation notifications
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+    addObserver:self selector:@selector(orientationChanged:)
+    name:UIDeviceOrientationDidChangeNotification
+    object:[UIDevice currentDevice]];
+    
+    [self savePortraitViewPositions];
+    
+    // Adjust play and stop buttons as necessary
+    UIDevice *device = [UIDevice currentDevice];
+    if (device.orientation == UIDeviceOrientationLandscapeLeft || device.orientation == UIDeviceOrientationLandscapeRight)
+    {
+        buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 50);
+        imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 50);
+        buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 50);
+        imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 50);
+        surveyRepositioned = true;
+    }
+    else if (device.orientation == UIDeviceOrientationPortrait)
+    {
+        [self setPortraitViewPositions];
+    }
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    // Adjusts buttons 1 & 3 and their respective images as necessary
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationPortrait:
+            [self setPortraitViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self setLandscapeViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self setLandscapeViewPositions];
+            break;
+            
+        default:
+            break;
+    };
+}
+
+- (void)savePortraitViewPositions
+{
+    // Save original positions of objects
+    button1PortraitPosition = CGRectMake(128, 202, 62, 30);
+    image1PortraitPosition = CGRectMake(226, 202, 31, 26);
+    button3PortraitPosition = CGRectMake(128, 300, 62, 30);
+    image3PortraitPosition = CGRectMake(226, 300, 31, 26);
+}
+
+- (void)setPortraitViewPositions
+{
+    buttonChoice1.frame = button1PortraitPosition;
+    imageChoice1.frame = image1PortraitPosition;
+    buttonChoice3.frame = button3PortraitPosition;
+    imageChoice3.frame = image3PortraitPosition;
+    surveyRepositioned = false;
+}
+
+- (void)setLandscapeViewPositions
+{
+    if (!surveyRepositioned)
+    {
+        buttonChoice1.frame = CGRectOffset(buttonChoice1.frame, 0, 25);
+        imageChoice1.frame = CGRectOffset(imageChoice1.frame, 0, 25);
+        buttonChoice3.frame = CGRectOffset(buttonChoice3.frame, 0, 25);
+        imageChoice3.frame = CGRectOffset(imageChoice3.frame, 0, 25);
+        surveyRepositioned = true;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,7 +163,6 @@
     if (question.isMultipleChoice)
     {
         answerTextField.hidden = true;
-        
         switch (question.answers.count) {
             case 1: {
                 buttonChoice1.hidden = false;
@@ -162,25 +242,25 @@
         
         switch (question.answers.count) {
             case 1: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
                 break;
             }
             case 2: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
                 break;
             }
             case 3: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
-                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
+                [buttonChoice3 setTitle:[question.answers[2] text] forState:UIControlStateNormal];
                 break;
             }
             case 4: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
-                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
-                [[buttonChoice4 titleLabel] setText:[question.answers[3] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
+                [buttonChoice3 setTitle:[question.answers[2] text] forState:UIControlStateNormal];
+                [buttonChoice4 setTitle:[question.answers[3] text] forState:UIControlStateNormal];
                 break;
             }
         }

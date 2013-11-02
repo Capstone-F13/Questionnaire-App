@@ -15,6 +15,9 @@
 
 @implementation SingALongMenuViewController
 
+bool singMenuRepositioned = false;
+CGRect playStopButtonsContainerPortraitPosition;
+
 // Boolean to toggle play/pause
 bool SingALongMenuIsPlaying = false;
 
@@ -42,6 +45,68 @@ bool SingALongMenuIsPlaying = false;
         playPause.hidden = true;
         stopButton.hidden = true;
         playRecordingLabel.hidden = true;
+    }
+    
+    // Register for device rotation notifications
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+    addObserver:self selector:@selector(orientationChanged:)
+    name:UIDeviceOrientationDidChangeNotification
+    object:[UIDevice currentDevice]];
+    
+    [self savePortraitViewPositions];
+    
+    // Adjust play and stop buttons as necessary
+    UIDevice *device = [UIDevice currentDevice];
+    if (device.orientation == UIDeviceOrientationLandscapeLeft || device.orientation == UIDeviceOrientationLandscapeRight)
+    {
+        playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 75);
+        singMenuRepositioned = true;
+    }
+    else if (device.orientation == UIDeviceOrientationPortrait)
+    {
+        [self setPortraitViewPositions];
+    }
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    // Adjusts play and stop buttons as necessary
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationPortrait:
+            [self setPortraitViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self setLandscapeViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self setLandscapeViewPositions];
+            break;
+            
+        default:
+            break;
+    };
+}
+
+- (void)savePortraitViewPositions
+{
+    playStopButtonsContainerPortraitPosition = CGRectMake(80, 270, 160, 92);
+}
+
+- (void)setPortraitViewPositions
+{
+    playStopButtonsContainer.frame = playStopButtonsContainerPortraitPosition;
+    singMenuRepositioned = false;
+}
+
+- (void)setLandscapeViewPositions
+{
+    if (!singMenuRepositioned)
+    {
+        playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 40);
+        singMenuRepositioned = true;
     }
 }
 
