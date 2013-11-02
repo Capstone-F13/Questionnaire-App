@@ -56,18 +56,17 @@
                                 <rect key="frame" x="114" y="252" width="93" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Record Your Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvH-CH-XQz">
                                 <rect key="frame" x="90" y="472" width="140" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.95686274509803915" blue="0.80392156862745101" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Main Menu" id="trt-Jv-2bo">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="uan-28-6Oo">
@@ -102,7 +101,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="Tap to enter text..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cxR-ZX-6mm">
                                 <rect key="frame" x="40" y="194" width="240" height="127"/>
-                                <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.80392156859999997" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="127" id="fOb-FS-3WM"/>
                                 </constraints>
@@ -115,7 +114,6 @@
                                     <constraint firstAttribute="width" constant="62" id="bVt-Mx-Mfg"/>
                                 </constraints>
                                 <state key="normal" title="Choice 2">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -128,7 +126,6 @@
                                     <constraint firstAttribute="width" constant="62" id="YGr-ET-LFn"/>
                                 </constraints>
                                 <state key="normal" title="Choice 1">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -138,7 +135,6 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiK-E7-Pox">
                                 <rect key="frame" x="131" y="296" width="61" height="30"/>
                                 <state key="normal" title="Choice 3">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -148,7 +144,6 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ws2-Jo-O9L">
                                 <rect key="frame" x="131" y="347" width="61" height="30"/>
                                 <state key="normal" title="Choice 4">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -193,12 +188,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMT-0o-OhT">
-                                <rect key="frame" x="207" y="432" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMT-0o-OhT">
+                                <rect key="frame" x="185" y="432" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Next">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -206,9 +199,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfZ-71-d0O">
-                                <rect key="frame" x="40" y="432" width="71" height="30"/>
+                                <rect key="frame" x="79" y="432" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Previous">
                                     <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -354,7 +346,6 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1OI-Ap-dZJ">
                                 <rect key="frame" x="91" y="111" width="138" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Choose a Song...">
                                     <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" red="1" green="0.95686274510000002" blue="0.80392156859999997" alpha="1" colorSpace="deviceRGB"/>
@@ -417,14 +408,13 @@
                                 <rect key="frame" x="105" y="167" width="111" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="highlightedColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play Recording" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjE-Zi-SsW">
                                 <rect key="frame" x="100" y="313" width="120" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.95686274510000002" blue="0.80392156859999997" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh3-9p-sA0">
@@ -448,7 +438,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="MG0-dg-CR5">
                         <barButtonItem key="rightBarButtonItem" title="Finish" id="eho-rV-Wxm">
@@ -480,11 +470,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFI-0I-TKH">
-                                <rect key="frame" x="89" y="203" width="141" height="30"/>
+                                <rect key="frame" x="98" y="206" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Record New Song">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleColor" red="0.19215686274509802" green="0.10588235294117647" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -492,10 +481,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Play Recorded Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgl-ns-j1E">
-                                <rect key="frame" x="79" y="273" width="162" height="21"/>
+                                <rect key="frame" x="89" y="273" width="143" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.95686274510000002" blue="0.80392156859999997" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-M0-zox">
@@ -519,7 +508,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.80392156859999997" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sing-a-long" id="5xt-Hy-Fuw"/>
                     <connections>
@@ -590,14 +579,12 @@
                                 <rect key="frame" x="94" y="128" width="133" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVr-mZ-RFI">
                                 <rect key="frame" x="122" y="195" width="76" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.63921568630000003" blue="0.10980392160000001" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TQt-iZ-3Mr">
@@ -616,7 +603,6 @@
                                 <rect key="frame" x="141" y="262" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" red="1" green="0.95686274510000002" blue="0.80392156859999997" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -632,7 +618,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.80392156859999997" alpha="1" colorSpace="deviceRGB"/>
                         <connections>
                             <action selector="backgroundTapped:" destination="vef-UZ-eeF" eventType="touchUpInside" id="MfC-QK-pPU"/>
                         </connections>
