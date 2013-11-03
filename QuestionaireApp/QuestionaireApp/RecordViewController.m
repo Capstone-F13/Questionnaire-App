@@ -29,11 +29,11 @@ CGRect playStopButtonsContainerPortraitPosition;
     }
 }
 
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    NSLog(@"Here");
-    UIImage *icon;
-    icon = [UIImage imageNamed:PLAY_ICON];
-    [playPause setImage:icon forState:UIControlStateNormal];
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    NSLog(@"Finished PLaying");
+    [self playPausePlayback:self];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,7 +50,6 @@ CGRect playStopButtonsContainerPortraitPosition;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     //[self checkIfFileExists];
-    self.audioPlayer.delegate = self;
     
     if (self.session == nil){
 		self.session = [AVAudioSession sharedInstance];
@@ -239,6 +238,7 @@ CGRect playStopButtonsContainerPortraitPosition;
     [self setPlayBackAudioPlayer];
     NSLog(@"stopPlaying");
     [audioPlayer stop];
+    [self playPausePlayback:self];
     NSLog(@"stopped");
 }
 
@@ -265,6 +265,7 @@ CGRect playStopButtonsContainerPortraitPosition;
     self.currentSelection=[currentItem valueForProperty:MPMediaItemPropertyAssetURL];
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.currentSelection error:&error];
     NSLog(@"url=%@",self.currentSelection);
+    [audioPlayer setDelegate:self];
 }
 
 -(void)setPlayBackAudioPlayer
@@ -281,6 +282,8 @@ CGRect playStopButtonsContainerPortraitPosition;
     NSURL *recordURL = [NSURL fileURLWithPath:recordedAudioPath];
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:&error];
     audioPlayer.numberOfLoops = 0;
+    [audioPlayer setDelegate:self];
 }
+
 
 @end

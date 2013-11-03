@@ -17,9 +17,7 @@
     IBOutlet UILabel *titleLabel;
     IBOutlet UILabel *artistLabel;
     IBOutlet UILabel *albumLabel;
-    
     IBOutlet UISlider *volumeSlider;
-    
     IBOutlet UIButton *playPauseButton;
     
     

@@ -61,6 +61,8 @@ bool SingALongMenuIsPlaying = false;
     audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:&error];
     audioPlayer.numberOfLoops = 0;
     
+    [audioPlayer setDelegate:self];
+    
     // Register for device rotation notifications
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter]
@@ -158,6 +160,13 @@ bool SingALongMenuIsPlaying = false;
     NSLog(@"playing");
 }
 
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    NSLog(@"Finished PLaying");
+    [self playPausePlayback:self];
+    
+}
+
 -(void)pauseRecording{
     NSLog(@"pauseRecording");
     [audioPlayer pause];
@@ -169,6 +178,7 @@ bool SingALongMenuIsPlaying = false;
 
     NSLog(@"stopPlaying");
     [audioPlayer stop];
+    [self playPausePlayback:self];
     NSLog(@"stopped");
 }
 

@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Constants.h"
 
-@interface SingALongMenuViewController : UIViewController 
+@interface SingALongMenuViewController : UIViewController <AVAudioPlayerDelegate>
 {
     IBOutlet UIButton *playPause;
     IBOutlet UIButton *stopButton;
