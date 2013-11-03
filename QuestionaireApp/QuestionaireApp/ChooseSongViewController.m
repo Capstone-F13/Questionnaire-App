@@ -17,80 +17,90 @@
 
 @synthesize musicPlayer;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - Memory management
 
-- (void)viewDidLoad
+
+- (void)viewDidUnload
 {
-    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] removeObserver: self
+													name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+												  object: musicPlayer];
 	
-    musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
-    //[volumeSlider setValue:[musicPlayer volume]];
-    [self registerMediaPlayerNotifications];
+	[[NSNotificationCenter defaultCenter] removeObserver: self
+													name: MPMusicPlayerControllerPlaybackStateDidChangeNotification
+												  object: musicPlayer];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver: self
+													name: MPMusicPlayerControllerVolumeDidChangeNotification
+												  object: musicPlayer];
+    
+	[musicPlayer endGeneratingPlaybackNotifications];
+    
+    [super viewDidUnload];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
--(IBAction)cancelRecordNew:(id)sender
-{
-    // Dismiss the view and return the Sing-a-long menu
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
--(IBAction)playPausePlayback:(id)sender
-{
-    UIImage *icon;
-    if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying)
-    {
-        // Set button image to pause icon
-        icon = [UIImage imageNamed:PAUSE_ICON];
-        
-        [musicPlayer pause];
-    }
-    else
-    {
-        // Set button image to play icon
-        icon = [UIImage imageNamed:PLAY_ICON];
-        
-        [musicPlayer play];
-    }
-    [playPause setImage:icon forState:UIControlStateNormal];
-}
-
--(IBAction)stopPlayback:(id)sender
-{
-    [musicPlayer stop];
-}
-
--(IBAction)volumeChanged:(id)sender
-{
     
 }
 
--(IBAction)showMediaPicker:(id)sender
+#pragma mark - View lifecycle
+
+
+- (void)viewDidLoad
 {
-    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeMusic];
-    mediaPicker.delegate = self;
-    mediaPicker.allowsPickingMultipleItems = NO;
-    mediaPicker.prompt = NSLocalizedString(@"Select Your Favorite Song!", nil);
-    [mediaPicker loadView];
-    [[self navigationController] presentViewController:mediaPicker animated:YES completion:nil];
+    [super viewDidLoad];
+    
+    musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    
+    [volumeSlider setValue:[musicPlayer volume]];
+    
+	if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying) {
+        
+        [playPauseButton setImage:[UIImage imageNamed:@"pauseButton.png"] forState:UIControlStateNormal];
+        
+    } else {
+        
+        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
+    }
+    
+    MPMediaItem *currentItem = [musicPlayer nowPlayingItem];
+    
+    NSString *titleString = [currentItem valueForProperty:MPMediaItemPropertyTitle];
+    if (titleString) {
+        titleLabel.text = [NSString stringWithFormat:@"%@",titleString];
+    } else {
+        titleLabel.text = @"Unknown title";
+    }
+    
+    NSString *artistString = [currentItem valueForProperty:MPMediaItemPropertyArtist];
+    if (artistString) {
+        artistLabel.text = [NSString stringWithFormat:@"%@",artistString];
+    } else {
+        artistLabel.text = @"Unknown artist";
+    }
+    
+    NSString *albumString = [currentItem valueForProperty:MPMediaItemPropertyAlbumTitle];
+    if (albumString) {
+        albumLabel.text = [NSString stringWithFormat:@"%@",albumString];
+    } else {
+        albumLabel.text = @"Unknown album";
+    }
+
+    
+    
+    [self registerMediaPlayerNotifications];
+    
 }
 
-- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	[self dismissViewControllerAnimated:true completion:nil];
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark - Notifications
 
 - (void) registerMediaPlayerNotifications
 {
@@ -114,6 +124,7 @@
 	[musicPlayer beginGeneratingPlaybackNotifications];
 }
 
+
 - (void) handle_NowPlayingItemChanged: (id) notification
 {
    	MPMediaItem *currentItem = [musicPlayer nowPlayingItem];
@@ -124,27 +135,27 @@
 		artworkImage = [artwork imageWithSize: CGSizeMake (200, 200)];
 	}
 	
-    //[artworkImageView setImage:artworkImage];
+    [artworkImageView setImage:artworkImage];
     
     NSString *titleString = [currentItem valueForProperty:MPMediaItemPropertyTitle];
     if (titleString) {
-        songTitle.text = [NSString stringWithFormat:@"Title: %@",titleString];
+        titleLabel.text = [NSString stringWithFormat:@"%@",titleString];
     } else {
-        songTitle.text = @"Title: Unknown title";
+        titleLabel.text = @"Unknown title";
     }
     
     NSString *artistString = [currentItem valueForProperty:MPMediaItemPropertyArtist];
     if (artistString) {
-        songArtist.text = [NSString stringWithFormat:@"Artist: %@",artistString];
+        artistLabel.text = [NSString stringWithFormat:@"%@",artistString];
     } else {
-        songArtist.text = @"Artist: Unknown artist";
+        artistLabel.text = @"Unknown artist";
     }
     
     NSString *albumString = [currentItem valueForProperty:MPMediaItemPropertyAlbumTitle];
     if (albumString) {
-        songAlbum.text = [NSString stringWithFormat:@"Album: %@",albumString];
+        albumLabel.text = [NSString stringWithFormat:@"%@",albumString];
     } else {
-        songAlbum.text = @"Album: Unknown album";
+        albumLabel.text = @"Unknown album";
     }
     
     
@@ -156,19 +167,90 @@
     MPMusicPlaybackState playbackState = [musicPlayer playbackState];
 	
 	if (playbackState == MPMusicPlaybackStatePaused) {
-        [playPause setImage:[UIImage imageNamed:@"play_button.png"] forState:UIControlStateNormal];
+        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
         
         
 	} else if (playbackState == MPMusicPlaybackStatePlaying) {
-        [playPause setImage:[UIImage imageNamed:@"pause_button.png"] forState:UIControlStateNormal];
+        [playPauseButton setImage:[UIImage imageNamed:@"pauseButton.png"] forState:UIControlStateNormal];
         
 	} else if (playbackState == MPMusicPlaybackStateStopped) {
         
-        [playPause setImage:[UIImage imageNamed:@"play_button.png"] forState:UIControlStateNormal];
+        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
 		[musicPlayer stop];
         
 	}
     
+}
+
+
+- (void) handle_VolumeChanged: (id) notification
+{
+    [volumeSlider setValue:[musicPlayer volume]];
+}
+
+
+
+#pragma mark - Media Picker
+
+- (IBAction)showMediaPicker:(id)sender
+{
+    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAny];
+    
+    mediaPicker.delegate = self;
+    mediaPicker.allowsPickingMultipleItems = YES;
+    mediaPicker.prompt = @"Select songs to play";
+    
+    [self presentModalViewController:mediaPicker animated:YES];
+}
+
+- (void) mediaPicker: (MPMediaPickerController *) mediaPicker didPickMediaItems: (MPMediaItemCollection *) mediaItemCollection
+{
+    if (mediaItemCollection) {
+        
+        [musicPlayer setQueueWithItemCollection: mediaItemCollection];
+        [musicPlayer play];
+    }
+    
+	[self dismissModalViewControllerAnimated: YES];
+}
+
+
+- (void) mediaPickerDidCancel: (MPMediaPickerController *) mediaPicker
+{
+	[self dismissModalViewControllerAnimated: YES];
+}
+
+#pragma mark - Controls
+
+- (IBAction)volumeChanged:(id)sender
+{
+    [musicPlayer setVolume:[volumeSlider value]];
+}
+
+- (IBAction)previousSong:(id)sender
+{
+    [musicPlayer skipToPreviousItem];
+}
+
+- (IBAction)playPause:(id)sender
+{
+    if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying) {
+        [musicPlayer pause];
+        
+    } else {
+        [musicPlayer play];
+        
+    }
+}
+
+- (IBAction)nextSong:(id)sender
+{
+    [musicPlayer skipToNextItem];
+}
+
+- (IBAction)cancel:(id)sender
+{
+    [self dismissModalViewControllerAnimated: YES];
 }
 
 

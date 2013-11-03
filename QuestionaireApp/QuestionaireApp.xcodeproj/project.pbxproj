@@ -25,6 +25,8 @@
 		4A5009231819DFA3006C2847 /* ipod.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5009211819DFA3006C2847 /* ipod.png */; };
 		4A5009241819DFA3006C2847 /* survey.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5009221819DFA3006C2847 /* survey.png */; };
 		4A5C133A17FE270500939168 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C133917FE270500939168 /* AdminViewController.m */; };
+		4AE0564C1826D41C000FAAF6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0564B1826D41C000FAAF6 /* AVFoundation.framework */; };
+		4AE0564E1826D42D000FAAF6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0564D1826D42D000FAAF6 /* MediaPlayer.framework */; };
 		669E631C1800B7710038A7E6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63161800B7710038A7E6 /* Question.m */; };
 		669E631D1800B7710038A7E6 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63181800B7710038A7E6 /* Survey.m */; };
 		83CBBF48182166710066B3B0 /* SUNLogo29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF45182166710066B3B0 /* SUNLogo29pt.png */; };
@@ -106,6 +108,8 @@
 		4A5009221819DFA3006C2847 /* survey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = survey.png; sourceTree = "<group>"; };
 		4A5C133817FE270500939168 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
 		4A5C133917FE270500939168 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
+		4AE0564B1826D41C000FAAF6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4AE0564D1826D42D000FAAF6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		66385D5A18030F91002AE3D0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		66385D5B18030F91002AE3D0 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		669E63101800B7710038A7E6 /* Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Json.h; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE0564E1826D42D000FAAF6 /* MediaPlayer.framework in Frameworks */,
+				4AE0564C1826D41C000FAAF6 /* AVFoundation.framework in Frameworks */,
 				1190E6531814EE9100461AD7 /* CoreData.framework in Frameworks */,
 				AD7B232A17FC890200FF0E30 /* CoreGraphics.framework in Frameworks */,
 				AD7B232C17FC890200FF0E30 /* UIKit.framework in Frameworks */,
@@ -304,6 +310,8 @@
 		AD7B232617FC890200FF0E30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4AE0564D1826D42D000FAAF6 /* MediaPlayer.framework */,
+				4AE0564B1826D41C000FAAF6 /* AVFoundation.framework */,
 				1190E6521814EE9100461AD7 /* CoreData.framework */,
 				AD7B232717FC890200FF0E30 /* Foundation.framework */,
 				AD7B232917FC890200FF0E30 /* CoreGraphics.framework */,
@@ -651,6 +659,7 @@
 				GCC_PREFIX_HEADER = "QuestionaireApp/QuestionaireApp-Prefix.pch";
 				INFOPLIST_FILE = "QuestionaireApp/QuestionaireApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -666,6 +675,7 @@
 				GCC_PREFIX_HEADER = "QuestionaireApp/QuestionaireApp-Prefix.pch";
 				INFOPLIST_FILE = "QuestionaireApp/QuestionaireApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

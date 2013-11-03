@@ -7,14 +7,15 @@
 //
 
 #import "SingALongMenuViewController.h"
-#import "Constants.h"
 
 @interface SingALongMenuViewController ()
 
 @end
 
 @implementation SingALongMenuViewController
+@synthesize audioPlayer;
 
+bool RecordMenuIsPlaying2 = false;
 bool singMenuRepositioned = false;
 CGRect playStopButtonsContainerPortraitPosition;
 
@@ -34,7 +35,7 @@ bool SingALongMenuIsPlaying = false;
 {
     [super viewDidLoad];
 	
-    if (SURVEY_TAKEN)
+    /*if (SURVEY_TAKEN)
     {
         playPause.hidden = false;
         stopButton.hidden = false;
@@ -45,7 +46,20 @@ bool SingALongMenuIsPlaying = false;
         playPause.hidden = true;
         stopButton.hidden = true;
         playRecordingLabel.hidden = true;
-    }
+    }*/
+    
+    // Init audio with playback capability
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    NSString *recordedAudioPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                   objectAtIndex:0];
+    
+    recordedAudioPath = [recordedAudioPath stringByAppendingPathComponent:@"recorded.caf"];
+    NSURL *recordURL = [NSURL fileURLWithPath:recordedAudioPath];
+    NSError *error;
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:&error];
+    audioPlayer.numberOfLoops = 0;
     
     // Register for device rotation notifications
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -119,31 +133,43 @@ bool SingALongMenuIsPlaying = false;
 -(IBAction)playPausePlayback:(id)sender
 {
     UIImage *icon;
-    if (SingALongMenuIsPlaying)
+    if (RecordMenuIsPlaying2)
     {
         // Set button image to play icon
         icon = [UIImage imageNamed:PLAY_ICON];
-        SingALongMenuIsPlaying = false;
+        RecordMenuIsPlaying2 = false;
         
-        // SHOULD PLAY PRE-RECORDED SONG HERE
-        //
+        [self pauseRecording];
     }
     else
     {
         // Set button image to pause icon
         icon = [UIImage imageNamed:PAUSE_ICON];
-        SingALongMenuIsPlaying = true;
+        RecordMenuIsPlaying2 = true;
         
-        // SHOULD PAUSE SONG HERE
-        //
+        [self playRecording];
     }
     [playPause setImage:icon forState:UIControlStateNormal];
 }
 
+-(void)playRecording{
+    NSLog(@"playRecording");
+    [audioPlayer play];
+    NSLog(@"playing");
+}
+
+-(void)pauseRecording{
+    NSLog(@"pauseRecording");
+    [audioPlayer pause];
+    NSLog(@"pausing");
+}
+
 -(IBAction)stopPlayback:(id)sender
 {
-    // SHOULD STOP PLAYBACK HERE
-    //
+
+    NSLog(@"stopPlaying");
+    [audioPlayer stop];
+    NSLog(@"stopped");
 }
 
 @end

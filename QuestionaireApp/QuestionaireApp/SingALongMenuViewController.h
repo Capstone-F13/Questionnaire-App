@@ -7,17 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Constants.h"
 
-@interface SingALongMenuViewController : UIViewController
+@interface SingALongMenuViewController : UIViewController 
 {
     IBOutlet UIButton *playPause;
     IBOutlet UIButton *stopButton;
     IBOutlet UILabel *playRecordingLabel;
     IBOutlet UIView *playStopButtonsContainer;
 }
-
+@property(nonatomic, retain) AVAudioPlayer *audioPlayer;
 -(IBAction)playPausePlayback:(id)sender;
 -(IBAction)stopPlayback:(id)sender;
+
 
 @end

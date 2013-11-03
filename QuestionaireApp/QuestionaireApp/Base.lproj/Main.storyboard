@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TKD-qS-4qx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TKD-qS-4qx">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OwT-9k-rt4">
-                                <rect key="frame" x="80" y="86" width="160" height="160"/>
+                                <rect key="frame" x="121" y="81" width="79" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Survey" image="survey.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8V1-yb-3ER">
-                                <rect key="frame" x="80" y="336" width="160" height="160"/>
+                                <rect key="frame" x="121" y="210" width="78" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="ipod.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,14 +49,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take Survey" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OvO-aw-qp2">
-                                <rect key="frame" x="114" y="254" width="93" height="21"/>
+                                <rect key="frame" x="114" y="167" width="93" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Your Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EvH-CH-XQz">
-                                <rect key="frame" x="90" y="504" width="140" height="21"/>
+                                <rect key="frame" x="90" y="296" width="140" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -239,27 +239,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="O7s-gQ-jDx">
-                                <rect key="frame" x="21.999999999999986" y="288" width="276" height="34"/>
+                                <rect key="frame" x="22" y="462" width="276" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="volumeChanged:" destination="wg0-iS-QNE" eventType="valueChanged" id="nXl-rD-wVP"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="twD-9z-0ks">
-                                <rect key="frame" x="96" y="180" width="41" height="21"/>
+                                <rect key="frame" x="96" y="180" width="190" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kdm-Xd-Yyi">
-                                <rect key="frame" x="96" y="218" width="41" height="21"/>
+                                <rect key="frame" x="96" y="218" width="190" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D1Z-gR-R7P">
-                                <rect key="frame" x="96" y="258" width="50" height="21"/>
+                                <rect key="frame" x="96" y="258" width="190" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -271,7 +271,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showMediaPicker:" destination="wg0-iS-QNE" eventType="touchUpInside" id="VzY-ox-cD0"/>
+                                    <action selector="showMediaPicker:" destination="wg0-iS-QNE" eventType="touchUpInside" id="SK5-vF-veJ"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" id="n0P-Li-RbU">
@@ -285,7 +285,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="playPausePlayback:" destination="wg0-iS-QNE" eventType="touchUpInside" id="lA0-m9-8VF"/>
+                                            <action selector="playPause:" destination="wg0-iS-QNE" eventType="touchUpInside" id="HYj-TO-QeJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ncQ-Ns-2pA">
@@ -294,9 +294,6 @@
                                         <state key="normal" image="stop_button.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="stopPlayback:" destination="wg0-iS-QNE" eventType="touchUpInside" id="QFH-19-dD4"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -308,7 +305,7 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="pEV-vc-abm"/>
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="EyL-UV-bNN">
                             <connections>
-                                <action selector="cancelRecordNew:" destination="wg0-iS-QNE" id="ohy-sX-jOw"/>
+                                <action selector="cancel:" destination="wg0-iS-QNE" id="9e2-qW-OSg"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Mur-dk-lQ2">
@@ -318,10 +315,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="playPause" destination="Jsm-ZZ-Na4" id="VzA-AD-8YR"/>
-                        <outlet property="songAlbum" destination="D1Z-gR-R7P" id="iVZ-YA-3xS"/>
-                        <outlet property="songArtist" destination="twD-9z-0ks" id="myx-8P-GFf"/>
-                        <outlet property="songTitle" destination="kdm-Xd-Yyi" id="GUI-0b-5pk"/>
+                        <outlet property="albumLabel" destination="D1Z-gR-R7P" id="7pT-ux-Bb5"/>
+                        <outlet property="artistLabel" destination="twD-9z-0ks" id="PyI-AQ-tjp"/>
+                        <outlet property="titleLabel" destination="kdm-Xd-Yyi" id="z4n-qX-QQu"/>
                         <outlet property="volumeSlider" destination="O7s-gQ-jDx" id="00C-RN-Faa"/>
                     </connections>
                 </viewController>
@@ -338,7 +334,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="4VD-8K-RkV">
-                                <rect key="frame" x="80" y="290" width="160" height="108"/>
+                                <rect key="frame" x="80" y="202" width="160" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Recording" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xjE-Zi-SsW">
@@ -371,7 +367,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="r8V-Wf-kJs">
-                                <rect key="frame" x="99" y="169" width="123" height="109"/>
+                                <rect key="frame" x="99" y="81" width="123" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ExR-Z8-qoX">
@@ -393,6 +389,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="klN-Qi-Gyp">
+                                <rect key="frame" x="32" y="318" width="256" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -404,6 +407,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="errorLabel" destination="klN-Qi-Gyp" id="65Z-ZC-tLl"/>
                         <outlet property="playPause" destination="vh3-9p-sA0" id="P55-98-d9t"/>
                         <outlet property="playStopButtonsContainer" destination="4VD-8K-RkV" id="6xA-yO-MIc"/>
                         <outlet property="record" destination="ExR-Z8-qoX" id="suA-ad-UgB"/>
@@ -423,7 +427,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KFI-0I-TKH">
-                                <rect key="frame" x="98" y="206" width="125" height="30"/>
+                                <rect key="frame" x="82" y="180" width="156" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record New Song">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -532,7 +536,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mJK-9I-55J">
-                                <rect key="frame" x="141" y="262" width="38" height="30"/>
+                                <rect key="frame" x="110" y="262" width="101" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -640,16 +644,9 @@
     </scenes>
     <resources>
         <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
-        <image name="check_mark.png" width="300" height="278"/>
         <image name="ipod.png" width="256" height="256"/>
         <image name="play_button.png" width="299" height="285"/>
-        <image name="play_button.png" width="299" height="285"/>
-        <image name="play_button.png" width="299" height="285"/>
         <image name="record_button.png" width="256" height="256"/>
-        <image name="stop_button.png" width="300" height="300"/>
-        <image name="stop_button.png" width="300" height="300"/>
         <image name="stop_button.png" width="300" height="300"/>
         <image name="survey.png" width="256" height="256"/>
     </resources>
