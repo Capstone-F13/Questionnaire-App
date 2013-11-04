@@ -65,7 +65,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *patientIDURL = @"http://capstone-f13.herokuapp.com/patient/login";
+    NSString *patientIDURL = @"http://create.cs.kent.edu/patient/login";
     NSString *token = [defaults stringForKey:@"autoToken"];
     NSString *patientId = [NSString stringWithFormat:@"%@", [self.patients objectAtIndex:indexPath.row] ];
  
@@ -86,6 +86,8 @@
                 NSLog(@"%@", responseObject);
                 [defaults setObject:patientId forKey:@"patientID"];
                 [defaults synchronize];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
                 
             }
             

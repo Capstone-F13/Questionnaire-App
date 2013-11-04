@@ -69,7 +69,7 @@
 
 - (void) authenticateUser{
     
-    NSString *URLString = @"http://capstone-f13.herokuapp.com/oauth2/access_token";
+    NSString *URLString = @"http://create.cs.kent.edu/oauth2/access_token";
     
     NSString *usernameString = [adminUsername text];
     NSString *passwordString = [password text];
@@ -89,7 +89,7 @@
             NSLog(@"%@", responseObject);
             NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
         
-            [self.manager GET:[NSString stringWithFormat:@"http://capstone-f13.herokuapp.com/patients/%@", token]
+            [self.manager GET:[NSString stringWithFormat:@"http://create.cs.kent.edu/patients/%@", token]
                    parameters:nil
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
 

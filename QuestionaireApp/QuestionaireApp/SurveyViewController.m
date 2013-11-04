@@ -39,7 +39,16 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *autoToken = [defaults stringForKey:@"autoToken"];
         NSString *patientID = [defaults stringForKey:@"patientID"];
-        NSString *questionsURL = [NSString stringWithFormat:@"http://capstone-f13.herokuapp.com/api/v1/questions/%@/%@", autoToken, patientID];
+        NSString *questionsURL = [NSString stringWithFormat:@"http://create.cs.kent.edu/questions/%@/%@", autoToken, patientID];
+        
+        NSLog(questionsURL);
+        
+//        NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET"
+//                                                                                     URLString:questionsURL
+//                                                                                    parameters:nil];
+//        
+//        AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request
+//             success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         [self.manager GET:questionsURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
@@ -59,6 +68,8 @@
             NSLog(@"Error: %@", error);
             
         }];
+        
+        //[operation start];
     }
     return self;
 }
@@ -289,7 +300,7 @@
             continue;
         }
         
-        NSString *URLString = @"http://capstone-f13.herokuapp.com/answer/";
+        NSString *URLString = @"http://create.cs.kent.edu/answer/";
         
         NSDictionary *parameters = @{@"question_id" : [NSString stringWithFormat:@"%lu",question.questionID],
                                      @"patient_id" : @"patient_001",
