@@ -12,6 +12,7 @@
 @interface AdminViewController ()
 
 @property (strong) AFHTTPRequestOperationManager *manager;
+@property (nonatomic) NSString *serverURLString;
 
 @end
 
@@ -34,6 +35,7 @@ CGRect passwordContainerPortraitPosition;
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         self.manager = [AFHTTPRequestOperationManager manager];
+        _serverURLString = @"http://create.cs.kent.edu/oauth2/access_token";
     }
     return self;
 }
@@ -137,8 +139,6 @@ CGRect passwordContainerPortraitPosition;
 
 - (void) authenticateUser{
     
-    NSString *URLString = @"http://create.cs.kent.edu/oauth2/access_token";
-    
     NSString *usernameString = [adminUsername text];
     NSString *passwordString = [password text];
     
@@ -150,7 +150,7 @@ CGRect passwordContainerPortraitPosition;
                                  @"scope" : @"write"
                                  };
     
-    AFHTTPRequestOperation *operation = [self.manager POST:URLString
+    AFHTTPRequestOperation *operation = [self.manager POST:self.serverURLString
                                                 parameters:parameters
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
