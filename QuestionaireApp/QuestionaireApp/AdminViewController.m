@@ -17,6 +17,10 @@
 
 @implementation AdminViewController
 
+bool adminLoginRepositioned = false;
+CGRect usernameContainerPortraitPosition;
+CGRect passwordContainerPortraitPosition;
+
 @synthesize adminUsername, password, error;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,9 +41,73 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    // Register for device rotation notifications
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(orientationChanged:)
+     name:UIDeviceOrientationDidChangeNotification
+     object:[UIDevice currentDevice]];
+    
+    [self savePortraitViewPositions];
+    
+    // Adjust play and stop buttons as necessary
+    UIDevice *device = [UIDevice currentDevice];
+    if (device.orientation == UIDeviceOrientationLandscapeLeft || device.orientation == UIDeviceOrientationLandscapeRight)
+    {
+        usernameContainer.frame = CGRectOffset(usernameContainer.frame, 0, -5);
+        passwordContainer.frame = CGRectOffset(passwordContainer.frame, 0, -85);
+        adminLoginRepositioned = true;
+    }
+    else if (device.orientation == UIDeviceOrientationPortrait)
+    {
+        [self setPortraitViewPositions];
+    }
 }
 
+- (void)orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    // Adjusts play and stop buttons as necessary
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationPortrait:
+            [self setPortraitViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self setLandscapeViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self setLandscapeViewPositions];
+            break;
+            
+        default:
+            break;
+    };
+}
+
+- (void)savePortraitViewPositions
+{
+    usernameContainerPortraitPosition = CGRectMake(60, 103, 201, 69);
+    passwordContainerPortraitPosition = CGRectMake(60, 185, 201, 69);
+}
+
+- (void)setPortraitViewPositions
+{
+    usernameContainer.frame = usernameContainerPortraitPosition;
+    passwordContainer.frame = passwordContainerPortraitPosition;
+    adminLoginRepositioned = false;
+}
+
+- (void)setLandscapeViewPositions
+{
+    if (!adminLoginRepositioned)
+    {
+        usernameContainer.frame = CGRectOffset(usernameContainer.frame, 0, -5);
+        passwordContainer.frame = CGRectOffset(passwordContainer.frame, 0, -85);
+        adminLoginRepositioned = true;
+    }
+}
 
 - (IBAction)submit:(id)sender
 {
@@ -121,6 +189,11 @@
 {
     // Dismisses keyboard
     [self.view endEditing:YES];
+}
+
+- (IBAction)adminCancel:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

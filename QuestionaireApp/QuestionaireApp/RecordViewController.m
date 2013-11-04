@@ -13,26 +13,27 @@
 @end
 
 @implementation RecordViewController
-@synthesize audioPlayer;
+@synthesize audioPlayer, musicPlayer,session, currentSelection;
 
 bool RecordMenuIsPlaying = false;
 bool RecordMenuIsRecording = false;
-
+bool recordMenuRepositioned = false;
+CGRect playStopButtonsContainerPortraitPosition;
 
 - (void)checkIfFileExists
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:[NSString stringWithFormat:@"%@/recordTest.caf", [[NSBundle mainBundle] resourcePath]]]) {
+    if (![fileManager fileExistsAtPath:[NSString stringWithFormat:@"recorded.caf"]]) {
         playPause.hidden = true;
         stop.hidden = true;
     }
 }
 
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    NSLog(@"Here");
-    UIImage *icon;
-    icon = [UIImage imageNamed:PLAY_ICON];
-    [playPause setImage:icon forState:UIControlStateNormal];
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    NSLog(@"Finished PLaying");
+    [self playPausePlayback:self];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,10 +49,78 @@ bool RecordMenuIsRecording = false;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self checkIfFileExists];
-    self.audioPlayer.delegate = self;
+    //[self checkIfFileExists];
+    
+    if (self.session == nil){
+		self.session = [AVAudioSession sharedInstance];
+		NSLog(@"Creating New Session");
+    }
+	NSError *error;
+	[self.session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+	[self.session setActive:YES error:nil];
+    
+    // Register for device rotation notifications
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(orientationChanged:)
+     name:UIDeviceOrientationDidChangeNotification
+     object:[UIDevice currentDevice]];
+    
+    [self savePortraitViewPositions];
+    
+    // Adjust play and stop buttons as necessary
+    UIDevice *device = [UIDevice currentDevice];
+    if (device.orientation == UIDeviceOrientationLandscapeLeft || device.orientation == UIDeviceOrientationLandscapeRight)
+    {
+        playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 90);
+        recordMenuRepositioned = true;
+    }
+    else if (device.orientation == UIDeviceOrientationPortrait)
+    {
+        [self setPortraitViewPositions];
+    }
 }
 
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    // Adjusts play and stop buttons as necessary
+    switch(device.orientation)
+    {
+        case UIDeviceOrientationPortrait:
+            [self setPortraitViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self setLandscapeViewPositions];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self setLandscapeViewPositions];
+            break;
+            
+        default:
+            break;
+    };
+}
+
+- (void)savePortraitViewPositions
+{
+    playStopButtonsContainerPortraitPosition = CGRectMake(80, 290, 160, 108);
+}
+
+- (void)setPortraitViewPositions
+{
+    playStopButtonsContainer.frame = playStopButtonsContainerPortraitPosition;
+    recordMenuRepositioned = false;
+}
+
+- (void)setLandscapeViewPositions
+{
+    if (!recordMenuRepositioned)
+    {
+        playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 50);
+        recordMenuRepositioned = true;
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -61,6 +130,7 @@ bool RecordMenuIsRecording = false;
 
 -(IBAction)playPausePlayback:(id)sender
 {
+    [self setPlayBackAudioPlayer];
     UIImage *icon;
     if (RecordMenuIsPlaying)
     {
@@ -68,9 +138,7 @@ bool RecordMenuIsRecording = false;
         icon = [UIImage imageNamed:PLAY_ICON];
         RecordMenuIsPlaying = false;
         
-        // SHOULD PLAY PRE-RECORDED SONG HERE
-        //
-        
+        [self pauseRecording];
     }
     else
     {
@@ -79,28 +147,25 @@ bool RecordMenuIsRecording = false;
         RecordMenuIsPlaying = true;
         
         [self playRecording];
-        // SHOULD PAUSE SONG HERE
-        //
     }
     [playPause setImage:icon forState:UIControlStateNormal];
 }
 
 -(void)playRecording{
     NSLog(@"playRecording");
-    // Init audio with playback capability
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-    
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordTest.caf", [[NSBundle mainBundle] resourcePath]]];
-    NSError *error;
-    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    audioPlayer.numberOfLoops = 0;
     [audioPlayer play];
     NSLog(@"playing");
 }
 
+-(void)pauseRecording{
+    NSLog(@"pauseRecording");
+    [audioPlayer pause];
+    NSLog(@"pausing");
+}
+
 -(IBAction)startStopRecording:(id)sender
 {
+    [self setRecordAudioPlayer];
     UIImage *icon;
     if (RecordMenuIsRecording)
     {
@@ -109,7 +174,7 @@ bool RecordMenuIsRecording = false;
         RecordMenuIsRecording = false;
         
         [self stopRecording];
-        [self checkIfFileExists];
+        //[self checkIfFileExists];
     }
     else
     {
@@ -126,6 +191,7 @@ bool RecordMenuIsRecording = false;
 {
     NSLog(@"stopRecording");
     [audioRecorder stop];
+    [audioPlayer stop];
     NSLog(@"stopped");
 }
 
@@ -136,7 +202,7 @@ bool RecordMenuIsRecording = false;
     
     // Init audio with record capability
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    [audioSession setCategory:AVAudioSessionCategoryRecord error:nil];
+    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     
     NSMutableDictionary *recordSettings = [[NSMutableDictionary alloc] initWithCapacity:10];
     [recordSettings setObject:[NSNumber numberWithInt: kAudioFormatLinearPCM] forKey: AVFormatIDKey];
@@ -147,13 +213,17 @@ bool RecordMenuIsRecording = false;
     [recordSettings setObject:[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
 
     
-    NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/recordTest.caf", [[NSBundle mainBundle] resourcePath]]];
+    NSString *recordedAudioPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                   objectAtIndex:0];
     
-    
+    recordedAudioPath = [recordedAudioPath stringByAppendingPathComponent:@"recorded.caf"];
+    NSURL *recordURL = [NSURL fileURLWithPath:recordedAudioPath];
+
     NSError *error = nil;
-    audioRecorder = [[ AVAudioRecorder alloc] initWithURL:url settings:recordSettings error:&error];
+    audioRecorder = [[ AVAudioRecorder alloc] initWithURL:recordURL settings:recordSettings error:&error];
     
     if ([audioRecorder prepareToRecord] == YES){
+        [audioPlayer play];
         [audioRecorder record];
     }else {
         int errorCode = CFSwapInt32HostToBig ([error code]); 
@@ -165,20 +235,55 @@ bool RecordMenuIsRecording = false;
 
 -(IBAction)stopPlayback:(id)sender
 {
-    // SHOULD STOP PLAYBACK HERE
-    //
+    [self setPlayBackAudioPlayer];
     NSLog(@"stopPlaying");
     [audioPlayer stop];
+    [self playPausePlayback:self];
     NSLog(@"stopped");
 }
 
 -(IBAction)finishRecordNew:(id)sender
 {
-    // SHOULD SAVE RECORDING HERE
-    //
-    
     // Dismiss the view and return the Sing-a-long menu
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+-(void)setRecordAudioPlayer
+{
+    NSError *error;
+    musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+    
+    //[musicPlayer play];
+    
+    MPMediaItem *currentItem = [musicPlayer nowPlayingItem];
+    if (currentItem == nil){
+        errorLabel.text = @"You must select a music \n to play with the recording";
+        errorLabel.hidden = NO;
+        return;
+    }
+    
+    self.currentSelection=[currentItem valueForProperty:MPMediaItemPropertyAssetURL];
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:self.currentSelection error:&error];
+    NSLog(@"url=%@",self.currentSelection);
+    [audioPlayer setDelegate:self];
+}
+
+-(void)setPlayBackAudioPlayer
+{
+    // Init audio with playback capability
+    NSError *error;
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    
+    NSString *recordedAudioPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                   objectAtIndex:0];
+    
+    recordedAudioPath = [recordedAudioPath stringByAppendingPathComponent:@"recorded.caf"];
+    NSURL *recordURL = [NSURL fileURLWithPath:recordedAudioPath];
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:&error];
+    audioPlayer.numberOfLoops = 0;
+    [audioPlayer setDelegate:self];
+}
+
 
 @end
