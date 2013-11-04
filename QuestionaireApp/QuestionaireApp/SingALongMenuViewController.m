@@ -108,7 +108,7 @@ bool SingALongMenuIsPlaying = false;
 
 - (void)savePortraitViewPositions
 {
-    playStopButtonsContainerPortraitPosition = CGRectMake(80, 270, 160, 92);
+    playStopButtonsContainerPortraitPosition = CGRectMake(80, 82, 160, 92);
 }
 
 - (void)setPortraitViewPositions
