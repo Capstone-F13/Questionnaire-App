@@ -57,14 +57,14 @@
     
     [volumeSlider setValue:[musicPlayer volume]];
     
-	if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying) {
-        
-        [playPauseButton setImage:[UIImage imageNamed:@"pauseButton.png"] forState:UIControlStateNormal];
-        
-    } else {
-        
-        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
-    }
+//	if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying) {
+//        
+//        [playPauseButton setImage:[UIImage imageNamed:@"pauseButton.png"] forState:UIControlStateNormal];
+//        
+//    } else {
+//        
+//        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
+//    }
     
     MPMediaItem *currentItem = [musicPlayer nowPlayingItem];
     
@@ -166,19 +166,19 @@
 {
     MPMusicPlaybackState playbackState = [musicPlayer playbackState];
 	
-	if (playbackState == MPMusicPlaybackStatePaused) {
-        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
-        
-        
-	} else if (playbackState == MPMusicPlaybackStatePlaying) {
-        [playPauseButton setImage:[UIImage imageNamed:@"pauseButton.png"] forState:UIControlStateNormal];
-        
-	} else if (playbackState == MPMusicPlaybackStateStopped) {
-        
-        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
-		[musicPlayer stop];
-        
-	}
+//	if (playbackState == MPMusicPlaybackStatePaused) {
+//        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
+//        
+//        
+//	} else if (playbackState == MPMusicPlaybackStatePlaying) {
+//        [playPauseButton setImage:[UIImage imageNamed:@"pauseButton.png"] forState:UIControlStateNormal];
+//        
+//	} else if (playbackState == MPMusicPlaybackStateStopped) {
+//        
+//        [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
+//		[musicPlayer stop];
+//        
+//	}
     
 }
 
@@ -234,13 +234,34 @@
 
 - (IBAction)playPause:(id)sender
 {
-    if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying) {
-        [musicPlayer pause];
+    UIImage *icon;
+    if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying)
+    {
+        // Set button image to play icon
+        icon = [UIImage imageNamed:PLAY_ICON];
         
-    } else {
-        [musicPlayer play];
-        
+        [self pauseRecording];
     }
+    else
+    {
+        // Set button image to pause icon
+        icon = [UIImage imageNamed:PAUSE_ICON];
+        
+        [self playRecording];
+    }
+    [playPauseButton setImage:icon forState:UIControlStateNormal];
+}
+
+-(void)playRecording{
+    NSLog(@"playRecording");
+    [musicPlayer play];
+    NSLog(@"playing");
+}
+
+-(void)pauseRecording{
+    NSLog(@"pauseRecording");
+    [musicPlayer pause];
+    NSLog(@"pausing");
 }
 
 - (IBAction)nextSong:(id)sender

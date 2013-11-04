@@ -330,6 +330,7 @@
                     <connections>
                         <outlet property="albumLabel" destination="D1Z-gR-R7P" id="7pT-ux-Bb5"/>
                         <outlet property="artistLabel" destination="twD-9z-0ks" id="PyI-AQ-tjp"/>
+                        <outlet property="playPauseButton" destination="Jsm-ZZ-Na4" id="jyv-FF-o6t"/>
                         <outlet property="titleLabel" destination="kdm-Xd-Yyi" id="z4n-qX-QQu"/>
                         <outlet property="volumeSlider" destination="O7s-gQ-jDx" id="00C-RN-Faa"/>
                     </connections>
