@@ -142,8 +142,8 @@ CGRect passwordContainerPortraitPosition;
     NSString *usernameString = [adminUsername text];
     NSString *passwordString = [password text];
     
-    NSDictionary *parameters = @{@"client_id" : @"36bd6a8abbd73b3f8eff",
-                                 @"client_secret" : @"743cd36ff8b23b189d28f9a028e410cad62bd05f",
+    NSDictionary *parameters = @{@"client_id" : @"19338b8cd902c96dc495",
+                                 @"client_secret" : @"b2faeb98ba2cf71f53e7045ad0b30782a65a148a",
                                  @"grant_type" : @"password",
                                  @"username" : usernameString,
                                  @"password" : passwordString,
