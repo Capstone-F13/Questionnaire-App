@@ -47,15 +47,6 @@ CGRect image3PortraitPosition;
         NSString *patientID = [defaults stringForKey:@"patientID"];
         NSString *questionsURL = [NSString stringWithFormat:@"http://create.cs.kent.edu/questions/%@/%@", autoToken, patientID];
         
-        NSLog(questionsURL);
-        
-//        NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET"
-//                                                                                     URLString:questionsURL
-//                                                                                    parameters:nil];
-//        
-//        AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request
-//             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
         [self.manager GET:questionsURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             self.survey = [Survey surveyWithJSON:responseObject];
@@ -75,7 +66,6 @@ CGRect image3PortraitPosition;
             
         }];
         
-        //[operation start];
     }
     return self;
 }
@@ -247,10 +237,6 @@ CGRect image3PortraitPosition;
     if (question.isMultipleChoice)
     {
 
-//        for (Answer *a in question.answers) {
-//            
-//        }
-        
         switch (question.answers.count) {
             case 1: {
                 [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];

@@ -20,25 +20,28 @@
 
 - (id)initWithJSON:(NSDictionary *)JSON {
     if (self = [super init]) {
+        
+        //NSLog(JSON);
 
         self.questions = [NSMutableArray new];
         
-        NSArray *questions = JSON[@"objects"];
-        for (NSDictionary *q in questions) {
+        //NSArray *questions = JSON[@"objects"];
+        for (NSDictionary *q in JSON) {
             
-            BOOL isMultipleChoice = [q[@"is_multiple_choice"] isEqualToNumber:@1];
+            BOOL isMultipleChoice = [q[@"fields"][@"is_multiple_choice"] isEqualToNumber:@1];
             
-            Question *question = [Question questionWithID:[q[@"id"] integerValue]
-                                                     text:q[@"question"]
-                                         isMultipleChoice:isMultipleChoice];
+            Question *question = [Question questionWithID:[q[@"pk"] integerValue]
+                                                     text:q[@"fields"][@"question"]
+                                         isMultipleChoice:isMultipleChoice
+                                                   survey:[q[@"fields"][@"survey"] integerValue]];
             
             if (isMultipleChoice) {
                 
-                NSArray *answers = q[@"answers"];
+                NSArray *answers = q[@"fields"][@"multiple_choice_answer"];
                 for (NSDictionary *a in answers) {
                     
-                    Answer *answer = [Answer answerWithID:[a[@"id"] integerValue]
-                                                     text:a[@"text"]];
+                    Answer *answer = [Answer answerWithID:[a[@"pk"] integerValue]
+                                                     text:a[@"fields"][@"text"]];
                     
                     [question.answers addObject:answer];
                 }

@@ -11,17 +11,18 @@
 
 @implementation Question
 
-+ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice {
-    return [[Question alloc] initWithID:questionID text:text isMultipleChoice:isMultipleChoice];
++ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice survey:(NSUInteger)surveyID {
+    return [[Question alloc] initWithID:questionID text:text isMultipleChoice:isMultipleChoice survey:surveyID];
 }
 
-- (id)initWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice {
+- (id)initWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice survey:(NSUInteger)surveyID {
     if (self = [super init]) {
         self.questionID = questionID;
         self.text = text;
         self.isMultipleChoice = isMultipleChoice;
         self.answers = [NSMutableArray new];
         self.answerText = nil;
+        self.surveyID = surveyID;
     }
     return self;
 }

@@ -16,7 +16,8 @@
 @property (nonatomic, assign) BOOL isMultipleChoice;
 @property (nonatomic, strong) NSMutableArray *answers;
 @property (nonatomic, strong) NSString *answerText;
+@property (nonatomic, assign) NSUInteger surveyID;
 
-+ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice;
++ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice survey:(NSUInteger)surveyID;
 
 @end
