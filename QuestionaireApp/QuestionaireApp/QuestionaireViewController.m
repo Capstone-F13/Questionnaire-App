@@ -7,8 +7,11 @@
 //
 
 #import "QuestionaireViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @interface QuestionaireViewController ()
+
+@property (strong) AFHTTPRequestOperationManager *manager;
 
 @end
 
@@ -40,9 +43,40 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)logout:(id)sender
-{
+-(IBAction)logout:(id)sender {
     
+    self.manager = [AFHTTPRequestOperationManager manager];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *URLString = @"http://create.cs.kent.edu/patient/logout";
+    NSString *token = [defaults stringForKey:@"autoToken"];
+    NSString *patientID = [defaults stringForKey:@"patientID"];
+    
+    NSDictionary *parameters = @{@"access_token" : token,
+                                 @"patient_id" : patientID
+                                 };
+    
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST"
+                                                                                 URLString:URLString
+                                                                                parameters:parameters];
+    
+    AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request
+        success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           
+           NSLog(@"%@", responseObject);
+           
+//           [defaults setObject:token forKey:@"autoToken"];
+//           [defaults setObject:patients forKey:@"patients"];
+//           [defaults synchronize];
+           
+       } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+           
+           NSLog(@"Error: %@", localError);
+           
+       }];
+    
+    [operation start];
+
 }
 
 @end
