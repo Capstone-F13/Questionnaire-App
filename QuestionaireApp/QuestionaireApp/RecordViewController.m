@@ -17,8 +17,6 @@
 
 bool RecordMenuIsPlaying = false;
 bool RecordMenuIsRecording = false;
-bool recordMenuRepositioned = false;
-CGRect playStopButtonsContainerPortraitPosition;
 
 - (void)checkIfFileExists
 {
@@ -58,68 +56,6 @@ CGRect playStopButtonsContainerPortraitPosition;
 	NSError *error;
 	[self.session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
 	[self.session setActive:YES error:nil];
-    
-    // Register for device rotation notifications
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(orientationChanged:)
-     name:UIDeviceOrientationDidChangeNotification
-     object:[UIDevice currentDevice]];
-    
-    [self savePortraitViewPositions];
-    
-    // Adjust play and stop buttons as necessary
-    UIDevice *device = [UIDevice currentDevice];
-    if (device.orientation == UIDeviceOrientationLandscapeLeft || device.orientation == UIDeviceOrientationLandscapeRight)
-    {
-        playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 90);
-        recordMenuRepositioned = true;
-    }
-    else if (device.orientation == UIDeviceOrientationPortrait)
-    {
-        [self setPortraitViewPositions];
-    }
-}
-
-- (void) orientationChanged:(NSNotification *)note
-{
-    UIDevice * device = note.object;
-    // Adjusts play and stop buttons as necessary
-    switch(device.orientation)
-    {
-        case UIDeviceOrientationPortrait:
-            [self setPortraitViewPositions];
-            break;
-        case UIDeviceOrientationLandscapeLeft:
-            [self setLandscapeViewPositions];
-            break;
-        case UIDeviceOrientationLandscapeRight:
-            [self setLandscapeViewPositions];
-            break;
-            
-        default:
-            break;
-    };
-}
-
-- (void)savePortraitViewPositions
-{
-    playStopButtonsContainerPortraitPosition = CGRectMake(80, 290, 160, 108);
-}
-
-- (void)setPortraitViewPositions
-{
-    playStopButtonsContainer.frame = playStopButtonsContainerPortraitPosition;
-    recordMenuRepositioned = false;
-}
-
-- (void)setLandscapeViewPositions
-{
-    if (!recordMenuRepositioned)
-    {
-        playStopButtonsContainer.frame = CGRectOffset(playStopButtonsContainer.frame, 0, 50);
-        recordMenuRepositioned = true;
-    }
 }
 
 - (void)didReceiveMemoryWarning
