@@ -43,6 +43,8 @@
         
         [self.manager GET:questionsURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
+            NSLog(@"JSON : %@",responseObject);
+            
             self.survey = [Survey surveyWithJSON:responseObject];
             
             if (self.survey.questions.count == 0) {

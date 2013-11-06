@@ -30,7 +30,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.manager = [AFHTTPRequestOperationManager manager];
+        _manager = [AFHTTPRequestOperationManager manager];
         _serverURLString = @"http://create.cs.kent.edu/oauth2/access_token";
     }
     return self;
@@ -80,30 +80,33 @@
                                  @"scope" : @"write"
                                  };
     
-    AFHTTPRequestOperation *operation = [self.manager POST:self.serverURLString
+    
+    __weak AdminViewController *weakSelf = self;
+    
+    [self.manager POST:self.serverURLString
                                                 parameters:parameters
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
             NSLog(@"%@", responseObject);
             NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
-        
-            [self.manager GET:[NSString stringWithFormat:@"http://create.cs.kent.edu/patients/%@", token]
+            
+            [weakSelf.manager GET:[NSString stringWithFormat:@"http://create.cs.kent.edu/patients/%@", token]
                    parameters:nil
                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+                          
                           NSLog(@"JSON : %@",responseObject);
-            
+                          
                           NSArray *patients = (NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"];
-
+                          
                           NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                           [defaults setObject:token forKey:@"autoToken"];
                           [defaults setObject:patients forKey:@"patients"];
                           [defaults synchronize];
-            
+                          
                       } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
-
+                          
                           NSLog(@"Error: %@", localError);
-
+                          
                       }];
 
             } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
@@ -111,8 +114,6 @@
                 NSLog(@"Error: %@", localError);
 
             }];
-    
-    [operation start];
 }
 
 -(IBAction)backgroundTapped:(id)sender

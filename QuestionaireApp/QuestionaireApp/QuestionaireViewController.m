@@ -64,6 +64,9 @@
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
            
            NSLog(@"%@", responseObject);
+            // delete token and patient id
+            
+            
            
 //           [defaults setObject:token forKey:@"autoToken"];
 //           [defaults setObject:patients forKey:@"patients"];
@@ -72,6 +75,7 @@
        } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
            
            NSLog(@"Error: %@", localError);
+           NSLog(@"%@", operation.request);
            
        }];
     
