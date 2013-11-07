@@ -194,6 +194,11 @@
                 [buttonChoice4 setTitle:[question.answers[3] text] forState:UIControlStateNormal];
                 break;
             }
+            default: {
+                [ratingSlider setMaximumValue:question.answers.count];
+                [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
+                [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
+            }
         }
     }
 
@@ -287,7 +292,9 @@
 
 -(IBAction)sliderValueChanged:(id)sender
 {
-    
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
+    [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
 }
 
 -(IBAction)submitSurvey:(id)sender
