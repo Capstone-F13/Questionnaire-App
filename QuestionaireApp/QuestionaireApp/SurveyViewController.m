@@ -79,12 +79,13 @@
 
 - (void)showAppropriateFieldsForQuestion:(NSUInteger)num
 {
+    [self hideAllUIElements];
+    
     Question *question = self.survey.questions[num];
     
     // Question type is multiple choice
     if (question.isMultipleChoice)
     {
-        answerTextField.hidden = true;
         switch (question.answers.count) {
             case 1: {
                 buttonChoice1.hidden = false;
@@ -108,17 +109,32 @@
                 buttonChoice4.hidden = false;
                 break;
             }
+            default: {
+                ratingSlider.hidden = false;
+                ratingText.hidden = false;
+                ratingNumber.hidden = false;
+                break;
+            }
         }
     }
     // Question type is short response
     else
     {
         answerTextField.hidden = false;
-        buttonChoice1.hidden = true;
-        buttonChoice2.hidden = true;
-        buttonChoice3.hidden = true;
-        buttonChoice4.hidden = true;
     }
+}
+
+- (void)hideAllUIElements
+{
+    // Hides everything but the question label, previous, and next buttons
+    ratingSlider.hidden = true;
+    ratingText.hidden = true;
+    ratingNumber.hidden = true;
+    buttonChoice1.hidden = true;
+    buttonChoice2.hidden = true;
+    buttonChoice3.hidden = true;
+    buttonChoice4.hidden = true;
+    answerTextField.hidden = true;
 }
 
 - (void)showSelectIndicator:(int)choice
@@ -157,7 +173,6 @@
     // Use current question number to set the appropriate fields for the question
     if (question.isMultipleChoice)
     {
-
         switch (question.answers.count) {
             case 1: {
                 [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
@@ -180,6 +195,11 @@
                 [buttonChoice3 setTitle:[question.answers[2] text] forState:UIControlStateNormal];
                 [buttonChoice4 setTitle:[question.answers[3] text] forState:UIControlStateNormal];
                 break;
+            }
+            default: {
+                [ratingSlider setMaximumValue:question.answers.count];
+                [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
+                [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
             }
         }
     }
@@ -270,6 +290,13 @@
 {
     // Dismisses keyboard
     [self.view endEditing:YES];
+}
+
+-(IBAction)sliderValueChanged:(id)sender
+{
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
+    [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
 }
 
 -(IBAction)submitSurvey:(id)sender

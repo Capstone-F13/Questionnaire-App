@@ -26,6 +26,11 @@
     IBOutlet UIButton *buttonChoice2;
     IBOutlet UIButton *buttonChoice3;
     IBOutlet UIButton *buttonChoice4;
+    
+    // Pointers to objects for rating questions
+    IBOutlet UISlider *ratingSlider;
+    IBOutlet UILabel *ratingText;
+    IBOutlet UILabel *ratingNumber;
 }
 // Makes the keyboard go away
 -(IBAction)backgroundTapped:(id)sender;
@@ -43,6 +48,8 @@
 
 // Sends off the survey responses
 -(IBAction)submitSurvey:(id)sender;
+
+-(IBAction)sliderValueChanged:(id)sender;
 
 // Holds current question number (starts at 0)
 @property (nonatomic) int currentQuestionNumber;
