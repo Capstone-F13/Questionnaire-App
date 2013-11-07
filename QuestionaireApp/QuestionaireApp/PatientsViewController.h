@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *patientTable;
 
+-(IBAction)addPatient:(id)sender;
+
 @end

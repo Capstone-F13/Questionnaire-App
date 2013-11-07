@@ -105,6 +105,11 @@
     [operation start];
 }
 
+- (IBAction)addPatient:(id)sender
+{
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
