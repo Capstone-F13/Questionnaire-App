@@ -37,13 +37,13 @@
         self.manager = [AFHTTPRequestOperationManager manager];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *autoToken = [defaults stringForKey:@"autoToken"];
+        NSString *authToken = [defaults stringForKey:@"authToken"];
         NSString *patientID = [defaults stringForKey:@"patientID"];
-        NSString *questionsURL = [NSString stringWithFormat:@"http://create.cs.kent.edu/questions/%@/%@", autoToken, patientID];
+        NSString *questionsURL = [NSString stringWithFormat:@"http://create.cs.kent.edu/questions/%@/%@", authToken, patientID];
         
         [self.manager GET:questionsURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            NSLog(@"JSON : %@",responseObject);
+            // NSLog(@"JSON : %@",responseObject);
             
             self.survey = [Survey surveyWithJSON:responseObject];
             
@@ -55,7 +55,7 @@
                 self.currentQuestionNumber = 0;
                 [self getQuestion:self.currentQuestionNumber];
             }
-
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);
@@ -203,7 +203,7 @@
             }
         }
     }
-
+    
     [currentQuestionText setText:question.text];
     
     // Display the appropriate fields for the question
@@ -228,7 +228,7 @@
     {
         self.currentQuestionNumber = 0;
     }
-
+    
     [self getQuestion:self.currentQuestionNumber];
 }
 
@@ -242,7 +242,7 @@
     {
         self.currentQuestionNumber = (int)[self.survey.questions count] - 1;
     }
-
+    
     [self getQuestion:self.currentQuestionNumber];
 }
 
@@ -260,7 +260,7 @@
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:2];
-
+    
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[1];
     question.answerText = answer.text;
@@ -270,7 +270,7 @@
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:3];
-
+    
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[2];
     question.answerText = answer.text;
@@ -280,7 +280,7 @@
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:4];
-
+    
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[3];
     question.answerText = answer.text;
@@ -297,58 +297,58 @@
     Question *question = self.survey.questions[self.currentQuestionNumber];
     [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
     [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
+    question.answerText = [question.answers[(int)[ratingSlider value] - 1] text];
 }
 
 -(IBAction)submitSurvey:(id)sender
 {
+    NSMutableArray *response = [[NSMutableArray alloc] initWithCapacity:[self.survey.questions count]];
     
-    NSMutableArray *mutableOperations = [NSMutableArray array];
+    // NSMutableArray *mutableOperations = [NSMutableArray array];
     
     for (Question *question in self.survey.questions) {
         
         if (!question.answerText) {
-            NSLog(@"error: this question's answer text was nil");
+            NSLog(@"error: question %lu's answer text was nil",(long)question.questionID);
             
-            // should stop and show a warning in the future
+            // TODO: should stop and show a warning in the future
             
             continue;
         }
         
-        NSString *URLString = @"http://create.cs.kent.edu/answer/";
+        // NSLog(@"question %lu: %@",(long)question.questionID,question.answerText);
         
-        NSDictionary *parameters = @{@"question_id" : [NSString stringWithFormat:@"%lu",question.questionID],
-                                     @"patient_id" : @"patient_001",
-                                     @"answer" : question.answerText
-                                     };
+        NSDictionary *question_info = @{@"question_id" : [NSString stringWithFormat:@"%lu",(long)question.questionID],
+                                        @"answer" : question.answerText
+                                        };
         
-        NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters];
-        AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            NSLog(@"JSON: %@", responseObject);
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-            NSLog(@"Error: %@", error);
-            
-        }];
-        
-        [mutableOperations addObject:operation];
+        [response addObject:question_info];
     }
     
-    NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:mutableOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
-        
-        NSLog(@"%lu of %lu complete", numberOfFinishedOperations, totalNumberOfOperations);
-
-    } completionBlock:^(NSArray *operations) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *authToken = [defaults stringForKey:@"authToken"];
+    NSString *patientID = [defaults stringForKey:@"patientID"];
     
+    NSDictionary *parameters = @{@"patient_id" : patientID,
+                                 @"access_token": authToken,
+                                 @"response" : response};
+    
+    NSString *URLString = @"http://create.cs.kent.edu/answer/";
+    
+    NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters];
+    AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
         [self.navigationController popViewControllerAnimated:YES];
         
-        NSLog(@"All operations in batch complete");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        SURVEY_TAKEN = true;
+        NSLog(@"Error: %@", error);
+        
     }];
     
-    [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
+    [operation start];
 }
 
 

@@ -31,6 +31,8 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
+        self.navigationItem.hidesBackButton = YES;
+        
         self.manager = [AFHTTPRequestOperationManager manager];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -66,9 +68,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSString *patientIDURL = @"http://create.cs.kent.edu/patient/login";
-    NSString *token = [defaults stringForKey:@"autoToken"];
+    NSString *token = [defaults stringForKey:@"authToken"];
     NSString *patientId = [NSString stringWithFormat:@"%@", [self.patients objectAtIndex:indexPath.row] ];
- 
+    
     NSDictionary *parameters = @{@"access_token" : token,
                                  @"patient_id" : patientId
                                  };
@@ -78,36 +80,91 @@
                                                                                 parameters:parameters];
     
     AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request
-        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            // Success
-            if([responseObject valueForKey:@"success"] != nil){
-                
-                NSLog(@"%@", responseObject);
-                [defaults setObject:patientId forKey:@"patientID"];
-                [defaults synchronize];
-                
-                [self dismissViewControllerAnimated:YES completion:nil];
-                
-            }
-            
-            // Error
-            else {
-                NSLog(@"Error: %@", [responseObject valueForKey:@"error"]);
-            }
-        
-        } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
-            
-            NSLog(@"Error: %@", localError);
-            
-        }];
+                                                                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                                                  
+                                                                                  // Success
+                                                                                  if([responseObject valueForKey:@"success"] != nil){
+                                                                                      
+                                                                                      NSLog(@"%@", responseObject);
+                                                                                      [defaults setObject:patientId forKey:@"patientID"];
+                                                                                      [defaults synchronize];
+                                                                                      
+                                                                                      [self dismissViewControllerAnimated:YES completion:nil];
+                                                                                      
+                                                                                  }
+                                                                                  
+                                                                                  // Error
+                                                                                  else {
+                                                                                      NSLog(@"Error: %@", [responseObject valueForKey:@"error"]);
+                                                                                  }
+                                                                                  
+                                                                              } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+                                                                                  
+                                                                                  NSLog(@"Error: %@", localError);
+                                                                                  
+                                                                              }];
     
     [operation start];
 }
 
-- (IBAction)addPatient:(id)sender
-{
+- (IBAction)addPatient:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Enter Patient ID"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Add",nil];
     
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSString *patientIDURL = @"http://create.cs.kent.edu/patient/create";
+        NSString *token = [defaults stringForKey:@"authToken"];
+        NSString *patientID = [alertView textFieldAtIndex:0].text;
+        
+        NSLog(@"%@",patientID);
+        
+        NSDictionary *parameters = @{@"access_token" : token,
+                                     @"patient_id" : patientID,
+                                     };
+        
+        NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST"
+                                                                                     URLString:patientIDURL
+                                                                                    parameters:parameters];
+        
+        AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request
+                                                                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                                                      
+                                                                                      // Success
+                                                                                      if([responseObject valueForKey:@"success"] != nil){
+                                                                                          
+                                                                                          NSLog(@"%@", responseObject);
+                                                                                          [defaults setObject:patientID forKey:@"patientID"];
+                                                                                          [defaults synchronize];
+                                                                                          
+                                                                                          [self dismissViewControllerAnimated:YES completion:nil];
+                                                                                          
+                                                                                      }
+                                                                                      
+                                                                                      // Error
+                                                                                      else {
+                                                                                          NSLog(@"Error: %@", [responseObject valueForKey:@"error"]);
+                                                                                      }
+                                                                                      
+                                                                                  } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+                                                                                      
+                                                                                      NSLog(@"Error: %@", localError);
+                                                                                      
+                                                                                  }
+                                             ];
+        
+        [operation start];
+    }
 }
 
 - (void)viewDidLoad

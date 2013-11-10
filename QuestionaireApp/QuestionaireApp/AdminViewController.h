@@ -14,6 +14,7 @@
     IBOutlet UIView *passwordContainer;
 }
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) IBOutlet UITextField *adminUsername;
 @property (nonatomic, strong) IBOutlet UITextField *password;
 @property (nonatomic, weak) IBOutlet UILabel *error;
