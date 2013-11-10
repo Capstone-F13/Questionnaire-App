@@ -12,6 +12,7 @@
 #import "Answer.h"
 #import "Question.h"
 #import "Survey.h"
+#import "Constants.h"
 
 @interface SurveyViewController ()
 
@@ -34,7 +35,15 @@
     
     if (self = [super initWithCoder:aDecoder]) {
         self.manager = [AFHTTPRequestOperationManager manager];
-        [self.manager GET:@"http://capstone-f13.herokuapp.com/api/v1/Questions/?format=json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *authToken = [defaults stringForKey:@"authToken"];
+        NSString *patientID = [defaults stringForKey:@"patientID"];
+        NSString *questionsURL = [NSString stringWithFormat:@"http://create.cs.kent.edu/questions/%@/%@", authToken, patientID];
+        
+        [self.manager GET:questionsURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            // NSLog(@"JSON : %@",responseObject);
             
             self.survey = [Survey surveyWithJSON:responseObject];
             
@@ -46,12 +55,13 @@
                 self.currentQuestionNumber = 0;
                 [self getQuestion:self.currentQuestionNumber];
             }
-
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);
             
         }];
+        
     }
     return self;
 }
@@ -69,13 +79,13 @@
 
 - (void)showAppropriateFieldsForQuestion:(NSUInteger)num
 {
+    [self hideAllUIElements];
+    
     Question *question = self.survey.questions[num];
     
     // Question type is multiple choice
     if (question.isMultipleChoice)
     {
-        answerTextField.hidden = true;
-        
         switch (question.answers.count) {
             case 1: {
                 buttonChoice1.hidden = false;
@@ -99,17 +109,32 @@
                 buttonChoice4.hidden = false;
                 break;
             }
+            default: {
+                ratingSlider.hidden = false;
+                ratingText.hidden = false;
+                ratingNumber.hidden = false;
+                break;
+            }
         }
     }
     // Question type is short response
     else
     {
         answerTextField.hidden = false;
-        buttonChoice1.hidden = true;
-        buttonChoice2.hidden = true;
-        buttonChoice3.hidden = true;
-        buttonChoice4.hidden = true;
     }
+}
+
+- (void)hideAllUIElements
+{
+    // Hides everything but the question label, previous, and next buttons
+    ratingSlider.hidden = true;
+    ratingText.hidden = true;
+    ratingNumber.hidden = true;
+    buttonChoice1.hidden = true;
+    buttonChoice2.hidden = true;
+    buttonChoice3.hidden = true;
+    buttonChoice4.hidden = true;
+    answerTextField.hidden = true;
 }
 
 - (void)showSelectIndicator:(int)choice
@@ -148,37 +173,37 @@
     // Use current question number to set the appropriate fields for the question
     if (question.isMultipleChoice)
     {
-
-//        for (Answer *a in question.answers) {
-//            
-//        }
-        
         switch (question.answers.count) {
             case 1: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
                 break;
             }
             case 2: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
                 break;
             }
             case 3: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
-                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
+                [buttonChoice3 setTitle:[question.answers[2] text] forState:UIControlStateNormal];
                 break;
             }
             case 4: {
-                [[buttonChoice1 titleLabel] setText:[question.answers[0] text]];
-                [[buttonChoice2 titleLabel] setText:[question.answers[1] text]];
-                [[buttonChoice3 titleLabel] setText:[question.answers[2] text]];
-                [[buttonChoice4 titleLabel] setText:[question.answers[3] text]];
+                [buttonChoice1 setTitle:[question.answers[0] text] forState:UIControlStateNormal];
+                [buttonChoice2 setTitle:[question.answers[1] text] forState:UIControlStateNormal];
+                [buttonChoice3 setTitle:[question.answers[2] text] forState:UIControlStateNormal];
+                [buttonChoice4 setTitle:[question.answers[3] text] forState:UIControlStateNormal];
                 break;
+            }
+            default: {
+                [ratingSlider setMaximumValue:question.answers.count];
+                [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
+                [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
             }
         }
     }
-
+    
     [currentQuestionText setText:question.text];
     
     // Display the appropriate fields for the question
@@ -203,7 +228,7 @@
     {
         self.currentQuestionNumber = 0;
     }
-
+    
     [self getQuestion:self.currentQuestionNumber];
 }
 
@@ -217,7 +242,7 @@
     {
         self.currentQuestionNumber = (int)[self.survey.questions count] - 1;
     }
-
+    
     [self getQuestion:self.currentQuestionNumber];
 }
 
@@ -235,7 +260,7 @@
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:2];
-
+    
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[1];
     question.answerText = answer.text;
@@ -245,7 +270,7 @@
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:3];
-
+    
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[2];
     question.answerText = answer.text;
@@ -255,7 +280,7 @@
 {
     // Displays appropriate select indicator and stores answer choice
     [self showSelectIndicator:4];
-
+    
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[3];
     question.answerText = answer.text;
@@ -267,55 +292,64 @@
     [self.view endEditing:YES];
 }
 
+-(IBAction)sliderValueChanged:(id)sender
+{
+    Question *question = self.survey.questions[self.currentQuestionNumber];
+    [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
+    [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
+    question.answerText = [question.answers[(int)[ratingSlider value] - 1] text];
+}
+
 -(IBAction)submitSurvey:(id)sender
 {
+    NSMutableArray *response = [[NSMutableArray alloc] initWithCapacity:[self.survey.questions count]];
     
-    NSMutableArray *mutableOperations = [NSMutableArray array];
+    // NSMutableArray *mutableOperations = [NSMutableArray array];
     
     for (Question *question in self.survey.questions) {
         
         if (!question.answerText) {
-            NSLog(@"error: this question's answer text was nil");
+            NSLog(@"error: question %lu's answer text was nil",(long)question.questionID);
             
-            // should stop and show a warning in the future
+            // TODO: should stop and show a warning in the future
             
             continue;
         }
         
-        NSString *URLString = @"http://capstone-f13.herokuapp.com/answer/";
+        // NSLog(@"question %lu: %@",(long)question.questionID,question.answerText);
         
-        NSDictionary *parameters = @{@"question_id" : [NSString stringWithFormat:@"%lu",question.questionID],
-                                     @"patient_id" : @"patient_001",
-                                     @"answer" : question.answerText
-                                     };
+        NSDictionary *question_info = @{@"question_id" : [NSString stringWithFormat:@"%lu",(long)question.questionID],
+                                        @"answer" : question.answerText
+                                        };
         
-        NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters];
-        AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            NSLog(@"JSON: %@", responseObject);
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-            NSLog(@"Error: %@", error);
-            
-        }];
-        
-        [mutableOperations addObject:operation];
+        [response addObject:question_info];
     }
     
-    NSArray *operations = [AFURLConnectionOperation batchOfRequestOperations:mutableOperations progressBlock:^(NSUInteger numberOfFinishedOperations, NSUInteger totalNumberOfOperations) {
-        
-        NSLog(@"%lu of %lu complete", numberOfFinishedOperations, totalNumberOfOperations);
-
-    } completionBlock:^(NSArray *operations) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *authToken = [defaults stringForKey:@"authToken"];
+    NSString *patientID = [defaults stringForKey:@"patientID"];
     
+    NSDictionary *parameters = @{@"patient_id" : patientID,
+                                 @"access_token": authToken,
+                                 @"response" : response};
+    
+    NSString *URLString = @"http://create.cs.kent.edu/answer/";
+    
+    NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters];
+    AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"JSON: %@", responseObject);
+        
         [self.navigationController popViewControllerAnimated:YES];
         
-        NSLog(@"All operations in batch complete");
-
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
     }];
     
-    [[NSOperationQueue mainQueue] addOperations:operations waitUntilFinished:NO];
+    [operation start];
 }
+
 
 @end

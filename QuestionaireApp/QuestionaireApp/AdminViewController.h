@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface AdminViewController : UIViewController
+{
+    IBOutlet UIView *usernameContainer;
+    IBOutlet UIView *passwordContainer;
+}
 
-@property (nonatomic, strong) IBOutlet UITextField *patientId;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (nonatomic, strong) IBOutlet UITextField *adminUsername;
 @property (nonatomic, strong) IBOutlet UITextField *password;
 @property (nonatomic, weak) IBOutlet UILabel *error;
@@ -18,6 +22,7 @@
 
 - (IBAction)submit:(id)sender;
 - (IBAction)backgroundTapped:(id)sender;
+- (IBAction)adminCancel:(id)sender;
 - (Boolean)checkPasswordsNotNull:(NSString *)password1;
 - (void)setErrorMessage:(NSString *)message;
 

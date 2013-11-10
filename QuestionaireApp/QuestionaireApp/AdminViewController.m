@@ -12,12 +12,13 @@
 @interface AdminViewController ()
 
 @property (strong) AFHTTPRequestOperationManager *manager;
+@property (nonatomic) NSString *serverURLString;
 
 @end
 
 @implementation AdminViewController
 
-@synthesize adminUsername, password, patientId, error;
+@synthesize adminUsername, password, error;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +30,17 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.manager = [AFHTTPRequestOperationManager manager];
+        
+        
+        // TODO: Make this disable the button
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
+            self.cancelButton.enabled = NO;
+        }
+        
+        _manager = [AFHTTPRequestOperationManager manager];
+        _serverURLString = @"http://create.cs.kent.edu/oauth2/access_token";
     }
     return self;
 }
@@ -37,26 +48,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
-
 
 - (IBAction)submit:(id)sender
 {
-    if (![[(UITextField *)adminUsername text] isEqualToString:@""]) {
-        if ([self checkPasswordsNotNull:[(UITextField *)password text]]) {
-            [self setErrorMessage:@"Please enter a password"];
-        } else {
-            [self authenticateUser];
-        }
-    } else {
+    if (![adminUsername text] || [[adminUsername text] isEqualToString:@""]) {
         [self setErrorMessage:@"Please enter a username"];
+        return;
     }
-}
-
-- (Boolean)checkPasswordsNotNull:(NSString *)password1
-{
-    return [password1 isEqualToString: @""];
+    
+    if (![password text] || [[password text] isEqualToString:@""]) {
+        [self setErrorMessage:@"Please enter a password"];
+        return;
+    }
+    
+    [self authenticateUser];
 }
 
 - (void)setErrorMessage:(NSString *)message
@@ -69,55 +75,69 @@
 
 - (void) authenticateUser{
     
-    NSString *URLString = @"http://capstone-f13.herokuapp.com/oauth2/access_token";
-    
     NSString *usernameString = [adminUsername text];
     NSString *passwordString = [password text];
     
-    NSDictionary *parameters = @{@"client_id" : @"b2ad60956a2ef2ff6eb8",
-                                 @"client_secret" : @"d228f55610c14fe620e1e0bea9708e22988d0f1d",
+    NSDictionary *parameters = @{@"client_id" : @"19338b8cd902c96dc495",
+                                 @"client_secret" : @"b2faeb98ba2cf71f53e7045ad0b30782a65a148a",
                                  @"grant_type" : @"password",
                                  @"username" : usernameString,
                                  @"password" : passwordString,
                                  @"scope" : @"write"
                                  };
     
-    AFHTTPRequestOperation *operation = [self.manager POST:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-        NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
-        
-        [self.manager GET:[NSString stringWithFormat:@"http://capstone-f13.herokuapp.com/patients/%@",token] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-            NSLog(@"JSON : %@",responseObject);
-            
-            NSString *patientID = [(NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"] objectAtIndex:1];
-
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:token forKey:@"autoToken"];
-            [defaults setObject:patientID forKey:@"patientID"];
-            [defaults synchronize];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
-
-            NSLog(@"Error: %@", localError);
-
-        }];
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
-        
-        NSLog(@"Error: %@", localError);
-
-    }];
     
-    [operation start];
+    __weak AdminViewController *weakSelf = self;
+    
+    [self.manager POST:self.serverURLString
+            parameters:parameters
+               success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                   
+                   NSLog(@"%@", responseObject);
+                   NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
+                   
+                   [weakSelf.manager GET:[NSString stringWithFormat:@"http://create.cs.kent.edu/patients/%@", token]
+                              parameters:nil
+                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                     
+                                     NSLog(@"JSON : %@",responseObject);
+                                     
+                                     NSArray *patients = (NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"];
+                                     
+                                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                     [defaults setObject:token forKey:@"authToken"];
+                                     [defaults setObject:patients forKey:@"patients"];
+                                     [defaults synchronize];
+                                     
+                                     [self performSegueWithIdentifier:@"AdminToPatientsSegue" sender:self];
+                                     
+                                 } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+                                     
+                                     NSLog(@"Error: %@", localError);
+                                     
+                                 }];
+                   
+               } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
+                   
+                   NSLog(@"Error: %@", localError);
+                   
+               }];
 }
 
 -(IBAction)backgroundTapped:(id)sender
 {
     // Dismisses keyboard
     [self.view endEditing:YES];
+}
+
+- (IBAction)adminCancel:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
+        return;
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
