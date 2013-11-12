@@ -29,10 +29,12 @@
         for (NSDictionary *q in JSON) {
             
             BOOL isMultipleChoice = [q[@"fields"][@"is_multiple_choice"] isEqualToNumber:@1];
+            BOOL isAscendingPositivity = [q[@"fields"][@"is_ascending_positivity"] isEqualToNumber:@1];
             
             Question *question = [Question questionWithID:[q[@"pk"] integerValue]
                                                      text:q[@"fields"][@"question"]
                                          isMultipleChoice:isMultipleChoice
+                                    isAscendingPositivity:isAscendingPositivity
                                                    survey:[q[@"fields"][@"survey"] integerValue]];
             
             if (isMultipleChoice) {

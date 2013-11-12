@@ -8,6 +8,7 @@
 
 #import "PatientsViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "Constants.h"
 
 @interface PatientsViewController ()
 
@@ -36,7 +37,7 @@
         self.manager = [AFHTTPRequestOperationManager manager];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        self.patients = [defaults arrayForKey:@"patients"];
+        self.patients = [defaults arrayForKey:DEFAULTS_PATIENTS];
         
     }
     return self;
@@ -67,8 +68,8 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *patientIDURL = @"http://create.cs.kent.edu/patient/login";
-    NSString *token = [defaults stringForKey:@"authToken"];
+    NSString *patientIDURL = [NSString stringWithFormat: @"%@/patient/login", SERVER_ADDRESS];
+    NSString *token = [defaults stringForKey:DEFAULTS_AUTH_TOKEN];
     NSString *patientId = [NSString stringWithFormat:@"%@", [self.patients objectAtIndex:indexPath.row] ];
     
     NSDictionary *parameters = @{@"access_token" : token,
@@ -86,7 +87,7 @@
                                                                                   if([responseObject valueForKey:@"success"] != nil){
                                                                                       
                                                                                       NSLog(@"%@", responseObject);
-                                                                                      [defaults setObject:patientId forKey:@"patientID"];
+                                                                                      [defaults setObject:patientId forKey:DEFAULTS_PATIENT_ID];
                                                                                       [defaults synchronize];
                                                                                       
                                                                                       [self dismissViewControllerAnimated:YES completion:nil];
@@ -123,8 +124,8 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        NSString *patientIDURL = @"http://create.cs.kent.edu/patient/create";
-        NSString *token = [defaults stringForKey:@"authToken"];
+        NSString *patientIDURL = [NSString stringWithFormat: @"%@/patient/create", SERVER_ADDRESS];
+        NSString *token = [defaults stringForKey:DEFAULTS_AUTH_TOKEN];
         NSString *patientID = [alertView textFieldAtIndex:0].text;
         
         NSLog(@"%@",patientID);
@@ -144,8 +145,9 @@
                                                                                       if([responseObject valueForKey:@"success"] != nil){
                                                                                           
                                                                                           NSLog(@"%@", responseObject);
-                                                                                          [defaults setObject:patientID forKey:@"patientID"];
+                                                                                          [defaults setObject:patientID forKey:DEFAULTS_PATIENT_ID];
                                                                                           [defaults synchronize];
+                                                                                          [defaults setDouble:0 forKey:DEFAULTS_TIME_SURVEY_SENT];
                                                                                           
                                                                                           [self dismissViewControllerAnimated:YES completion:nil];
                                                                                           
@@ -182,8 +184,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-// USE THIS LINE OF CODE TO DISMISS THE VIEW AND RETURN TO THE MAIN MENU
-//[self dismissViewControllerAnimated:YES completion:NULL];
 
 @end

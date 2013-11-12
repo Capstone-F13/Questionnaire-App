@@ -10,6 +10,6 @@
 
 @interface QuestionaireViewController : UIViewController
 
--(IBAction)logout:(id)sender;
+- (IBAction)takeSurvey:(id)sender;
 
 @end

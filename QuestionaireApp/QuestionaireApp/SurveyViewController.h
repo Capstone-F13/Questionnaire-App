@@ -14,6 +14,10 @@
     IBOutlet UILabel *currentQuestionText;
     // Pointer to textView containing text response
     IBOutlet UITextView *answerTextField;
+
+    IBOutlet UIButton *nextButton;
+    
+    NSMutableArray *toolbarButtons;
     
     // Pointers to checkmark images for multiple choice
     IBOutlet UIImageView *imageChoice1;
@@ -32,13 +36,18 @@
     IBOutlet UILabel *ratingText;
     IBOutlet UILabel *ratingNumber;
 }
+
+@property (strong, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UIButton *dontPlayButton;
+- (IBAction)playSong:(id)sender;
+- (IBAction)dontPlaySong:(id)sender;
+
+
 // Makes the keyboard go away
 -(IBAction)backgroundTapped:(id)sender;
 
 // Moves on to the next question
 -(IBAction)nextQuestion:(id)sender;
-// Moves back a question
--(IBAction)previousQuestion:(id)sender;
 
 // Handles  pushing of multiple choice buttons
 -(IBAction)selectChoice1:(id)sender;
@@ -46,12 +55,14 @@
 -(IBAction)selectChoice3:(id)sender;
 -(IBAction)selectChoice4:(id)sender;
 
-// Sends off the survey responses
--(IBAction)submitSurvey:(id)sender;
-
 -(IBAction)sliderValueChanged:(id)sender;
 
 // Holds current question number (starts at 0)
 @property (nonatomic) int currentQuestionNumber;
+
+@property (nonatomic) int totalScore;
+@property (nonatomic) int possibleScore;
+
+@property (nonatomic) BOOL playedSong;
 
 @end

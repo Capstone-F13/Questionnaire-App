@@ -14,10 +14,11 @@
 @property (nonatomic, assign) NSUInteger questionID;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, assign) BOOL isMultipleChoice;
+@property (nonatomic, assign) BOOL isAscendingPositivity;
 @property (nonatomic, strong) NSMutableArray *answers;
 @property (nonatomic, strong) NSString *answerText;
 @property (nonatomic, assign) NSUInteger surveyID;
 
-+ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice survey:(NSUInteger)surveyID;
++ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice isAscendingPositivity:(BOOL)isAscendingPositivity survey:(NSUInteger)surveyID;
 
 @end
