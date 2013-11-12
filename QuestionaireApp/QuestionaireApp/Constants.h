@@ -22,7 +22,10 @@ extern NSString *const DEFAULTS_PATIENTS;
 extern NSString *const DEFAULTS_CURRENT_SURVEY;
 extern NSString *const DEFAULTS_TIME_SURVEY_SENT;
 extern NSString *const DEFAULTS_PARAMETERS_ARRAY;
+extern NSString *const DEFAULTS_TIME_SONG_RECORDED;
+
 extern double const MINIMUM_WAIT_FOR_NEXT_SURVEY;
+extern double const MINIMUM_WAIT_FOR_NEXT_SONG;
 
 extern bool *SURVEY_TAKEN;
 

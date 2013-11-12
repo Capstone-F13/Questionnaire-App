@@ -11,5 +11,6 @@
 @interface QuestionaireViewController : UIViewController
 
 - (IBAction)takeSurvey:(id)sender;
+- (IBAction)recordSong:(id)sender;
 
 @end

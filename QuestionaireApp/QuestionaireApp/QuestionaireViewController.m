@@ -30,6 +30,24 @@
     }
     
     self.manager = [AFHTTPRequestOperationManager manager];
+    
+    double currentTime = [[[NSDate alloc] init] timeIntervalSince1970];
+    id storedTime = [defaults objectForKey:DEFAULTS_TIME_SONG_RECORDED];
+    if (storedTime) {
+        double realStoredTime = [defaults doubleForKey:DEFAULTS_TIME_SONG_RECORDED];
+        double timeWaited = currentTime - realStoredTime;
+        
+        int days = (MINIMUM_WAIT_FOR_NEXT_SONG - timeWaited) / 60 / 60 / 24;
+        
+        if (days < 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You can update your song"
+                                                            message:@"Create a new theme song if you'd like, or continue to use the same theme song."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
 	
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -145,35 +163,46 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-//    double currentTime = [[[NSDate alloc] init] timeIntervalSince1970];
-//    double sentTime = [defaults doubleForKey:DEFAULTS_TIME_SURVEY_SENT];
-//    double timeWaited = currentTime - sentTime;
-//    
-//    if (timeWaited < MINIMUM_WAIT_FOR_NEXT_SURVEY) {
-//   
-//        NSString *waitMessage = nil;
-//        
-//        int minutes = (MINIMUM_WAIT_FOR_NEXT_SURVEY - timeWaited) / 60;
-//        
-//        if (minutes > 1) {
-//            waitMessage = [NSString stringWithFormat:@"The survey will be available in %d minutes",minutes];
-//        }
-//        else if (minutes == 1) {
-//            waitMessage = [NSString stringWithFormat:@"The survey will be available in 1 minute"];
-//        }
-//        else {
-//            waitMessage = [NSString stringWithFormat:@"The survey will be available in less than a minute"];
-//        }
-//        
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The app is currently updating"
-//                                                        message:waitMessage
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"OK"
-//                                              otherButtonTitles:nil];
-//        [alert show];
-//        
-//        return;
-//    }
+    if (![defaults doubleForKey:DEFAULTS_TIME_SONG_RECORDED]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Record a song"
+                                                        message:@"You can take a survey after you've recorded a song"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        return;
+    }
+    
+    double currentTime = [[[NSDate alloc] init] timeIntervalSince1970];
+    double sentTime = [defaults doubleForKey:DEFAULTS_TIME_SURVEY_SENT];
+    double timeWaited = currentTime - sentTime;
+    
+    if (timeWaited < MINIMUM_WAIT_FOR_NEXT_SURVEY) {
+   
+        NSString *waitMessage = nil;
+        
+        int minutes = (MINIMUM_WAIT_FOR_NEXT_SURVEY - timeWaited) / 60;
+        
+        if (minutes > 1) {
+            waitMessage = [NSString stringWithFormat:@"The survey will be available in %d minutes",minutes];
+        }
+        else if (minutes == 1) {
+            waitMessage = [NSString stringWithFormat:@"The survey will be available in 1 minute"];
+        }
+        else {
+            waitMessage = [NSString stringWithFormat:@"The survey will be available in less than a minute"];
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"The app is currently updating"
+                                                        message:waitMessage
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        return;
+    }
 
     __block BOOL checkedStatus = NO;
     
@@ -232,6 +261,33 @@
     }];
     
     [manager startMonitoring];
+}
+
+- (IBAction)recordSong:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    double currentTime = [[[NSDate alloc] init] timeIntervalSince1970];
+    double storedTime = [defaults doubleForKey:DEFAULTS_TIME_SONG_RECORDED];
+    double timeWaited = currentTime - storedTime;
+    
+    int days = (MINIMUM_WAIT_FOR_NEXT_SONG - timeWaited) / 60 / 60 / 24;
+    
+    if (days > 0) {
+        
+        NSString *waitMessage = [NSString stringWithFormat:@"You can record a new song in %d days",days];
+    
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Can't update song"
+                                                        message:waitMessage
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        return;
+    }
+        
+    [self performSegueWithIdentifier:@"MainMenuToRecordSegue" sender:self];
+
 }
 
 @end

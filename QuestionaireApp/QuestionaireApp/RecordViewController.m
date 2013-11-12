@@ -181,7 +181,18 @@ bool RecordMenuIsRecording = false;
 -(IBAction)finishRecordNew:(id)sender
 {
     // Dismiss the view and return the Sing-a-long menu
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    NSString *recordedAudioPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                   objectAtIndex:0];
+    
+    recordedAudioPath = [recordedAudioPath stringByAppendingPathComponent:@"recorded.caf"];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:recordedAudioPath]) {
+        double currentTime = [[[NSDate alloc] init] timeIntervalSince1970];
+        [[NSUserDefaults standardUserDefaults] setDouble:currentTime forKey:DEFAULTS_TIME_SONG_RECORDED];
+    }
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)setRecordAudioPlayer
@@ -193,7 +204,7 @@ bool RecordMenuIsRecording = false;
     
     MPMediaItem *currentItem = [musicPlayer nowPlayingItem];
     if (currentItem == nil){
-        errorLabel.text = @"You must select a music \n to play with the recording";
+        errorLabel.text = @"You must select a song \n to play with the recording";
         errorLabel.hidden = NO;
         return;
     }

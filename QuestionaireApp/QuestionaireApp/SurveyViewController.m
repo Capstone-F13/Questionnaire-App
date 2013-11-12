@@ -385,7 +385,7 @@
         didListenString = @"Played song.";
     }
     else {
-        didListenString = @"Did not song.";
+        didListenString = @"Did not play song.";
     }
     
     NSDictionary *parameters = @{@"patient_id": patientID,
@@ -482,8 +482,32 @@
 
 - (IBAction)playSong:(id)sender {
 
-    // play song
+    NSString *recordedAudioPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                   objectAtIndex:0];
     
+    recordedAudioPath = [recordedAudioPath stringByAppendingPathComponent:@"recorded.caf"];
+    NSURL *recordURL = [NSURL fileURLWithPath:recordedAudioPath];
+    
+    NSError *error;
+    
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:&error];
+    if (!self.audioPlayer) {
+        NSLog(@"%@",error);
+        self.playedSong = YES;
+        
+        [self submitSurvey];
+    }
+    else {
+        [self.audioPlayer setDelegate:self];
+        [self.audioPlayer prepareToPlay];
+        
+        self.audioPlayer.numberOfLoops = 0;
+        
+        [self.audioPlayer play];
+    }
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     self.playedSong = YES;
     
     [self submitSurvey];

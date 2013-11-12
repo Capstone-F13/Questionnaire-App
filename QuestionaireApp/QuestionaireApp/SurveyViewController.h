@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface SurveyViewController : UIViewController
+@interface SurveyViewController : UIViewController<AVAudioPlayerDelegate>
 {
     // Pointer to label containing question text
     IBOutlet UILabel *currentQuestionText;
@@ -42,6 +43,7 @@
 - (IBAction)playSong:(id)sender;
 - (IBAction)dontPlaySong:(id)sender;
 
+@property(nonatomic, retain) AVAudioPlayer *audioPlayer;
 
 // Makes the keyboard go away
 -(IBAction)backgroundTapped:(id)sender;

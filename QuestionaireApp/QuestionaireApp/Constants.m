@@ -22,8 +22,10 @@ NSString *const DEFAULTS_PATIENTS = @"patients";
 NSString *const DEFAULTS_CURRENT_SURVEY = @"currentSurvey";
 NSString *const DEFAULTS_TIME_SURVEY_SENT = @"timeSurveySent";
 NSString *const DEFAULTS_PARAMETERS_ARRAY = @"parametersArray";
+NSString *const DEFAULTS_TIME_SONG_RECORDED = @"timeSongRecorded";
 
 double const MINIMUM_WAIT_FOR_NEXT_SURVEY = 5 * 60; // 5 minutes
+double const MINIMUM_WAIT_FOR_NEXT_SONG = 30 * 24 * 60 * 60; // 1 month
 
 bool *SURVEY_TAKEN = false;
 
