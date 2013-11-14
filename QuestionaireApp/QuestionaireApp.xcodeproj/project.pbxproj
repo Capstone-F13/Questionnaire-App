@@ -29,6 +29,9 @@
 		4AE0564E1826D42D000FAAF6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE0564D1826D42D000FAAF6 /* MediaPlayer.framework */; };
 		669E631C1800B7710038A7E6 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63161800B7710038A7E6 /* Question.m */; };
 		669E631D1800B7710038A7E6 /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = 669E63181800B7710038A7E6 /* Survey.m */; };
+		83922C351833DF8C005CCFB7 /* Microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 83922C341833DF8C005CCFB7 /* Microphone.png */; };
+		83922C381834110B005CCFB7 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 83922C361834110B005CCFB7 /* play.png */; };
+		83922C391834110B005CCFB7 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 83922C371834110B005CCFB7 /* stop.png */; };
 		83CBBF48182166710066B3B0 /* SUNLogo29pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF45182166710066B3B0 /* SUNLogo29pt.png */; };
 		83CBBF49182166710066B3B0 /* SUNLogo40pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF46182166710066B3B0 /* SUNLogo40pt.png */; };
 		83CBBF4A182166710066B3B0 /* SUNLogo60pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CBBF47182166710066B3B0 /* SUNLogo60pt.png */; };
@@ -121,6 +124,9 @@
 		669E63171800B7710038A7E6 /* Survey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		669E63181800B7710038A7E6 /* Survey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
 		669E63191800B7710038A7E6 /* SurveyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyConstants.h; sourceTree = "<group>"; };
+		83922C341833DF8C005CCFB7 /* Microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microphone.png; sourceTree = "<group>"; };
+		83922C361834110B005CCFB7 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		83922C371834110B005CCFB7 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		83CBBF45182166710066B3B0 /* SUNLogo29pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SUNLogo29pt.png; path = ../SUNLogo29pt.png; sourceTree = "<group>"; };
 		83CBBF46182166710066B3B0 /* SUNLogo40pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SUNLogo40pt.png; path = ../SUNLogo40pt.png; sourceTree = "<group>"; };
 		83CBBF47182166710066B3B0 /* SUNLogo60pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SUNLogo60pt.png; path = ../SUNLogo60pt.png; sourceTree = "<group>"; };
@@ -263,6 +269,9 @@
 		8D515A1B17FCE380002DA54C /* AppImages */ = {
 			isa = PBXGroup;
 			children = (
+				83922C361834110B005CCFB7 /* play.png */,
+				83922C371834110B005CCFB7 /* stop.png */,
+				83922C341833DF8C005CCFB7 /* Microphone.png */,
 				83CBBF4F1821842B0066B3B0 /* MyLaunchImage2x.png */,
 				83CBBF501821842B0066B3B0 /* MyLaunchImageR4.png */,
 				83CBBF4B182183960066B3B0 /* SplashScreen2x.png */,
@@ -463,6 +472,7 @@
 			files = (
 				83CBBF521821842B0066B3B0 /* MyLaunchImageR4.png in Resources */,
 				8D6162C4181889880036233C /* play_button.png in Resources */,
+				83922C391834110B005CCFB7 /* stop.png in Resources */,
 				AD68EE29181576B100203359 /* logo2_40pt.png in Resources */,
 				83CBBF4E182183960066B3B0 /* SplashScreenR4.png in Resources */,
 				AD68EE2E1815777600203359 /* playbutton.png in Resources */,
@@ -472,9 +482,11 @@
 				8D6162C6181889880036233C /* stop_button.png in Resources */,
 				AD7B234017FC890200FF0E30 /* Images.xcassets in Resources */,
 				4A5009231819DFA3006C2847 /* ipod.png in Resources */,
+				83922C381834110B005CCFB7 /* play.png in Resources */,
 				83CBBF48182166710066B3B0 /* SUNLogo29pt.png in Resources */,
 				8D515A1A17FCE374002DA54C /* check_mark.png in Resources */,
 				83CBBF4A182166710066B3B0 /* SUNLogo60pt.png in Resources */,
+				83922C351833DF8C005CCFB7 /* Microphone.png in Resources */,
 				4A5009241819DFA3006C2847 /* survey.png in Resources */,
 				83CBBF511821842B0066B3B0 /* MyLaunchImage2x.png in Resources */,
 				AD68EE2C181576B100203359 /* MyLaunchImageR4.png in Resources */,
