@@ -12,10 +12,63 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NSDate *currentDate = [NSDate date];
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+    [components setHour: 16];
+    [components setMinute: 25];
+    [components setSecond: 0];
+    [calendar setTimeZone: [NSTimeZone defaultTimeZone]];
+    NSDate *dateToFire = [calendar dateFromComponents:components];
+    
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = @"Time to take the survey";
+    [localNotification setFireDate: dateToFire];
+    [localNotification setTimeZone: [NSTimeZone defaultTimeZone]];
+    [localNotification setRepeatInterval: NSDayCalendarUnit];
+    // Let the device know we want to receive push notifications
+	
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+
+    currentDate = [NSDate date];
+    calendar = [NSCalendar currentCalendar];
+    components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+    [components setHour: 18];
+    [components setMinute: 30];
+    [components setSecond: 0];
+    [calendar setTimeZone: [NSTimeZone defaultTimeZone]];
+    dateToFire = [calendar dateFromComponents:components];
+    
+    localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = @"Time to take the survey";
+    [localNotification setFireDate: dateToFire];
+    [localNotification setTimeZone: [NSTimeZone defaultTimeZone]];
+    [localNotification setRepeatInterval: NSDayCalendarUnit];
+    // Let the device know we want to receive push notifications
+	
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+
+    currentDate = [NSDate date];
+    calendar = [NSCalendar currentCalendar];
+    components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+    [components setHour: 20];
+    [components setMinute: 55];
+    [components setSecond: 0];
+    [calendar setTimeZone: [NSTimeZone defaultTimeZone]];
+    dateToFire = [calendar dateFromComponents:components];
+    
+    localNotification = [[UILocalNotification alloc] init];
+    localNotification.alertBody = @"Time to take the survey";
+    [localNotification setFireDate: dateToFire];
+    [localNotification setTimeZone: [NSTimeZone defaultTimeZone]];
+    [localNotification setRepeatInterval: NSDayCalendarUnit];
+    // Let the device know we want to receive push notifications
+	
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -140,6 +193,16 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                    message:@"Time to take the survey"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end
