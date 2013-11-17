@@ -27,6 +27,7 @@ extern NSString *const DEFAULTS_TIME_SONG_RECORDED;
 extern double const MINIMUM_WAIT_FOR_NEXT_SURVEY;
 extern double const MINIMUM_WAIT_FOR_NEXT_SONG;
 
-extern bool *SURVEY_TAKEN;
+extern bool REGISTER_FOR_NOTIFICATIONS;
+extern bool SURVEY_TAKEN;
 
 @end

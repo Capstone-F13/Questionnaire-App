@@ -22,8 +22,6 @@
 {
     [super viewDidLoad];
     
-    //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.0/255.0 green:51.0/255.0 blue:152.0/255.0 alpha:1.0]];
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:DEFAULTS_AUTH_TOKEN] || ![defaults objectForKey:DEFAULTS_PATIENT_ID]) {
         [self performSegueWithIdentifier:@"MainMenuToAdminSegue" sender:self];
@@ -147,6 +145,8 @@
                                                                                   [defaults synchronize];
                                                                                   
                                                                                   [self performSegueWithIdentifier:@"MainMenuToAdminSegue" sender:self];
+                                                                                  
+                                                                                  [self resetNotifications];
                                                                                   
                                                                               } failure:^(AFHTTPRequestOperation *operation, NSError *localError) {
                                                                                   
@@ -288,6 +288,11 @@
         
     [self performSegueWithIdentifier:@"MainMenuToRecordSegue" sender:self];
 
+}
+
+- (void)resetNotifications
+{
+    REGISTER_FOR_NOTIFICATIONS = false;
 }
 
 @end

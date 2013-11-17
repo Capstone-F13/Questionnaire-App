@@ -27,6 +27,7 @@ NSString *const DEFAULTS_TIME_SONG_RECORDED = @"timeSongRecorded";
 double const MINIMUM_WAIT_FOR_NEXT_SURVEY = 5 * 60; // 5 minutes
 double const MINIMUM_WAIT_FOR_NEXT_SONG = 30 * 24 * 60 * 60; // 1 month
 
-bool *SURVEY_TAKEN = false;
+bool REGISTER_FOR_NOTIFICATIONS = false;
+bool SURVEY_TAKEN = false;
 
 @end
