@@ -255,14 +255,16 @@
     
     int score = 0;
     if (!ascendingPositivity) {
-        score = ratingSlider.value;
+        score = (int)ratingSlider.value;
     }
     else {
-        score = ratingSlider.maximumValue - ratingSlider.value + 1;
+        score = (int)ratingSlider.maximumValue - (int)ratingSlider.value + 1;
     }
     
-    self.totalScore += score;
-    self.possibleScore += ratingSlider.maximumValue;
+    if (self.currentQuestionNumber > 0) {
+        self.totalScore += score;
+        self.possibleScore += ratingSlider.maximumValue;
+    }
     
     ++self.currentQuestionNumber;
 
@@ -274,7 +276,9 @@
         
         self.playButton.hidden = NO;
         
-        if (self.totalScore / self.survey.questions.count > 4) {
+        int finalValue = self.totalScore / (int)(self.survey.questions.count - 1);
+        
+        if (finalValue > 4) {
             currentQuestionText.text = @"You seem to be thinking negatively.";
             answerTextField.hidden = NO;
             answerTextField.text = @"Let's use your theme song to push out the negative thoughts and replace them with positive thoughts.";
