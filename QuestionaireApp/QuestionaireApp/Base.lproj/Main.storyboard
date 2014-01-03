@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="TKD-qS-4qx">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -39,7 +39,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ve0-S0-JIK" kind="push" id="Byx-Tz-iXR"/>
+                                    <action selector="takeSurvey:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Wbb-mK-caH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8V1-yb-3ER">
@@ -49,7 +49,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="weV-0J-tcF" kind="push" id="zvo-vI-Bxi"/>
+                                    <action selector="recordSong:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ivv-jg-xmH"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take Survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvO-aw-qp2">
@@ -70,11 +70,6 @@
                         <color key="backgroundColor" red="0.97211706638336182" green="0.95946866273880005" blue="0.86164921522140503" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Main Menu" id="trt-Jv-2bo">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nb9-Gp-v03">
-                            <connections>
-                                <action selector="logout:" destination="vXZ-lx-hvc" id="5vZ-ez-0fJ"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="uan-28-6Oo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V11-z0-rdp">
                                 <rect key="frame" x="267" y="6" width="48" height="32"/>
@@ -89,6 +84,10 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ve0-S0-JIK" kind="push" identifier="MainMenuToSurveySegue" id="b8n-0R-RjK"/>
+                        <segue destination="wg0-iS-QNE" kind="push" identifier="MainMenuToRecordSegue" id="ih0-WD-36V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -187,17 +186,6 @@
                                     <action selector="nextQuestion:" destination="ve0-S0-JIK" eventType="touchUpInside" id="KPQ-6r-9al"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YfZ-71-d0O">
-                                <rect key="frame" x="19" y="296" width="84" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Previous">
-                                    <color key="titleColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="previousQuestion:" destination="ve0-S0-JIK" eventType="touchUpInside" id="Wzg-mB-lkM"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Neither Agree Nor Disagree" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="223" translatesAutoresizingMaskIntoConstraints="NO" id="sLM-IM-EIH">
                                 <rect key="frame" x="49" y="132" width="223" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -219,19 +207,33 @@
                                     <action selector="sliderValueChanged:" destination="ve0-S0-JIK" eventType="valueChanged" id="03E-iy-t8G"/>
                                 </connections>
                             </slider>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gz6-ax-Uii">
+                                <rect key="frame" x="40" y="228" width="240" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play My Theme Song">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playSong:" destination="ve0-S0-JIK" eventType="touchUpInside" id="Rdu-n3-dD2"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yW-XY-KA7">
+                                <rect key="frame" x="40" y="279" width="240" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Don't Play My Theme Song">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dontPlaySong:" destination="ve0-S0-JIK" eventType="touchUpInside" id="t0W-Wy-MeC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97211706638336182" green="0.95946866273880005" blue="0.86164921522140503" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <action selector="backgroundTapped:" destination="ve0-S0-JIK" eventType="touchUpInside" id="YaQ-uQ-aAA"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="PP8-uH-haH">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="Na4-gC-vk3">
-                            <connections>
-                                <action selector="submitSurvey:" destination="ve0-S0-JIK" id="hBF-YE-8mV"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="PP8-uH-haH"/>
                     <connections>
                         <outlet property="answerTextField" destination="cxR-ZX-6mm" id="6b4-of-XrR"/>
                         <outlet property="buttonChoice1" destination="Zwg-Ax-Z7t" id="CKe-Ep-kNU"/>
@@ -239,10 +241,13 @@
                         <outlet property="buttonChoice3" destination="kiK-E7-Pox" id="6pH-8X-7L3"/>
                         <outlet property="buttonChoice4" destination="ws2-Jo-O9L" id="Q8m-aU-Lv9"/>
                         <outlet property="currentQuestionText" destination="LDs-eY-PNR" id="FKg-XI-TAw"/>
+                        <outlet property="dontPlayButton" destination="1yW-XY-KA7" id="tYQ-7c-44D"/>
                         <outlet property="imageChoice1" destination="goG-GV-cDT" id="PI2-F3-Qr5"/>
                         <outlet property="imageChoice2" destination="bDB-ob-BSb" id="C1z-py-Ag0"/>
                         <outlet property="imageChoice3" destination="q6u-GZ-11J" id="utF-BG-1Zf"/>
                         <outlet property="imageChoice4" destination="WX8-Ey-baP" id="5Wk-mo-WqP"/>
+                        <outlet property="nextButton" destination="zMT-0o-OhT" id="q4s-Xj-btZ"/>
+                        <outlet property="playButton" destination="Gz6-ax-Uii" id="39u-P5-zBi"/>
                         <outlet property="ratingNumber" destination="7ys-tq-Dt0" id="wkl-Bs-ojM"/>
                         <outlet property="ratingSlider" destination="Ge0-vo-mKS" id="hpf-ex-G7U"/>
                         <outlet property="ratingText" destination="sLM-IM-EIH" id="1mU-56-hPT"/>
@@ -482,11 +487,11 @@
                         <viewControllerLayoutGuide type="bottom" id="1TZ-Tt-33G"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MDp-xv-fiO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFI-0I-TKH">
-                                <rect key="frame" x="82" y="20" width="156" height="39"/>
+                                <rect key="frame" x="82" y="22" width="156" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record New Song">
                                     <color key="titleColor" red="0.19215686269999999" green="0.1058823529" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -497,7 +502,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nEN-bf-izZ">
-                                <rect key="frame" x="80" y="82" width="160" height="92"/>
+                                <rect key="frame" x="80" y="91" width="160" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-M0-zox">
@@ -721,4 +726,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="ih0-WD-36V"/>
+    </inferredMetricsTieBreakers>
 </document>

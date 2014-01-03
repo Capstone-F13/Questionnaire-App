@@ -17,58 +17,44 @@
 @interface SurveyViewController ()
 
 @property (strong) Survey *survey;
+@property (strong) id storedSurvey;
 @property (strong) AFHTTPRequestOperationManager *manager;
 
 @end
 
 @implementation SurveyViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
-
 - (id)initWithCoder:(NSCoder *)aDecoder {
     
     if (self = [super initWithCoder:aDecoder]) {
+        
+        self.navigationItem.hidesBackButton = YES;
+        
         self.manager = [AFHTTPRequestOperationManager manager];
-        
+
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *authToken = [defaults stringForKey:@"authToken"];
-        NSString *patientID = [defaults stringForKey:@"patientID"];
-        NSString *questionsURL = [NSString stringWithFormat:@"http://create.cs.kent.edu/questions/%@/%@", authToken, patientID];
+
+        self.storedSurvey = [defaults objectForKey:DEFAULTS_CURRENT_SURVEY];
         
-        [self.manager GET:questionsURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            // NSLog(@"JSON : %@",responseObject);
-            
-            self.survey = [Survey surveyWithJSON:responseObject];
-            
-            if (self.survey.questions.count == 0) {
-                NSLog(@"Error : no questions in survey");
-            }
-            else {
-                // Initializes variable and gets the first question
-                self.currentQuestionNumber = 0;
-                [self getQuestion:self.currentQuestionNumber];
-            }
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-            NSLog(@"Error: %@", error);
-            
-        }];
-        
+        self.survey = [Survey surveyWithJSON:self.storedSurvey];
     }
+
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.survey.questions.count == 0) {
+        NSLog(@"Error : no questions in survey");
+    }
+    else {
+        // Initializes variable and gets the first question
+        self.totalScore = 0;
+        self.currentQuestionNumber = 0;
+        [self getQuestion:self.currentQuestionNumber];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -170,6 +156,18 @@
 {
     Question *question = self.survey.questions[questionNumber];
     
+    int answerNumber = -1;
+    if (question.answerText) {
+        for (int i=0; i<question.answers.count; i++) {
+            if ([[question.answers[i] text] isEqualToString:question.answerText]) {
+                answerNumber = i;
+                break;
+            }
+        }
+    }
+    
+    BOOL moreThan4 = NO;
+    
     // Use current question number to set the appropriate fields for the question
     if (question.isMultipleChoice)
     {
@@ -197,11 +195,35 @@
                 break;
             }
             default: {
+                moreThan4 = YES;
                 [ratingSlider setMaximumValue:question.answers.count];
-                [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
-                [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
+
+                if (answerNumber == -1) {
+                    ratingSlider.value = 1;
+                    [ratingText setText:[question.answers[0] text]];
+                    [ratingNumber setText:@"1"];
+                }
+                else {
+                    ratingSlider.value = answerNumber + 1;
+                    [ratingText setText:question.answerText];
+                    [ratingNumber setText:[NSString stringWithFormat:@"%d",answerNumber+1]];
+                }
             }
         }
+    }
+    else {
+        moreThan4 = YES;
+        if (question.answerText) {
+            answerTextField.text = question.answerText;
+        }
+        else {
+            answerTextField.text = @"Type your answer here";
+        }
+    }
+    
+    if (!moreThan4 && answerNumber != -1) {
+        NSLog(@"show %d",answerNumber+1);
+        [self showSelectIndicator:answerNumber+1];
     }
     
     [currentQuestionText setText:question.text];
@@ -209,6 +231,13 @@
     // Display the appropriate fields for the question
     [self hideAllSelectIndicators];
     [self showAppropriateFieldsForQuestion:questionNumber];
+    
+    if (!question.answerText) {
+        nextButton.hidden = YES;
+    }
+    else {
+        nextButton.hidden = NO;
+    }
 }
 
 - (void)getCurrentAnswerText {
@@ -221,29 +250,47 @@
 - (IBAction)nextQuestion:(id)sender
 {
     [self getCurrentAnswerText];
-    
-    // Goes forward one question, loops to first question if at the end
-    ++self.currentQuestionNumber;
-    if (self.currentQuestionNumber == [self.survey.questions count])
-    {
-        self.currentQuestionNumber = 0;
-    }
-    
-    [self getQuestion:self.currentQuestionNumber];
-}
 
-- (IBAction)previousQuestion:(id)sender
-{
-    [self getCurrentAnswerText];
+    BOOL ascendingPositivity = [self.survey.questions[self.currentQuestionNumber] isAscendingPositivity];
     
-    // Goes back one question, loops to last question if at the beginning
-    --self.currentQuestionNumber;
-    if (self.currentQuestionNumber < 0)
-    {
-        self.currentQuestionNumber = (int)[self.survey.questions count] - 1;
+    int score = 0;
+    if (!ascendingPositivity) {
+        score = (int)ratingSlider.value;
+    }
+    else {
+        score = (int)ratingSlider.maximumValue - (int)ratingSlider.value + 1;
     }
     
-    [self getQuestion:self.currentQuestionNumber];
+    if (self.currentQuestionNumber > 0) {
+        self.totalScore += score;
+        self.possibleScore += ratingSlider.maximumValue;
+    }
+    
+    ++self.currentQuestionNumber;
+
+    if (self.currentQuestionNumber == [self.survey.questions count]) {
+        
+        [self hideAllUIElements];
+        
+        nextButton.hidden = YES;
+        
+        self.playButton.hidden = NO;
+        
+        int finalValue = self.totalScore / (int)(self.survey.questions.count - 1);
+        
+        if (finalValue > 4) {
+            currentQuestionText.text = @"You seem to be thinking negatively.";
+            answerTextField.hidden = NO;
+            answerTextField.text = @"Let's use your theme song to push out the negative thoughts and replace them with positive thoughts.";
+        }
+        else {
+            currentQuestionText.text = @"Keep up the positive thinking! :)";
+            self.dontPlayButton.hidden = NO;
+        }
+    }
+    else {
+        [self getQuestion:self.currentQuestionNumber];
+    }
 }
 
 - (IBAction)selectChoice1:(id)sender
@@ -254,6 +301,8 @@
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[0];
     question.answerText = answer.text;
+    
+    nextButton.hidden = NO;
 }
 
 - (IBAction)selectChoice2:(id)sender
@@ -264,6 +313,8 @@
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[1];
     question.answerText = answer.text;
+    
+    nextButton.hidden = NO;
 }
 
 - (IBAction)selectChoice3:(id)sender
@@ -274,6 +325,8 @@
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[2];
     question.answerText = answer.text;
+    
+    nextButton.hidden = NO;
 }
 
 - (IBAction)selectChoice4:(id)sender
@@ -284,12 +337,17 @@
     Question *question = self.survey.questions[self.currentQuestionNumber];
     Answer *answer = question.answers[3];
     question.answerText = answer.text;
+    
+    nextButton.hidden = NO;
 }
 
 -(IBAction)backgroundTapped:(id)sender
 {
-    // Dismisses keyboard
-    [self.view endEditing:YES];
+    if (!answerTextField.hidden) {
+        // Dismisses keyboard
+        [self.view endEditing:YES];
+        nextButton.hidden = NO;
+    }
 }
 
 -(IBAction)sliderValueChanged:(id)sender
@@ -298,25 +356,15 @@
     [ratingText setText:[question.answers[(int)[ratingSlider value] - 1] text]];
     [ratingNumber setText:[NSString stringWithFormat:@"%d", (int)[ratingSlider value]]];
     question.answerText = [question.answers[(int)[ratingSlider value] - 1] text];
+    
+    nextButton.hidden = NO;
 }
 
--(IBAction)submitSurvey:(id)sender
+- (void)submitSurvey
 {
     NSMutableArray *response = [[NSMutableArray alloc] initWithCapacity:[self.survey.questions count]];
     
-    // NSMutableArray *mutableOperations = [NSMutableArray array];
-    
     for (Question *question in self.survey.questions) {
-        
-        if (!question.answerText) {
-            NSLog(@"error: question %lu's answer text was nil",(long)question.questionID);
-            
-            // TODO: should stop and show a warning in the future
-            
-            continue;
-        }
-        
-        // NSLog(@"question %lu: %@",(long)question.questionID,question.answerText);
         
         NSDictionary *question_info = @{@"question_id" : [NSString stringWithFormat:@"%lu",(long)question.questionID],
                                         @"answer" : question.answerText
@@ -326,30 +374,154 @@
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *authToken = [defaults stringForKey:@"authToken"];
-    NSString *patientID = [defaults stringForKey:@"patientID"];
+    NSString *authToken = [defaults stringForKey:DEFAULTS_AUTH_TOKEN];
+    NSString *patientID = [defaults stringForKey:DEFAULTS_PATIENT_ID];
     
-    NSDictionary *parameters = @{@"patient_id" : patientID,
+    NSLocale *currentLocale = [NSLocale currentLocale];
+    NSString *timeStamp = [[NSDate date] descriptionWithLocale:currentLocale];
+    
+    NSString *didListenString = nil;
+    
+    if (self.totalScore / self.survey.questions.count > 4) {
+        didListenString = @"Retook survey.";
+    }
+    else if (self.playedSong) {
+        didListenString = @"Played song.";
+    }
+    else {
+        didListenString = @"Did not play song.";
+    }
+    
+    NSDictionary *parameters = @{@"patient_id": patientID,
                                  @"access_token": authToken,
-                                 @"response" : response};
+                                 @"response": response,
+                                 @"timestamp": timeStamp,
+                                 @"score": [NSString stringWithFormat:@"%d/%d",self.totalScore,self.possibleScore],
+                                 @"did_listen": didListenString
+                                 };
     
-    NSString *URLString = @"http://create.cs.kent.edu/answer/";
+    __block BOOL checkedStatus = NO;
     
-    NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters];
-    AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"JSON: %@", responseObject);
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"Error: %@", error);
-        
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (!checkedStatus) {
+            checkedStatus = YES;
+            switch (status) {
+                case AFNetworkReachabilityStatusReachableViaWWAN:
+                case AFNetworkReachabilityStatusReachableViaWiFi: {
+                    
+                    NSLog(@"reachable --> survey view controller");
+                    
+                    // NSLog(@"%@",parameters);
+                    
+                    NSString *URLString = [NSString stringWithFormat: @"%@/answer/", SERVER_ADDRESS];
+                    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:URLString parameters:parameters];
+                    
+                    AFHTTPRequestOperation *operation = [self.manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                        
+                        //        NSLog(@"JSON: %@", responseObject);
+                        
+                        [self finishUp];
+                        
+                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        
+                        NSLog(@"Error: %@", error);
+                        
+                        [self.navigationController popViewControllerAnimated:YES];
+                        
+                    }];
+                    
+                    [operation start];
+                    
+                    break;
+                }
+
+                case AFNetworkReachabilityStatusNotReachable:
+                default: {
+
+                    NSLog(@"not reachable --> survey view controller");
+                    
+                    NSArray *parametersArray = [defaults arrayForKey:DEFAULTS_PARAMETERS_ARRAY];
+                    NSMutableArray *mutableParametersArray = nil;
+
+                    if (parametersArray) {
+                        mutableParametersArray = [parametersArray mutableCopy];
+                    }
+                    else {
+                        mutableParametersArray = [NSMutableArray new];
+                    }
+                    
+                    [mutableParametersArray addObject:parameters];
+                    [defaults setObject:mutableParametersArray forKey:DEFAULTS_PARAMETERS_ARRAY];
+                    
+                    [self finishUp];
+                    
+                    break;
+                }
+            }
+        }
     }];
     
-    [operation start];
+    [manager startMonitoring];
 }
 
+
+- (void)finishUp {
+    if (self.totalScore / self.survey.questions.count > 4) {
+        
+        self.playButton.hidden = YES;
+        
+        self.survey = [Survey surveyWithJSON:self.storedSurvey];
+        self.totalScore = 0;
+        
+        self.currentQuestionNumber = 0;
+        [self getQuestion:self.currentQuestionNumber];
+    }
+    else {
+        double currentTime = [[[NSDate alloc] init] timeIntervalSince1970];
+        [[NSUserDefaults standardUserDefaults] setDouble:currentTime forKey:DEFAULTS_TIME_SURVEY_SENT];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (IBAction)playSong:(id)sender {
+
+    NSString *recordedAudioPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
+                                   objectAtIndex:0];
+    
+    recordedAudioPath = [recordedAudioPath stringByAppendingPathComponent:@"recorded.caf"];
+    NSURL *recordURL = [NSURL fileURLWithPath:recordedAudioPath];
+    
+    NSError *error;
+    
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:recordURL error:&error];
+    if (!self.audioPlayer) {
+        NSLog(@"%@",error);
+        self.playedSong = YES;
+        
+        [self submitSurvey];
+    }
+    else {
+        [self.audioPlayer setDelegate:self];
+        [self.audioPlayer prepareToPlay];
+        
+        self.audioPlayer.numberOfLoops = 0;
+        
+        [self.audioPlayer play];
+    }
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    self.playedSong = YES;
+    
+    [self submitSurvey];
+}
+
+- (IBAction)dontPlaySong:(id)sender {
+
+    self.playedSong = NO;
+    
+    [self submitSurvey];
+}
 
 @end

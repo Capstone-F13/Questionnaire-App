@@ -8,6 +8,7 @@
 
 #import "PatientsViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "Constants.h"
 
 @interface PatientsViewController ()
 
@@ -36,7 +37,7 @@
         self.manager = [AFHTTPRequestOperationManager manager];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        self.patients = [defaults arrayForKey:@"patients"];
+        self.patients = [defaults arrayForKey:DEFAULTS_PATIENTS];
         
     }
     return self;
@@ -67,8 +68,8 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *patientIDURL = @"http://create.cs.kent.edu/patient/login";
-    NSString *token = [defaults stringForKey:@"authToken"];
+    NSString *patientIDURL = [NSString stringWithFormat: @"%@/patient/login", SERVER_ADDRESS];
+    NSString *token = [defaults stringForKey:DEFAULTS_AUTH_TOKEN];
     NSString *patientId = [NSString stringWithFormat:@"%@", [self.patients objectAtIndex:indexPath.row] ];
     
     NSDictionary *parameters = @{@"access_token" : token,
@@ -86,10 +87,12 @@
                                                                                   if([responseObject valueForKey:@"success"] != nil){
                                                                                       
                                                                                       NSLog(@"%@", responseObject);
-                                                                                      [defaults setObject:patientId forKey:@"patientID"];
+                                                                                      [defaults setObject:patientId forKey:DEFAULTS_PATIENT_ID];
                                                                                       [defaults synchronize];
                                                                                       
                                                                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                                                                      
+                                                                                      [self registerForNotifications];
                                                                                       
                                                                                   }
                                                                                   
@@ -123,8 +126,8 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        NSString *patientIDURL = @"http://create.cs.kent.edu/patient/create";
-        NSString *token = [defaults stringForKey:@"authToken"];
+        NSString *patientIDURL = [NSString stringWithFormat: @"%@/patient/create", SERVER_ADDRESS];
+        NSString *token = [defaults stringForKey:DEFAULTS_AUTH_TOKEN];
         NSString *patientID = [alertView textFieldAtIndex:0].text;
         
         NSLog(@"%@",patientID);
@@ -144,8 +147,9 @@
                                                                                       if([responseObject valueForKey:@"success"] != nil){
                                                                                           
                                                                                           NSLog(@"%@", responseObject);
-                                                                                          [defaults setObject:patientID forKey:@"patientID"];
+                                                                                          [defaults setObject:patientID forKey:DEFAULTS_PATIENT_ID];
                                                                                           [defaults synchronize];
+                                                                                          [defaults setDouble:0 forKey:DEFAULTS_TIME_SURVEY_SENT];
                                                                                           
                                                                                           [self dismissViewControllerAnimated:YES completion:nil];
                                                                                           
@@ -167,6 +171,67 @@
     }
 }
 
+- (void)registerForNotifications
+{
+    if (!REGISTER_FOR_NOTIFICATIONS) {
+        NSDate *currentDate = [NSDate date];
+        NSCalendar* calendar = [NSCalendar currentCalendar];
+        NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+        [components setHour: 16];
+        [components setMinute: 25];
+        [components setSecond: 0];
+        [calendar setTimeZone: [NSTimeZone defaultTimeZone]];
+        NSDate *dateToFire = [calendar dateFromComponents:components];
+        
+        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+        localNotification.alertBody = @"Time to take the survey";
+        [localNotification setFireDate: dateToFire];
+        [localNotification setTimeZone: [NSTimeZone defaultTimeZone]];
+        [localNotification setRepeatInterval: NSDayCalendarUnit];
+        // Let the device know we want to receive push notifications
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        
+        currentDate = [NSDate date];
+        calendar = [NSCalendar currentCalendar];
+        components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+        [components setHour: 18];
+        [components setMinute: 30];
+        [components setSecond: 0];
+        [calendar setTimeZone: [NSTimeZone defaultTimeZone]];
+        dateToFire = [calendar dateFromComponents:components];
+        
+        localNotification = [[UILocalNotification alloc] init];
+        localNotification.alertBody = @"Time to take the survey";
+        [localNotification setFireDate: dateToFire];
+        [localNotification setTimeZone: [NSTimeZone defaultTimeZone]];
+        [localNotification setRepeatInterval: NSDayCalendarUnit];
+        // Let the device know we want to receive push notifications
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        
+        currentDate = [NSDate date];
+        calendar = [NSCalendar currentCalendar];
+        components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate]; // Get necessary date components
+        [components setHour: 20];
+        [components setMinute: 55];
+        [components setSecond: 0];
+        [calendar setTimeZone: [NSTimeZone defaultTimeZone]];
+        dateToFire = [calendar dateFromComponents:components];
+        
+        localNotification = [[UILocalNotification alloc] init];
+        localNotification.alertBody = @"Time to take the survey";
+        [localNotification setFireDate: dateToFire];
+        [localNotification setTimeZone: [NSTimeZone defaultTimeZone]];
+        [localNotification setRepeatInterval: NSDayCalendarUnit];
+        // Let the device know we want to receive push notifications
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        
+        REGISTER_FOR_NOTIFICATIONS = true;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -182,8 +247,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-// USE THIS LINE OF CODE TO DISMISS THE VIEW AND RETURN TO THE MAIN MENU
-//[self dismissViewControllerAnimated:YES completion:NULL];
 
 @end

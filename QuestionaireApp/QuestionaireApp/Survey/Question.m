@@ -11,15 +11,16 @@
 
 @implementation Question
 
-+ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice survey:(NSUInteger)surveyID {
-    return [[Question alloc] initWithID:questionID text:text isMultipleChoice:isMultipleChoice survey:surveyID];
++ (id)questionWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice isAscendingPositivity:(BOOL)isAscendingPositivity survey:(NSUInteger)surveyID {
+    return [[Question alloc] initWithID:questionID text:text isMultipleChoice:isMultipleChoice isAscendingPositivity:isAscendingPositivity survey:surveyID];
 }
 
-- (id)initWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice survey:(NSUInteger)surveyID {
+- (id)initWithID:(NSUInteger)questionID text:(NSString *)text isMultipleChoice:(BOOL)isMultipleChoice isAscendingPositivity:(BOOL)isAscendingPositivity survey:(NSUInteger)surveyID {
     if (self = [super init]) {
         self.questionID = questionID;
         self.text = text;
         self.isMultipleChoice = isMultipleChoice;
+        self.isAscendingPositivity = isAscendingPositivity;
         self.answers = [NSMutableArray new];
         self.answerText = nil;
         self.surveyID = surveyID;

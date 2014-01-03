@@ -8,6 +8,8 @@
 
 #import "AdminViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "SurveyConstants.h"
+#import "Constants.h"
 
 @interface AdminViewController ()
 
@@ -35,12 +37,12 @@
         // TODO: Make this disable the button
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
+        if (![defaults objectForKey:DEFAULTS_AUTH_TOKEN] || ![defaults objectForKey:DEFAULTS_PATIENT_ID]) {
             self.cancelButton.enabled = NO;
         }
         
         _manager = [AFHTTPRequestOperationManager manager];
-        _serverURLString = @"http://create.cs.kent.edu/oauth2/access_token";
+        _serverURLString = [NSString stringWithFormat:@"%@/oauth2/access_token", SERVER_ADDRESS];
     }
     return self;
 }
@@ -96,7 +98,7 @@
                    NSLog(@"%@", responseObject);
                    NSString *token = [(NSDictionary *)responseObject objectForKey:@"access_token"];
                    
-                   [weakSelf.manager GET:[NSString stringWithFormat:@"http://create.cs.kent.edu/patients/%@", token]
+                   [weakSelf.manager GET:[NSString stringWithFormat:@"%@/patients/%@", SERVER_ADDRESS, token]
                               parameters:nil
                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                      
@@ -105,8 +107,8 @@
                                      NSArray *patients = (NSArray *)[(NSDictionary *)responseObject objectForKey:@"patient_ids"];
                                      
                                      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                     [defaults setObject:token forKey:@"authToken"];
-                                     [defaults setObject:patients forKey:@"patients"];
+                                     [defaults setObject:token forKey:DEFAULTS_AUTH_TOKEN];
+                                     [defaults setObject:patients forKey:DEFAULTS_PATIENTS];
                                      [defaults synchronize];
                                      
                                      [self performSegueWithIdentifier:@"AdminToPatientsSegue" sender:self];
@@ -133,7 +135,7 @@
 - (IBAction)adminCancel:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:@"authToken"] || ![defaults objectForKey:@"patientID"]) {
+    if (![defaults objectForKey:DEFAULTS_AUTH_TOKEN] || ![defaults objectForKey:DEFAULTS_PATIENT_ID]) {
         return;
     }
     
